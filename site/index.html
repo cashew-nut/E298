@@ -145,13 +145,18 @@ button.face:hover{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
 .flip.on .face.back .quote{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:420ms}
 .flip.on .face.back .quote:nth-of-type(2){animation-delay:500ms}.flip.on .face.back .quote:nth-of-type(3){animation-delay:580ms}.flip.on .face.back .quote:nth-of-type(4){animation-delay:660ms}
 .ben-k{font-size:18px;font-weight:500;color:var(--color-muted);margin-bottom:8px}
-.btab{width:100%;border-collapse:collapse;table-layout:fixed}
-.btab th{text-align:left;font-size:15px;font-weight:500;color:var(--color-muted);padding:0 16px 8px 0;border-bottom:2px solid var(--color-ink)}
-.btab td{vertical-align:top;padding:14px 16px 14px 0;border-bottom:1px solid var(--color-rule-2);font-size:18px;line-height:1.4;color:var(--color-ink-2)}
-.btab td:first-child{font-size:19px;font-weight:600;color:var(--color-ink)}
-.btab td:first-child small{display:block;font-size:14px;font-weight:400;color:var(--color-muted);margin-top:2px}
-.btab td:last-child{padding-right:0}
-.btab tr.planet td:first-child{color:var(--color-accent-2)}
+.ixs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;row-gap:44px;margin-top:38px}
+.ix{position:relative;display:flex;flex-direction:column;gap:10px;min-height:164px;padding:16px 20px 16px;border-radius:2px var(--radius-stock) var(--radius-stock) var(--radius-stock)}
+.ix .tab{position:absolute;top:-30px;left:var(--x,0px);height:32px;padding:7px 14px 0;border-radius:6px 6px 0 0;font-size:15px;font-weight:600;color:var(--color-print);background-color:var(--color-cotton);box-shadow:inset 0 1px 0 oklch(var(--lit) / 0.9),0 0 0 0.5px oklch(var(--shade) / 0.22)}
+.ix.lead{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
+.ix.lead .tab{background:var(--color-board);color:var(--color-board-type);box-shadow:none}
+.ix p{font-size:16px;line-height:1.4;color:var(--color-ink-2)}
+.ix .fg{margin-top:auto;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:end;padding-top:10px;border-top:1px solid var(--color-rule)}
+.ix .fg b{grid-row:1/3;font-family:var(--font-outlier);font-variant-numeric:tabular-nums;font-size:34px;font-weight:500;line-height:1;letter-spacing:-0.03em;color:var(--color-ink)}
+.ix .fg span{font-size:14px;line-height:1.3;color:var(--color-ink-2)}
+.ix .fg small{font-size:12.5px;color:var(--color-muted)}
+.frame.active .ix{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:calc(var(--i) * 70ms)}
+@media (prefers-reduced-motion:reduce){.frame.active .ix{animation:none}}
 @media (prefers-reduced-motion:reduce){.flip-in{transition:none}.flip.on .face.back .quote{animation:none}}
 
 /* ---------- 3 choice ---------- */
@@ -671,21 +676,17 @@ aside.notes{display:none}
     </div>
     <div>
       <p class="ben-k">Who benefits</p>
-      <table class="btab">
-        <colgroup><col style="width:200px"><col></colgroup>
-        <thead><tr><th>Who</th><th>What changes</th></tr></thead>
-        <tbody>
-          <tr><td>CRAs<small>first</small></td><td>Less time piecing the picture together, more time building partnerships with their sites.</td></tr>
-          <tr><td>Study teams<small>global and local</small></td><td>Consolidated site updates, more often and more accurate, from the same data CRAs use.</td></tr>
-          <tr><td>Clinical operations<small>the organisation</small></td><td>Lower cost of oversight, and less lost when a CRA hands a site over.</td></tr>
-          <tr><td>Sites<small>fewer asks</small></td><td>Fewer, more focused requests, with the reason attached.</td></tr>
-          <tr><td>Patients<small>unseen</small></td><td>They won’t notice, but the risks to them are watched more closely.</td></tr>
-          <tr class="planet"><td>Planet<small>less travel</small></td><td>Fewer, better-targeted site visits mean less monitor travel and lower emissions.</td></tr>
-        </tbody>
-      </table>
+      <div class="ixs">
+        <article class="ix stock lead" style="--i:0;--x:0px"><span class="tab">CRAs, first</span><p>Less time piecing the picture together, more time with their sites.</p><div class="fg"><b>91%</b><span>worry about burnout and turnover</span><small>Veeva, 2025 (vendor)</small></div></article>
+        <article class="ix stock" style="--i:1;--x:24px"><span class="tab">Study teams</span><p>Site updates that are more frequent and more accurate, from the same data CRAs use.</p></article>
+        <article class="ix stock" style="--i:2;--x:48px"><span class="tab">Clinical operations</span><p>Lower cost of oversight, and less lost when a CRA hands a site over.</p><div class="fg"><b>9</b><span>months for a new CRA to become proficient</span><small>Tufts CSDD, 2022</small></div></article>
+        <article class="ix stock" style="--i:3;--x:72px"><span class="tab">Sites</span><p>Fewer, more focused requests, with the reason attached.</p><div class="fg"><b>~70%</b><span>juggle six or more logins per study</span><small>Advarra, 2023 (vendor)</small></div></article>
+        <article class="ix stock" style="--i:4;--x:96px"><span class="tab">Patients</span><p>Data problems found sooner, so trials stay safe and on track.</p><div class="fg"><b>69%</b><span>of CRAs and data managers fear inefficiency hurts data quality</span><small>Veeva, 2025 (vendor)</small></div></article>
+        <article class="ix stock" style="--i:5;--x:120px"><span class="tab">Planet</span><p>Fewer, better-targeted visits mean less travel.</p><div class="fg"><b>10%</b><span>of a trial’s carbon footprint is monitoring travel</span><small>LaRoche et al., BMJ Open, 2025</small></div></article>
+      </div>
     </div>
   </div>
-  <aside class="notes">Start with the number: Veeva’s benchmark puts tracker work at about 3.3 hours for every monitoring visit report. At 4 to 8 visits a month, that’s roughly 8 to 16% of a CRA’s working time in Excel, OneNote and Word. Turn the card for why: nothing connects the systems, so CRAs keep their own notes and copy them across. Then who benefits. CRAs first, then study teams, the organisation, sites with fewer and better asks, patients, and the planet, because fewer and better-targeted visits mean less travel.</aside>
+  <aside class="notes">Start with the number: Veeva’s benchmark puts tracker work at about 3.3 hours for every monitoring visit report. At 4 to 8 visits a month, that’s roughly 8 to 16% of a CRA’s working time in Excel, OneNote and Word. Turn the card for why: nothing connects the systems, so CRAs keep their own notes and copy them across. Then who benefits. CRAs first, then study teams, the organisation, sites with fewer and better asks, patients through better data, and the planet: monitoring travel is about a tenth of a trial’s carbon footprint.</aside>
 </section></div>
 
 <!-- 3 KEY CHOICE -->
