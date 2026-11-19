@@ -585,14 +585,34 @@ button.sig:hover{background:var(--color-paper-2)}
 @media (prefers-reduced-motion: reduce){.spine .rail,.gov-band,.gcell,.gov-head,.spine .fill,.p-detail .pd-caret{transition:none}.pd-swap{animation:none}}
 
 /* ---------- 7 measures ---------- */
-.m-grid{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:56px;margin-top:24px;flex:1;min-height:0}
-.mrows{margin-top:20px}
-.mrow{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:16px;border-top:1px solid var(--color-rule-2);padding:16px 0}
-.mrow b{font-size:21px;font-weight:600;display:block}
-.mrow span{font-size:16px;color:var(--color-muted)}
-.mrow .tgt{font-size:18px;font-weight:500;text-align:right;color:var(--color-ink-2)}
-.m-side{display:flex;flex-direction:column;gap:24px}
-.m-side .quote blockquote{font-size:23px}
+.mx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:62px}
+.mcol{position:relative;display:flex;flex-direction:column;padding:20px 24px 8px;border-radius:2px var(--radius-stock) var(--radius-stock) var(--radius-stock);text-align:left;border:0;font:inherit;color:inherit;transition:opacity var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out),box-shadow var(--dur-long) var(--ease-out),background-color var(--dur-long) var(--ease-out)}
+.mcol .tab{position:absolute;top:-30px;left:0;height:32px;display:flex;align-items:center;gap:8px;padding:0 14px;border-radius:6px 6px 0 0;font-size:15px;font-weight:600;color:var(--color-print);background-color:var(--color-cotton);box-shadow:inset 0 1px 0 oklch(var(--lit) / 0.9),0 0 0 0.5px oklch(var(--shade) / 0.22)}
+.mcol .tab i{width:9px;height:9px;border-radius:3px;background:var(--mc)}
+.mcol.gate .tab{background:var(--color-board);color:var(--color-board-type);box-shadow:none}
+.mcol .when{font-family:var(--font-outlier);font-size:15px;letter-spacing:-0.01em;color:var(--color-muted);padding-bottom:12px;border-bottom:1.5px solid var(--mc)}
+.mcol .q{font-size:24px;font-weight:600;line-height:1.25;margin-top:12px;margin-bottom:8px;color:var(--color-ink)}
+.mi{display:grid;grid-template-columns:minmax(0,1fr) 124px;column-gap:16px;align-items:center;padding:17px 0;border-top:1px solid var(--color-rule)}
+.mi b{display:block;font-size:20px;font-weight:600;color:var(--color-ink)}
+.mi span{display:block;font-size:16px;line-height:1.35;color:var(--color-ink-2);margin-top:2px}
+.mi .vis{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.mi svg{width:96px;height:36px;overflow:visible}
+.mi svg .base{stroke:var(--color-rule-2);stroke-width:1.5;stroke-dasharray:3 4;fill:none}
+.mi svg .ln{stroke:var(--mc);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:0;transition:stroke-dashoffset 900ms var(--ease-out) 150ms}
+.mi svg .sq{fill:var(--mc)}
+.mi small{font-size:13.5px;white-space:nowrap;line-height:1.2;color:var(--color-muted);text-align:right}
+.mcol.off{background:transparent;box-shadow:none;outline:1.5px dashed var(--color-rule-2);outline-offset:-1.5px;cursor:pointer;opacity:.55}
+.mcol.off:hover{opacity:.8}
+.mcol.off .tab{background:var(--color-paper-2);color:var(--color-muted);box-shadow:none}
+.mcol.off .mi{visibility:hidden}
+.mcol.off .mi svg .ln{stroke-dashoffset:120}
+.mcol.off .when{border-bottom-color:var(--color-rule-2)}
+.m-foot{margin-top:28px;display:flex;justify-content:space-between;gap:32px;align-items:baseline}
+.m-foot .hint{font-size:16px;color:var(--color-muted)}
+body.stacked .mcol.off{background-color:var(--color-cotton);outline:0;opacity:1}
+body.stacked .mcol.off .mi{visibility:visible}
+body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
+@media (prefers-reduced-motion: reduce){.mcol,.mi svg .ln{transition:none}}
 
 /* ---------- 8 AI ---------- */
 .ai{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));margin-top:36px;border-top:2px solid var(--color-ink)}
@@ -619,9 +639,17 @@ button.sig:hover{background:var(--color-paper-2)}
 #bar .nb[aria-pressed="true"]{color:var(--color-ink);font-weight:600}
 #pos{min-width:48px;font-family:var(--font-outlier)}
 #secs{flex:1;display:flex;gap:8px;min-width:0}
-#secs button{flex:var(--w);border:0;background:transparent;padding:0 0 8px;text-align:left;font-size:14px;color:var(--color-muted);position:relative;white-space:nowrap;overflow:hidden}
-#secs button::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--color-ink) var(--p,0%),var(--color-rule) var(--p,0%))}
-#secs button.cur{color:var(--color-ink);font-weight:600}
+#secs .sec{flex:var(--w);min-width:0;display:flex;flex-direction:column}
+#secs .sec-l{border:0;background:transparent;padding:0 0 2px;text-align:left;font-size:14px;color:var(--color-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:flex-start;max-width:100%}
+#secs .sec-l:hover{color:var(--color-ink)}
+#secs .sec.cur .sec-l{color:var(--color-ink);font-weight:600}
+#secs .segs{display:flex;gap:4px}
+#secs .seg{flex:1;min-width:0;border:0;background:transparent;padding:5px 0 7px;cursor:pointer}
+#secs .seg::after{content:"";display:block;height:3px;border-radius:2px;background:var(--color-rule);transition:background-color var(--dur-short) var(--ease-out),transform var(--dur-short) var(--ease-out)}
+#secs .seg:hover::after{background:var(--color-muted)}
+#secs .seg.done::after{background:var(--color-ink)}
+#secs .seg[aria-current="step"]::after{transform:scaleY(1.67)}
+@media (prefers-reduced-motion: reduce){#secs .seg::after{transition:none}}
 #timer{font-family:var(--font-outlier)}
 #timer.over{color:var(--color-paid)}
 #notes{position:fixed;left:50%;transform:translateX(-50%);bottom:64px;width:min(820px,calc(100% - 32px));padding:16px 24px;z-index:6;font-size:16px;line-height:1.55}
@@ -976,22 +1004,9 @@ aside.notes{display:none}
 <!-- 7 MEASURES -->
 <div class="frame"><section class="slide" id="measures" data-time="0:55" data-sec="2">
   <div class="head"><h2>How we’d know it’s valuable and safe</h2></div>
-  <div class="m-grid">
-    <div>
-      <div class="groove" role="group" aria-label="Choose indicators">
-        <button data-ind="lead" aria-pressed="true">Leading</button>
-        <button data-ind="lag" aria-pressed="false">Lagging</button>
-        <button data-ind="safe" aria-pressed="false">Safe</button>
-      </div>
-      <div class="mrows" id="mrows" aria-live="polite"></div>
-      <div class="quote" style="margin-top:26px"><blockquote style="font-size:20px">More meaningful measures may include signal-to-action quality, issue resolution time, site burden, escalation effectiveness, visit preparedness.</blockquote><p class="cite">Chi-Hui Tang, CluePoints, Applied Clinical Trials, 13 August 2026. Several of the indicators above come from this list.</p></div>
-    </div>
-    <div class="m-side">
-      <div class="quote"><blockquote>Better analytics should reduce unnecessary asks, not create a new stream of disconnected follow-up actions.</blockquote><p class="cite">Chi-Hui Tang, CluePoints, Applied Clinical Trials, 13 August 2026 (vendor author)</p></div>
-      <div class="quote"><blockquote>It is equally important that organizations do not simply give CRAs more dashboards without changing the surrounding process.</blockquote><p class="cite">Same source</p></div>
-    </div>
-  </div>
-  <aside class="notes">Leading indicators tell us early whether CRAs trust it: are they prepared, do they act on what it shows, do they keep using it. Lagging indicators justify scaling: issues resolved faster, fewer asks of sites, fewer unplanned visits, less rework. Safety is its own list: evals pass before any release, no more missed signals than today, every claim cites a source, and nothing leaves the workspace without a person signing it. These are suggestions to agree with the team, not targets I’m claiming.</aside>
+  <div class="mx" id="mx"></div>
+  <div class="m-foot"><p class="cite">Shapes show the direction we’d look for, not data. Several indicators adapted from Chi-Hui Tang, Applied Clinical Trials, August 2026 (vendor author).</p><p class="hint" id="mhint">Next reveals the next set</p></div>
+  <aside class="notes">Three sets of measures, read at different times. Leading indicators, read weekly from the first pilot study, tell us early whether CRAs trust it: are they prepared, do they act on what it shows, do they keep using it. Lagging indicators, read at the month 6 checkpoint, justify scaling: issues resolved faster, fewer asks of sites, fewer unplanned visits, lower cost. Safety is a gate, not a trend: evals pass before every release, no more missed signals than today, every claim cites a source, and nothing leaves the workspace without a person signing it. These are suggestions to agree with the team, not targets I’m claiming.</aside>
 </section></div>
 
 <!-- 8 AI -->
@@ -1317,14 +1332,22 @@ const PATH=(function(){
 })();
 
 /* 7 indicators */
-const IND={
- lead:[['Visit preparedness','CRAs rate how ready they felt for each visit','Rises against the baseline'],['Signal-to-action rate','Share of flags CRAs act on rather than dismiss','High, and stable'],['Time to see an issue','From data landing to a CRA seeing it','Hours, not weeks'],['Active use','CRAs using it each week without being asked','Growing each month']],
- lag:[['Issue resolution time','From detection to closure at the site','Falls'],['Site burden','Requests per site, and site feedback','Fewer, better asks'],['Unplanned visits','Visits triggered by late data or open queries','Fall'],['Cost and retention','Oversight cost per site, CRA burnout and turnover','Improve over a year']],
- safe:[['Evals before every release','A fixed test set of known issues, run on each change','All pass'],['Missed signals','Compared with the usual process during shadow running','No increase'],['Every claim cites a source','Checked automatically','Always'],['People sign what leaves','Nothing filed or sent without a named person signing','Always']]
-};
-function showInd(k){$('mrows').innerHTML=IND[k].map(r=>`<div class="mrow"><div><b>${r[0]}</b><span>${r[1]}</span></div><div class="tgt">${r[2]}</div></div>`).join('');}
-document.querySelectorAll('[data-ind]').forEach(b=>b.addEventListener('click',()=>{press([...document.querySelectorAll('[data-ind]')],b);showInd(b.dataset.ind);}));
-showInd('lead');
+const MSETS=[
+ {k:'Leading',when:'Read weekly, from the first pilot study',q:'Do CRAs trust it and use it?',mc:'var(--color-h2)',rows:[['Visit preparedness','CRAs rate how ready they felt for each visit','rise','Above baseline'],['Signal-to-action rate','Share of flags CRAs act on, not dismiss','high','High and stable'],['Time to see an issue','From data landing to a CRA seeing it','fall','Hours, not weeks'],['Active use','CRAs using it each week, unprompted','rise','Grows monthly']]},
+ {k:'Lagging',when:'Read at the month 6 checkpoint',q:'Is it worth scaling?',mc:'var(--color-h3)',rows:[['Issue resolution time','From detection to closure at the site','fall','Falls'],['Site burden','Requests per site, and site feedback','fall','Fewer asks'],['Unplanned visits','Triggered by late data or open queries','fall','Fall'],['Cost and retention','Oversight cost per site, CRA turnover','rise','Improve in a year']]},
+ {k:'Safe',when:'Checked before every release',q:'Is it still safe to run?',mc:'var(--color-h4)',gate:true,rows:[['Evals pass','A fixed set of known issues, run on each change','gate','All pass'],['Missed signals','Against the usual process, in shadow running','flat','No increase'],['Every claim cites a source','Checked automatically','gate','Always'],['People sign what leaves','Nothing filed or sent unsigned','gate','Always']]}
+];
+const SHAPE={rise:'M2 26 C 20 24, 36 16, 70 4',fall:'M2 4 C 22 6, 38 18, 70 26',high:'M2 9 C 14 6, 28 10, 42 7 S 60 8, 70 7',flat:'M2 15 C 18 13, 34 17, 50 15 S 64 14, 70 15'};
+function vis(s){if(s==='gate')return `<svg viewBox="0 0 72 30" aria-hidden="true">${[0,1,2,3,4].map(i=>`<rect class="sq" x="${2+i*14}" y="9" width="11" height="11" rx="2.5"/>`).join('')}</svg>`;
+ const base=s==='flat'?'<line class="base" x1="0" y1="15" x2="72" y2="15"/>':'<line class="base" x1="0" y1="15" x2="72" y2="15"/>';
+ return `<svg viewBox="0 0 72 30" aria-hidden="true">${base}<path class="ln" d="${SHAPE[s]}"/></svg>`;}
+$('mx').innerHTML=MSETS.map((m,i)=>`<article class="mcol stock${m.gate?' gate':''}" data-m="${i}" style="--mc:${m.mc}"><span class="tab"><i></i>${m.k}</span><div class="when">${m.when}</div><div class="q">${m.q}</div>${m.rows.map(r=>`<div class="mi"><div><b>${r[0]}</b><span>${r[1]}</span></div><div class="vis">${vis(r[2])}<small>${r[3]}</small></div></div>`).join('')}</article>`).join('');
+const MEAS=(function(){
+ const cols=[...document.querySelectorAll('#mx .mcol')];let n=3;
+ function show(k){n=k;cols.forEach((c,i)=>{const off=i>=n;c.classList.toggle('off',off);c.setAttribute('role',off?'button':'');off?c.setAttribute('tabindex','0'):c.removeAttribute('tabindex');c.setAttribute('aria-label',off?`Show ${MSETS[i].k.toLowerCase()} measures`:'');if(!off){c.removeAttribute('role');c.removeAttribute('aria-label');}});$('mhint').style.visibility=n<3?'visible':'hidden';}
+ cols.forEach((c,i)=>{c.addEventListener('click',()=>{if(c.classList.contains('off'))show(i+1);});c.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&c.classList.contains('off')){e.preventDefault();e.stopPropagation();show(i+1);}});});
+ return{enter(fwd){show(stacked?3:(fwd?1:3));},leave(){},next(){if(n>=3)return false;show(n+1);return true;},prev(){if(n<=1)return false;show(n-1);return true;}};
+})();
 
 /* title animation */
 const tdesk=$('tdesk');
@@ -1333,8 +1356,12 @@ function playTitle(){if(reduce||stacked){tdesk.classList.remove('pre');return;}t
 /* nav */
 const SECS=[{n:'The opportunity',s:[1]},{n:'My recommendation',s:[2,3,4]},{n:'Making it real',s:[5,6]},{n:'My use of AI',s:[7]}];
 const secs=$('secs');
-SECS.forEach(sec=>{const b=document.createElement('button');b.style.setProperty('--w',sec.s.length);b.textContent=sec.n;b.onclick=()=>go(sec.s[0]);secs.appendChild(b);sec.el=b;});
-const BUILDS={brief:WS,opportunity:OPP};let booted=false;
+SECS.forEach(sec=>{const w=document.createElement('div');w.className='sec';w.style.setProperty('--w',sec.s.length);
+  const l=document.createElement('button');l.className='sec-l';l.textContent=sec.n;l.onclick=()=>go(sec.s[0]);
+  const g=document.createElement('div');g.className='segs';
+  sec.segs=sec.s.map(k=>{const b=document.createElement('button');b.className='seg';const h=slides[k].querySelector('h2');const t=`Slide ${k+1}: ${h?h.textContent.trim():sec.n}`;b.setAttribute('aria-label',t);b.title=t;b.onclick=()=>go(k);g.appendChild(b);return b;});
+  w.append(l,g);secs.appendChild(w);sec.el=w;});
+const BUILDS={brief:WS,opportunity:OPP,measures:MEAS};let booted=false;
 function step(d){const b=BUILDS[slides[cur].id];if(b&&(d>0?b.next():b.prev()))return;go(cur+d);}
 function go(i,fromHash){
   i=Math.max(0,Math.min(slides.length-1,i));const was=cur;cur=i;
@@ -1343,7 +1370,7 @@ function go(i,fromHash){
   booted=true;
   frames.forEach((f,k)=>{f.classList.toggle('active',k===i);f.setAttribute('aria-hidden',k===i?'false':'true');});
   $('pos').textContent=`${i+1} of ${slides.length}`;
-  SECS.forEach(sec=>{const idx=sec.s.indexOf(i);const p=i>sec.s[sec.s.length-1]?100:idx>=0?((idx+1)/sec.s.length*100):0;sec.el.style.setProperty('--p',p+'%');sec.el.classList.toggle('cur',idx>=0);});
+  SECS.forEach(sec=>{sec.el.classList.toggle('cur',sec.s.includes(i));sec.s.forEach((k,j)=>{const b=sec.segs[j];b.classList.toggle('done',k<=i);if(k===i)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});});
   if(slides[i].id==='title')playTitle();
   renderNotes();
   if(!fromHash){try{history.replaceState(null,'','#slide-'+(i+1));}catch(e){}}
