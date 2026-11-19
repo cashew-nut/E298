@@ -29,6 +29,7 @@
   --color-accent:oklch(74% 0.125 30); --color-accent-2:oklch(54% 0.165 29); --color-focus:oklch(54% 0.17 30);
   --color-cotton:oklch(98.8% 0.0045 80); --color-desk:oklch(94.3% 0.008 64); --color-print:oklch(23% 0.012 38);
   --color-board:oklch(22% 0.011 40); --color-board-type:oklch(96.5% 0.006 70); --color-paid:oklch(55.5% 0.15 33);
+  --color-h1:oklch(76% 0.075 85); --color-h2:oklch(66% 0.065 145); --color-h3:oklch(62% 0.045 195); --color-h4:oklch(56% 0.07 330); --color-h5:oklch(55% 0.11 38);
   --color-l1:oklch(82% 0.012 55); --color-l2:oklch(70% 0.014 50); --color-l3:oklch(58% 0.016 45); --color-l4:oklch(45% 0.016 40); --color-l5:oklch(30% 0.014 38);
   --shade:32% 0.03 50; --lit:100% 0.005 80; --deep:7% 0.01 40;
   --font-display:"Instrument Sans",ui-sans-serif,system-ui,sans-serif; --font-body:var(--font-display);
@@ -490,10 +491,11 @@ button.sig:hover{background:var(--color-paper-2)}
 .gh{font-size:16px;font-weight:500;color:var(--color-muted);display:flex;align-items:flex-end;padding:0 4px 4px}
 .gh.cra{color:var(--color-ink);font-weight:600}
 .lay{display:flex;flex-direction:column;justify-content:center;gap:4px;padding-right:8px;border-right:4px solid var(--lc)}
-.lay b{font-size:22px;font-weight:600;letter-spacing:-0.01em}
+.lay b{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:600;letter-spacing:-0.01em}
+.lay b::before{content:"";flex:none;width:10px;height:10px;border-radius:3px;background:var(--lc)}
 .lay span{font-size:15px;color:var(--color-muted);line-height:1.3}
-.cell{position:relative;text-align:left;border:1.5px dashed var(--color-rule-2);border-radius:var(--radius-stock);background:transparent;padding:8px 12px;font-size:15px;line-height:1.3;color:var(--color-muted);transition:background-color var(--dur-long) var(--ease-out),box-shadow var(--dur-long) var(--ease-out),color var(--dur-long) var(--ease-out),border-color var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out)}
-.cell.on{border:1.5px solid transparent;background-color:var(--color-cotton);background-image:linear-gradient(100deg,var(--color-cotton),transparent 45%),var(--tex-cotton);color:var(--color-print);box-shadow:inset 4px 0 0 var(--lc),var(--edge-stock),var(--cast-stock)}
+.cell{position:relative;text-align:left;border:1.5px dashed color-mix(in oklch,var(--lc) 45%,var(--color-rule-2));border-radius:var(--radius-stock);background:transparent;padding:8px 12px;font-size:15px;line-height:1.3;color:var(--color-muted);transition:background-color var(--dur-long) var(--ease-out),box-shadow var(--dur-long) var(--ease-out),color var(--dur-long) var(--ease-out),border-color var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out)}
+.cell.on{border:1.5px solid transparent;background-color:color-mix(in oklch,var(--lc) 11%,var(--color-cotton));background-image:linear-gradient(100deg,color-mix(in oklch,var(--lc) 4%,var(--color-cotton)),transparent 55%),var(--tex-cotton);color:var(--color-print);box-shadow:inset 4px 0 0 var(--lc),var(--edge-stock),var(--cast-stock)}
 .cell.sel{border-color:var(--color-ink)}
 .cell .pt{position:absolute;right:8px;bottom:6px;font-size:13px;font-weight:600;color:var(--color-paid)}
 .detail{padding:24px;display:flex;flex-direction:column;gap:16px;align-self:start}
@@ -1241,11 +1243,11 @@ const WS=(function(){
 /* 5 scale grid */
 const ROLES=['CRA','Study manager','Data manager','Medical monitor','Site start-up'];
 const LAYERS=[
- {n:'Organise',d:'Consolidate and link to source',lc:'var(--color-l1)',risk:1,ctl:'Read-only. Validate data lineage and access by role.',comp:'Connectors, data model, access, audit'},
- {n:'Detect',d:'Rules flag what needs attention',lc:'var(--color-l2)',risk:2,ctl:'Rule logic validated like any GxP system, in proportion to risk.',comp:'Rules engine'},
- {n:'Compare',d:'Against protocol, plans and eTMF',lc:'var(--color-l3)',risk:3,ctl:'AI finds and cites the clause; a person judges. Every answer shows its source.',comp:'Document index'},
- {n:'Draft',d:'AI drafts, a person edits',lc:'var(--color-l4)',risk:4,ctl:'Nothing is filed unsigned. E-signature and audit trail under Part 11 and Annex 11.',comp:'Drafting templates'},
- {n:'Review and submit',d:'Signed work goes back to source',lc:'var(--color-l5)',risk:5,ctl:'Deterministic write-back only after signature, with a full audit trail.',comp:'Write-back services'}
+ {n:'Organise',d:'Consolidate and link to source',lc:'var(--color-h1)',risk:1,ctl:'Read-only. Validate data lineage and access by role.',comp:'Connectors, data model, access, audit'},
+ {n:'Detect',d:'Rules flag what needs attention',lc:'var(--color-h2)',risk:2,ctl:'Rule logic validated like any GxP system, in proportion to risk.',comp:'Rules engine'},
+ {n:'Compare',d:'Against protocol, plans and eTMF',lc:'var(--color-h3)',risk:3,ctl:'AI finds and cites the clause; a person judges. Every answer shows its source.',comp:'Document index'},
+ {n:'Draft',d:'AI drafts, a person edits',lc:'var(--color-h4)',risk:4,ctl:'Nothing is filed unsigned. E-signature and audit trail under Part 11 and Annex 11.',comp:'Drafting templates'},
+ {n:'Review and submit',d:'Signed work goes back to source',lc:'var(--color-h5)',risk:5,ctl:'Deterministic write-back only after signature, with a full audit trail.',comp:'Write-back services'}
 ];
 const EX=[
  ['Site picture before a visit, linked to source','Site status across the study','One reconciliation view across EDC, IRT and labs','Subject safety timeline in one place','Essential document status by site'],
