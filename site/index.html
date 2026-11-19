@@ -123,19 +123,39 @@ h3{font-size:26px;line-height:1.2}
 .js .t-desk.pre .stamp{opacity:0;transform:rotate(-6deg) scale(1.6)}
 
 /* ---------- 2 opportunity ---------- */
-.o-grid{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:56px;margin-top:40px;flex:1;min-height:0}
-.o-quotes{display:flex;flex-direction:column;gap:32px}
-.o-quotes .quote{border-top:1px solid var(--color-rule-2);padding-top:24px}
-.ben-k{font-size:18px;font-weight:500;color:var(--color-muted);margin-bottom:12px}
-.bens{display:flex;flex-direction:column;gap:8px}
-.ben{display:grid;grid-template-columns:1fr auto;align-items:center;text-align:left;border:0;padding:16px 16px;font-size:21px;font-weight:600;background:transparent;border-radius:var(--radius-stock);color:var(--color-ink-2);transition:background-color var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out),color var(--dur-short) var(--ease-out)}
-.ben span{font-size:16px;font-weight:400;color:var(--color-muted)}
-.ben:hover{color:var(--color-ink)}
-.ben[aria-pressed="true"]{background-color:var(--color-cotton);color:var(--color-print);box-shadow:var(--edge-stock),var(--cast-stock)}
-.ben-detail{margin-top:16px;padding:24px 24px;min-height:210px;display:flex;flex-direction:column;gap:12px}
-.ben-detail p{font-size:20px;line-height:1.45}
-.ben-detail .cite{margin-top:auto;font-size:15px}
-.ben-detail .stat{font-size:21px;font-weight:600;color:var(--color-ink)}
+.o-grid{display:grid;grid-template-columns:minmax(0,1fr) 820px;gap:48px;margin-top:28px;flex:1;min-height:0}
+.o-left{display:flex;flex-direction:column;gap:20px;min-width:0}
+.o-stat{display:flex;flex-direction:column;align-items:flex-start;gap:12px;text-align:left;border:0;padding:28px 32px;transition:transform var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out),padding var(--dur-long) var(--ease-out)}
+.o-stat:hover{transform:translateY(-2px);box-shadow:var(--edge-stock),var(--cast-stock-lift)}
+.o-tag{font-size:15px;font-weight:600;color:var(--color-accent-2);border:1.5px solid currentColor;border-radius:999px;padding:3px 12px}
+.o-num{font-family:var(--font-display);font-size:200px;font-weight:600;letter-spacing:-0.05em;line-height:.9;color:var(--color-ink);font-variant-numeric:tabular-nums;transition:font-size var(--dur-long) var(--ease-out)}
+.o-cap{font-size:25px;line-height:1.35;font-weight:500;color:var(--color-ink);max-width:24ch;transition:font-size var(--dur-long) var(--ease-out)}
+.o-more{margin-top:8px;font-size:18px;color:var(--color-muted);display:flex;align-items:center;gap:8px}
+.o-more b{color:var(--color-accent-2);font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.o-left.open .o-stat{padding:18px 24px;gap:6px}
+.o-left.open .o-num{font-size:84px}
+.o-left.open .o-cap{font-size:19px;max-width:none}
+.o-left.open .o-more{display:none}
+.o-quotes{display:flex;flex-direction:column;gap:16px}
+.o-quotes[hidden]{display:none}
+.o-quotes .ben-k{margin:4px 0 0;color:var(--color-ink);font-weight:600}
+.o-quotes .quote{border-top:1px solid var(--color-rule-2);padding-top:14px;gap:6px;animation:tin var(--dur-long) var(--ease-out) both}
+.o-quotes .quote:nth-of-type(2){animation-delay:90ms}.o-quotes .quote:nth-of-type(3){animation-delay:180ms}
+.o-quotes .quote blockquote{font-size:20px}
+.o-quotes .cite{font-size:14px}
+.ben-k{font-size:18px;font-weight:500;color:var(--color-muted);margin-bottom:8px}
+.btab{width:100%;border-collapse:collapse;table-layout:fixed}
+.btab th{text-align:left;font-size:15px;font-weight:500;color:var(--color-muted);padding:0 16px 8px 0;border-bottom:2px solid var(--color-ink)}
+.btab td{vertical-align:top;padding:9px 16px 9px 0;border-bottom:1px solid var(--color-rule-2);font-size:16px;line-height:1.4;color:var(--color-ink-2)}
+.btab td:first-child{font-size:18px;font-weight:600;color:var(--color-ink)}
+.btab td:first-child small{display:block;font-size:14px;font-weight:400;color:var(--color-muted);margin-top:2px}
+.btab td:last-child{padding-right:0}
+.btab .n{display:block;font-size:16px;line-height:1.35;color:var(--color-ink-2)}
+.btab .n b{font-size:20px;font-weight:600;color:var(--color-ink);letter-spacing:-0.01em}
+.btab .src{display:block;font-size:12.5px;line-height:1.35;color:var(--color-muted);margin-top:2px}
+.btab .na{font-size:15px;color:var(--color-muted)}
+.btab tr.planet td:first-child{color:var(--color-accent-2)}
+@media (prefers-reduced-motion:reduce){.o-num,.o-cap,.o-stat,.o-quotes .quote{transition:none;animation:none}}
 
 /* ---------- 3 choice ---------- */
 .c-grid{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:56px;margin-top:32px;flex:1;min-height:0}
@@ -574,20 +594,40 @@ aside.notes{display:none}
 
 <!-- 2 OPPORTUNITY -->
 <div class="frame"><section class="slide" id="opportunity" data-time="1:15" data-sec="0">
-  <div class="head"><h2>CRAs spend hours piecing the site picture together</h2></div>
+  <div class="head"><h2 style="max-width:none">CRAs spend hours piecing the site picture together</h2></div>
   <div class="o-grid">
-    <div class="o-quotes">
-      <div class="quote"><blockquote>It’s not that I like it, I don’t have any other tool to keep everything in one place.</blockquote><p class="cite">A CRA subject matter expert at a top-20 biopharma, in Veeva research reported by Clinical Trials Arena, December 2025 (vendor research)</p></div>
-      <div class="quote"><blockquote>Historically, and for many today, most data assimilation is done manually or through spreadsheets.</blockquote><p class="cite">Patrick Floody, VP at Regeneron, Clinical Leader, January 2026</p></div>
-      <div class="quote"><blockquote>It takes more time to figure out what to monitor than to just conduct 100% SDV.</blockquote><p class="cite">CRA survey responses, summarised by Tufts CSDD in DIA Global Forum, January 2026</p></div>
+    <div class="o-left" id="oleft">
+      <button class="o-stat stock" id="ostat" aria-expanded="false" aria-controls="oquotes">
+        <span class="o-tag">From 2012. Old, and probably out of date</span>
+        <span class="o-num">63%</span>
+        <span class="o-cap">of CRA time went on monitoring: 41% on site and 22% off site</span>
+        <span class="cite">Tufts CSDD survey of 3,970 CRAs. Ken Getz, Applied Clinical Trials, July 2012</span>
+        <span class="o-more">Has it moved since? <b>See what people say now</b></span>
+      </button>
+      <div class="o-quotes" id="oquotes" hidden>
+        <p class="ben-k">Recent accounts don’t suggest the needle has moved much</p>
+        <div class="quote"><blockquote>It’s not that I like it, I don’t have any other tool to keep everything in one place.</blockquote><p class="cite">A CRA subject matter expert at a top-20 biopharma, in Veeva research reported by Clinical Trials Arena, December 2025 (vendor research)</p></div>
+        <div class="quote"><blockquote>Historically, and for many today, most data assimilation is done manually or through spreadsheets.</blockquote><p class="cite">Patrick Floody, VP at Regeneron, Clinical Leader, January 2026</p></div>
+        <div class="quote"><blockquote>It takes more time to figure out what to monitor than to just conduct 100% SDV.</blockquote><p class="cite">CRA survey responses, summarised by Tufts CSDD in DIA Global Forum, January 2026</p></div>
+      </div>
     </div>
     <div>
       <p class="ben-k">Who benefits</p>
-      <div class="bens" role="group" aria-label="Who benefits" id="bens"></div>
-      <div class="ben-detail stock" id="ben-detail" aria-live="polite"></div>
+      <table class="btab">
+        <colgroup><col style="width:196px"><col><col style="width:300px"></colgroup>
+        <thead><tr><th>Who</th><th>What changes</th><th>The number</th></tr></thead>
+        <tbody>
+          <tr><td>CRAs<small>first</small></td><td>Less time piecing the picture together, more time building partnerships with their sites.</td><td><span class="n"><b>91%</b> are concerned about burnout and turnover</span><span class="src">Veeva CRA survey, Clinical Trials Arena, December 2025 (vendor)</span></td></tr>
+          <tr><td>Study teams<small>global and local</small></td><td>Consolidated site updates, more often and more accurate, from the same data CRAs use.</td><td><span class="na">No reliable figure yet</span></td></tr>
+          <tr><td>Clinical operations<small>the organisation</small></td><td>Lower cost of oversight, and less lost when a CRA hands a site over.</td><td><span class="n"><b>9 months</b> for a CRA to become proficient, on a roughly two-year cycle</span><span class="src">Tufts CSDD roundtable, Applied Clinical Trials, December 2022</span></td></tr>
+          <tr><td>Sites<small>fewer asks</small></td><td>Fewer, more focused requests, with the reason attached.</td><td><span class="n"><b>Nearly 70%</b> manage six or more logins per study</span><span class="src">Advarra survey of 500+ site staff, 2023 (vendor)</span></td></tr>
+          <tr><td>Patients<small>unseen</small></td><td>They won’t notice, but the risks to them are watched more closely.</td><td><span class="na">No reliable figure yet</span></td></tr>
+          <tr class="planet"><td>Planet<small>less travel</small></td><td>Fewer, better-targeted site visits mean less monitor travel and lower emissions.</td><td><span class="n"><b>10%</b> of a trial’s carbon footprint is travel for on-site monitoring, on average</span><span class="src">LaRoche et al., BMJ Open, 2025, seven industry trials</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <aside class="notes">I’d start with CRAs. They’re the largest group in clinical operations, and much of their time goes on assembling information before they can act on it. The three quotes say it: one place for everything doesn’t exist, assimilation is still manual, and deciding what to look at can take longer than checking everything. Then click through who benefits. CRAs first, then the study teams who get better updates, the organisation, sites who get fewer and better requests, and patients, who won’t notice but whose risks are watched more closely.</aside>
+  <aside class="notes">Start with the number everyone quotes: in 2012, Tufts found 63% of CRA time went on monitoring, 41% on site and 22% off site. It’s old, and it’s probably out of date. Click it, or press Next. The recent accounts don’t suggest the needle has moved much: one place for everything still doesn’t exist, assimilation is still manual, and deciding what to look at can take longer than checking everything. Then who benefits, with a number where there is a good one. CRAs first, then study teams, the organisation, sites with fewer logins and asks, patients, and the planet: travel for on-site monitoring is about a tenth of a trial’s carbon footprint.</aside>
 </section></div>
 
 <!-- 3 KEY CHOICE -->
@@ -916,18 +956,13 @@ let cur=0,stacked=false;
 const $=id=>document.getElementById(id);
 function press(btns,on){btns.forEach(b=>b.setAttribute('aria-pressed',b===on?'true':'false'));}
 
-/* 2 beneficiaries */
-const BENS=[
- {n:'CRAs',s:'first',t:'Less time piecing the picture together, more time building partnerships with their sites.',q:'91% of CRAs are concerned about burnout and turnover.',plain:1,c:'Veeva survey, reported by Clinical Trials Arena, December 2025 (vendor research)'},
- {n:'Study teams',s:'global and local',t:'Consolidated site updates, more often and more accurate, from the same data CRAs use.',q:'',c:''},
- {n:'Clinical operations',s:'the organisation',t:'Lower cost of oversight, and less lost when a CRA hands a site over.',q:'It takes a CRA nine months to be proficient but they’re at a two-year cycle then that turnover is disruptive.',c:'Tufts CSDD roundtable participant, Applied Clinical Trials, December 2022'},
- {n:'Sites',s:'fewer asks',t:'Fewer, more focused requests, with the reason attached.',q:'Every request made to a site has an operational impact.',c:'Chi-Hui Tang, CluePoints, Applied Clinical Trials, 13 August 2026 (vendor author)'},
- {n:'Patients',s:'unseen',t:'They won’t notice, but the risks to them are watched more closely.',q:'',c:''}
-];
-const bensEl=$('bens');
-BENS.forEach((b,i)=>{const e=document.createElement('button');e.className='ben';e.innerHTML=`${b.n}<span>${b.s}</span>`;e.setAttribute('aria-pressed',i===0?'true':'false');e.onclick=()=>{press([...bensEl.children],e);showBen(i);};bensEl.appendChild(e);});
-function showBen(i){const b=BENS[i];$('ben-detail').innerHTML=`<p>${b.t}</p>${b.q?(b.plain?`<p class="stat">${b.q}</p>`:`<div class="quote"><blockquote style="font-size:21px">${b.q}</blockquote></div>`)+`<p class="cite">${b.c}</p>`:''}`;}
-showBen(0);
+/* 2 opportunity: the 2012 number, then what people say now */
+const OPP=(function(){
+ const left=$('oleft'),btn=$('ostat'),qs=$('oquotes');let open=false;
+ function set(v){open=v;left.classList.toggle('open',v);qs.hidden=!v;btn.setAttribute('aria-expanded',v?'true':'false');}
+ btn.onclick=()=>set(!open);
+ return{enter(fwd){set(!fwd);},leave(){},next(){if(open)return false;set(true);return true;},prev(){if(!open)return false;set(false);return true;}};
+})();
 
 /* 3 scenes */
 const SCENES=['app','found'];
@@ -1190,7 +1225,7 @@ function playTitle(){if(reduce||stacked){tdesk.classList.remove('pre');return;}t
 const SECS=[{n:'The opportunity',s:[1]},{n:'My recommendation',s:[2,3,4]},{n:'Making it real',s:[5,6]},{n:'My use of AI',s:[7]}];
 const secs=$('secs');
 SECS.forEach(sec=>{const b=document.createElement('button');b.style.setProperty('--w',sec.s.length);b.textContent=sec.n;b.onclick=()=>go(sec.s[0]);secs.appendChild(b);sec.el=b;});
-const BUILDS={brief:WS};let booted=false;
+const BUILDS={brief:WS,opportunity:OPP};let booted=false;
 function step(d){const b=BUILDS[slides[cur].id];if(b&&(d>0?b.next():b.prev()))return;go(cur+d);}
 function go(i,fromHash){
   i=Math.max(0,Math.min(slides.length-1,i));const was=cur;cur=i;
