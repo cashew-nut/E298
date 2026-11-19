@@ -500,21 +500,80 @@ button.sig:hover{background:var(--color-paper-2)}
 .reuse span.new{border-color:var(--color-ink);color:var(--color-ink);font-weight:600}
 
 /* ---------- 6 path ---------- */
-.p-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:40px}
-.pstep{text-align:left;border:0;padding:16px 20px;border-radius:var(--radius-stock);background:transparent;display:flex;flex-direction:column;gap:8px;border-top:3px solid var(--color-rule-2);transition:background-color var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out),border-color var(--dur-short) var(--ease-out)}
+#path{--gq:var(--color-accent-2);--gq-tint:oklch(95.6% 0.024 34);--gq-line:oklch(84% 0.06 32)}
+#path h2{max-width:none}
+.tl{margin-top:36px;position:relative}
+.p-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.pstep{text-align:left;border:0;padding:14px 20px 16px;border-radius:var(--radius-stock);background:transparent;display:flex;flex-direction:column;gap:6px;border-top:3px solid var(--color-rule-2);transition:background-color var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out),border-color var(--dur-short) var(--ease-out)}
+.pstep:hover{background-color:oklch(var(--lit) / 0.5)}
 .pstep .when{font-size:16px;color:var(--color-muted)}
 .pstep h3{font-size:24px}
-.pstep p{font-size:17px;line-height:1.4;color:var(--color-ink-2)}
+.pstep p{font-size:16px;line-height:1.4;color:var(--color-ink-2)}
 .pstep[aria-pressed="true"]{background-color:var(--color-cotton);background-image:var(--tex-cotton);box-shadow:var(--edge-stock),var(--cast-stock);border-top-color:var(--color-ink)}
-.p-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-top:32px}
-.p-detail h3{font-size:20px;margin-bottom:8px}
-.p-detail ul{margin:0;padding-left:24px;font-size:19px;line-height:1.5;color:var(--color-ink-2)}
-.p-detail li+li{margin-top:8px}
-.factors{margin-top:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--color-ink)}
-.factors div{padding:16px 24px 0 0}
-.factors div+div{padding-left:24px;border-left:1px solid var(--color-rule-2)}
-.factors b{font-size:19px;display:block}
-.factors span{font-size:17px;color:var(--color-ink-2);line-height:1.4}
+.pstep:last-child{-webkit-mask-image:linear-gradient(90deg,#000 70%,rgb(0 0 0 / .55));mask-image:linear-gradient(90deg,#000 70%,rgb(0 0 0 / .55))}
+.pstep:last-child[aria-pressed="true"]{-webkit-mask-image:none;mask-image:none}
+/* time spine: today on the left, the future off the right edge */
+.spine{position:relative;height:44px;margin-top:10px}
+.spine .rail,.spine .fill{position:absolute;left:0;top:21px;height:2px;border-radius:2px}
+.spine .rail{right:-96px;background:linear-gradient(90deg,var(--color-rule-2) 72%,transparent)}
+.spine .fill{height:4px;top:20px;width:var(--pw,0px);background:linear-gradient(90deg,var(--color-ink) calc(100% - 90px),var(--color-ink-2));transition:width 600ms var(--ease-out)}
+.spine .knot{position:absolute;top:16px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--color-paper);box-shadow:inset 0 0 0 2px var(--color-rule-2);transition:box-shadow var(--dur-short) var(--ease-out),background-color var(--dur-short) var(--ease-out)}
+.spine .knot.k0{left:6px}.spine .knot.k1{left:356px}.spine .knot.k2{left:712px}
+.spine .knot.past{background:var(--color-ink);box-shadow:inset 0 0 0 2px var(--color-ink)}
+.spine .tag{position:absolute;top:8px;height:28px;display:inline-flex;align-items:center;gap:8px;padding:0 12px;border-radius:14px;font-size:15px;font-weight:600;background:var(--color-paper);white-space:nowrap}
+.spine .t-now{left:22px;color:var(--color-ink);padding-left:8px}
+.spine .t-dec{left:1060px;transform:translateX(-22px);color:var(--color-print);background-color:var(--color-cotton);box-shadow:var(--edge-stock),var(--cast-stock)}
+.spine .t-dec i{width:12px;height:12px;background:var(--gq);transform:rotate(45deg);border-radius:2px}
+.spine .t-fut{right:-40px;color:var(--color-muted);font-weight:500;padding-right:4px}
+.spine .t-fut svg{width:20px;height:12px;fill:none;stroke:var(--color-muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* the governance track, running under the build from day one */
+.gov{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;grid-template-rows:auto auto;margin-top:6px}
+.gov-band{grid-column:1/4;grid-row:1/3;margin-right:-8px;background:var(--gq-tint);border-radius:var(--radius-stock) 0 0 var(--radius-stock);clip-path:polygon(0 0,calc(100% - 26px) 0,100% 50%,calc(100% - 26px) 100%,0 100%);transform-origin:0 50%;transition:clip-path 900ms var(--ease-out)}
+.gov-band::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gq);border-radius:var(--radius-stock) 0 0 var(--radius-stock)}
+.gov-band{position:relative}
+.gov-head{grid-column:1/4;grid-row:1;position:relative;display:flex;align-items:baseline;gap:14px;padding:14px 44px 2px 24px}
+.gov-head svg{width:22px;height:22px;flex:none;align-self:center;fill:none;stroke:var(--gq);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gov-head b{font-size:22px;letter-spacing:-0.015em;color:var(--color-ink);white-space:nowrap}
+.gov-head span{font-size:16px;color:var(--color-ink-2)}
+.gcell{grid-row:2;position:relative;padding:10px 20px 16px 24px;display:flex;flex-direction:column;gap:3px;transition:opacity var(--dur-short) var(--ease-out)}
+.gcell[data-g="0"]{grid-column:1}.gcell[data-g="1"]{grid-column:2}.gcell[data-g="2"]{grid-column:3;padding-right:44px}
+.gcell+.gcell:not(.gend)::before{content:"";position:absolute;left:-8px;top:12px;bottom:16px;border-left:1px dashed var(--gq-line)}
+.gcell .gw{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gq)}
+.gcell b{font-size:19px;color:var(--color-ink)}
+.gcell p{font-size:15.5px;line-height:1.38;color:var(--color-ink-2)}
+.gcell.on b{text-decoration:underline;text-decoration-color:var(--gq);text-decoration-thickness:2px;text-underline-offset:5px}
+.gend{grid-column:4;grid-row:1/3;padding:14px 0 16px 34px;justify-content:center;gap:10px}
+.gok{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:600;color:var(--gq);border:2px solid var(--gq);border-radius:6px;padding:6px 12px;background:var(--color-cotton)}
+.gok svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.gend.on .gok{box-shadow:var(--cast-stock-lift)}
+.gend p{font-size:15.5px;line-height:1.38;color:var(--color-muted)}
+/* detail for the selected step */
+.p-detail{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;margin-top:24px;padding:20px 32px 22px}
+.p-detail .pd-caret{position:absolute;top:-9px;left:var(--cx,170px);width:18px;height:18px;margin-left:-9px;background:var(--color-cotton);transform:rotate(45deg);box-shadow:-1px -1px 0 0 var(--color-rule-2);transition:left 500ms var(--ease-out)}
+.pd-col+.pd-col{padding-left:32px;border-left:1px solid var(--color-rule)}
+.pd-col:first-of-type{padding-right:32px}
+.p-detail h3{font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-muted);margin-bottom:14px}
+.pd-who{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.pd-who span{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 14px 0 6px;border-radius:19px;font-size:17px;color:var(--color-ink);background:var(--color-paper);box-shadow:inset 0 0 0 1px var(--color-rule-2)}
+.pd-who span::before{content:"";width:26px;height:26px;border-radius:50%;background:var(--color-paper-3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23463c37' stroke-width='1.6'%3E%3Ccircle cx='10' cy='7.5' r='3'/%3E%3Cpath d='M4.5 16c.8-2.8 3-4.2 5.5-4.2s4.7 1.4 5.5 4.2'/%3E%3C/svg%3E") center/16px no-repeat}
+.pd-who span.q{color:var(--gq);box-shadow:inset 0 0 0 1.5px var(--gq);background:var(--gq-tint);font-weight:500}
+.pd-who span.q::before{background-color:var(--color-cotton);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23b63d2c' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 2.5l6 2.4v4.6c0 3.7-2.6 6.6-6 7.9-3.4-1.3-6-4.2-6-7.9V4.9z'/%3E%3Cpath d='M7 10l2.2 2.2L13.4 8'/%3E%3C/svg%3E")}
+.pd-out{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.pd-out li{display:flex;align-items:center;gap:12px;font-size:18px;line-height:1.35;color:var(--color-ink)}
+.pd-out li::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:var(--color-ink-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.8' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.pd-out li.q{color:var(--gq);font-weight:500}
+.pd-out li.q::before{background-color:var(--gq)}
+.pd-swap{animation:pdin 360ms var(--ease-out) both}
+@keyframes pdin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* entrance: the spine and the governance track draw left to right */
+.tl.pre .spine .rail{clip-path:inset(0 100% 0 0)}
+.tl.pre .gov-band{clip-path:polygon(0 0,0 0,0 50%,0 100%,0 100%)}
+.tl.pre .gcell,.tl.pre .gov-head{opacity:0}
+.spine .rail{transition:clip-path 900ms var(--ease-out);clip-path:inset(0 0 0 0)}
+.gov-head{transition:opacity 400ms var(--ease-out) 300ms}
+.gcell{transition:opacity 400ms var(--ease-out) calc(300ms + var(--d,0ms))}
+.gcell[data-g="1"]{--d:150ms}.gcell[data-g="2"]{--d:300ms}.gcell[data-g="3"]{--d:550ms}
+@media (prefers-reduced-motion: reduce){.spine .rail,.gov-band,.gcell,.gov-head,.spine .fill,.p-detail .pd-caret{transition:none}.pd-swap{animation:none}}
 
 /* ---------- 7 measures ---------- */
 .m-grid{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:56px;margin-top:24px;flex:1;min-height:0}
@@ -873,15 +932,27 @@ aside.notes{display:none}
 
 <!-- 6 PATH -->
 <div class="frame"><section class="slide" id="path" data-time="1:00" data-sec="2">
-  <div class="head"><h2>Start with champions, then earn the funding</h2></div>
-  <div class="p-steps" id="psteps" role="group" aria-label="Steps to a pilot"></div>
-  <div class="p-detail" id="pdetail" aria-live="polite"></div>
-  <div class="factors">
-    <div><b>Quality and AI governance</b><span>Business and IT quality managers agree the validation plan and safeguards early.</span></div>
-    <div><b>A real validation framework</b><span>Evals and a defined test approach, run on every change.</span></div>
-    <div><b>Champions who stay</b><span>CRA champions and clinical operations leadership keep backing it and talking about it.</span></div>
+  <div class="head"><h2>Start with champions and quality,<br>then earn the funding</h2></div>
+  <div class="tl" id="tl">
+    <div class="p-steps" id="psteps" role="group" aria-label="Steps to a pilot"></div>
+    <div class="spine" aria-hidden="true">
+      <span class="rail"></span><span class="fill" id="pfill"></span>
+      <span class="knot k0"></span><span class="knot k1"></span><span class="knot k2"></span>
+      <span class="tag t-now">Today</span>
+      <span class="tag t-dec"><i></i>Month 6: go or no-go</span>
+      <span class="tag t-fut">Across the portfolio<svg viewBox="0 0 20 12"><path d="M1 6h17M13 1l5 5-5 5"/></svg></span>
+    </div>
+    <div class="gov" id="gov">
+      <div class="gov-band"></div>
+      <div class="gov-head"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5l6 2.4v4.6c0 3.7-2.6 6.6-6 7.9-3.4-1.3-6-4.2-6-7.9V4.9z"/><path d="M7 10l2.2 2.2L13.4 8"/></svg><b>Quality and AI governance</b><span>Runs alongside the build from day one, on a plan agreed with ITQM and BQM</span></div>
+      <div class="gcell" data-g="0"><span class="gw">From day one</span><b>Engage quality early</b><p>ITQM and BQM in the room before any build. Agree intended use and GxP impact.</p></div>
+      <div class="gcell" data-g="1"><span class="gw">Before we build</span><b>Agree the plan with them</b><p>Risk assessment and qualification plan signed off. The prototype stays on synthetic data.</p></div>
+      <div class="gcell" data-g="2"><span class="gw">Every release</span><b>Qualify as we build</b><p>Requirements, evals and test evidence produced with each release, and reviewed with quality.</p></div>
+      <div class="gcell gend" data-g="3"><span class="gok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.4l2.8 2.8 6.2-6.4"/></svg>GxP qualified by month 6</span><p>The pilot starts on a qualified system. Then change control and evals on every release.</p></div>
+    </div>
   </div>
-  <aside class="notes">No funding ask on day one. First, executive champions in clinical operations leadership and possibly central monitoring. Through them, find CRA champions, interview them, and put a two-week prototype on synthetic data in front of them. If it holds up, ask for sponsorship and funding, with a decision checkpoint at six months. If we go ahead, pilot on a few early-adopter studies across therapeutic areas, with an adoption plan. Three things make or break it: quality and AI governance aligned early, a validation framework with real evals, and champions who keep backing it.</aside>
+  <div class="p-detail sheet" id="pdetail" aria-live="polite"><span class="pd-caret" id="pcaret" aria-hidden="true"></span><div class="pd-col"><h3>Who is involved</h3><div class="pd-who" id="pwho"></div></div><div class="pd-col"><h3>What comes out of it</h3><ul class="pd-out" id="pout"></ul></div></div>
+  <aside class="notes">No funding ask on day one. First, executive champions in clinical operations leadership and possibly central monitoring. Through them, find CRA champions, interview them, and put a two-week prototype on synthetic data in front of them. If it holds up, ask for sponsorship and funding, with a decision checkpoint at six months. If we go ahead, pilot on a few early-adopter studies across therapeutic areas, with an adoption plan. Underneath all of it runs the quality and AI governance track. IT and business quality managers are in from day one, we agree the qualification plan with them before we build, and we produce the validation evidence as we go. The goal is to be GxP qualified by the six-month decision, so the pilot starts on a qualified system. That is a priority from the start, not something we bolt on after the interesting build work.</aside>
 </section></div>
 
 <!-- 7 MEASURES -->
@@ -1195,17 +1266,37 @@ function setMode(m){
 document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{const m=b.dataset.mode;setMode(m);selectCell(m==='across'?1:0,m==='up'||m==='both'?3:1);}));
 setMode('pilot');selectCell(0,1);
 
-/* 6 path */
-const STEPS=[
- {w:'First',h:'Find champions',p:'Executive champions in clinical operations, and possibly central monitoring. No funding ask yet.',who:['Clinical operations leadership','Central monitoring leads'],out:['Two or three executive champions','Introductions to CRA champions']},
- {w:'Two weeks',h:'Prototype with CRAs',p:'Interview CRA champions, then test a very early prototype built in two weeks on synthetic data.',who:['CRA champions across regions','A small product and engineering team'],out:['Validated pain points','A prototype CRAs have used and challenged']},
- {w:'Six months to a decision',h:'Fund and build',p:'Executive sponsorship and funding, with a decision checkpoint at six months.',who:['Executive sponsor','Data platform and IT','Business and IT quality, AI governance'],out:['Connectors and shared context for the first sources','A validation plan, evals and test approach','Go or no-go at the six-month review']},
- {w:'After the checkpoint',h:'Pilot, then scale',p:'A few early-adopter studies with a strong mix of therapeutic areas, backed by an adoption and support plan.',who:['Study teams on the pilot studies','Change and training','CRA champions as peer support'],out:['Leading and lagging indicators','The case to scale across the portfolio']}
-];
-const ps=$('psteps');
-STEPS.forEach((s,i)=>{const b=document.createElement('button');b.className='pstep';b.setAttribute('aria-pressed',i===0?'true':'false');b.innerHTML=`<span class="when">${s.w}</span><h3>${s.h}</h3><p>${s.p}</p>`;b.onclick=()=>{press([...ps.children],b);showStep(i);};ps.appendChild(b);});
-function showStep(i){const s=STEPS[i];$('pdetail').innerHTML=`<div><h3>Who is involved</h3><ul>${s.who.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h3>What comes out of it</h3><ul>${s.out.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;}
-showStep(0);
+/* 6 path: a timeline, with the quality track running underneath from day one */
+const PATH=(function(){
+ const STEPS=[
+  {w:'First',h:'Find champions',p:'Executive champions in clinical operations, and possibly central monitoring. No funding ask yet.',who:[['Clinical operations leadership'],['Central monitoring leads'],['IT and business quality managers',1]],out:[['Two or three executive champions'],['Introductions to CRA champions'],['Quality engaged on intended use',1]]},
+  {w:'Two weeks',h:'Prototype with CRAs',p:'Interview CRA champions, then test a very early prototype built in two weeks on synthetic data.',who:[['CRA champions across regions'],['A small product and engineering team'],['ITQM and BQM, shaping the plan',1]],out:[['Validated pain points'],['A prototype CRAs have used and challenged'],['A qualification plan quality has agreed',1]]},
+  {w:'Six months to a decision',h:'Fund and build',p:'Executive sponsorship and funding, with a decision checkpoint at six months.',who:[['Executive sponsor'],['Data platform and IT'],['ITQM and BQM, reviewing as we go',1]],out:[['Connectors and shared context for the first sources'],['Validation evidence, evals and test results',1],['Go or no-go at the six-month review']]},
+  {w:'After the checkpoint',h:'Pilot, then scale',p:'A few early-adopter studies with a strong mix of therapeutic areas, backed by an adoption and support plan.',who:[['Study teams on the pilot studies'],['Change and training'],['CRA champions as peer support']],out:[['Leading and lagging indicators'],['The case to scale across the portfolio'],['Change control and evals on every release',1]]}
+ ];
+ const ps=$('psteps'),tl=$('tl'),fill=$('pfill'),knots=[...document.querySelectorAll('#path .knot')],gcells=[...document.querySelectorAll('#path .gcell')];
+ const COL=340,GAP=16,END=[COL+GAP/2,2*COL+GAP*1.5,3*COL+GAP*2.5,1290];
+ let at=0;
+ STEPS.forEach((s,i)=>{const b=document.createElement('button');b.className='pstep';b.setAttribute('aria-pressed',i===0?'true':'false');b.innerHTML=`<span class="when">${s.w}</span><h3>${s.h}</h3><p>${s.p}</p>`;b.onclick=()=>show(i);ps.appendChild(b);});
+ function show(i){
+  at=i;const s=STEPS[i];press([...ps.children],ps.children[i]);
+  fill.style.setProperty('--pw',END[i]+'px');
+  knots.forEach((k,j)=>k.classList.toggle('past',j<=i));
+  gcells.forEach((g,j)=>g.classList.toggle('on',j===i));
+  $('pcaret').style.setProperty('--cx',(i*(COL+GAP)+COL/2)+'px');
+  const who=$('pwho'),out=$('pout');
+  who.innerHTML=s.who.map(([t,q])=>`<span${q?' class="q"':''}>${t}</span>`).join('');
+  out.innerHTML=s.out.map(([t,q])=>`<li${q?' class="q"':''}>${t}</li>`).join('');
+  [who,out].forEach(el=>{el.classList.remove('pd-swap');void el.offsetWidth;if(!reduce)el.classList.add('pd-swap');});
+ }
+ show(0);
+ return{
+  enter(fwd){show(fwd?0:STEPS.length-1);if(reduce||stacked)return;tl.classList.add('pre');tl.getBoundingClientRect();setTimeout(()=>tl.classList.remove('pre'),80);},
+  leave(){},
+  next(){if(at>=STEPS.length-1)return false;show(at+1);return true;},
+  prev(){if(at<=0)return false;show(at-1);return true;}
+ };
+})();
 
 /* 7 indicators */
 const IND={
@@ -1259,6 +1350,8 @@ let t0=null,tick=0;
 function startTimer(reset){if(t0&&!reset)return;t0=Date.now();clearInterval(tick);tick=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000),el=$('timer');el.textContent=`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')} of 8:00`;el.classList.toggle('over',s>480);},500);}
 $('timer').onclick=()=>startTimer(true);
 $('fs').onclick=()=>{try{(document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()).catch(()=>{});}catch(e){}};
+
+BUILDS.path=PATH;
 
 /* fit */
 const deck=$('deck');
