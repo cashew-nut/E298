@@ -147,14 +147,21 @@ button.face:hover{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
 .o-how em{display:block;font-style:normal;font-size:12.5px;color:var(--color-muted)}
 .o-more b{color:var(--color-accent-2);font-weight:600;text-decoration:underline;text-underline-offset:4px}
 .back-k{font-size:20px;font-weight:600;color:var(--color-ink);margin-bottom:6px}
-.face.back .quote{border-top:1px solid var(--color-rule-2);padding:14px 0;gap:6px;width:100%}
-.face.back .quote blockquote{font-size:20px}
+.byhand{width:100%;border-top:1px solid var(--color-rule-2);padding:12px 0 14px}
+.bh-k{display:block;font-size:15px;font-weight:500;color:var(--color-muted);margin-bottom:8px}
+.byhand ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px}
+.byhand li{font-size:15px;line-height:1.35;color:var(--color-ink-2);padding-left:12px;border-left:2px solid var(--color-rule-2)}
+.byhand li b{display:block;font-size:16.5px;font-weight:600;color:var(--color-ink)}
+.bh-why{margin-top:10px;font-size:15px;line-height:1.4;color:var(--color-ink)}
+.face.back .quote{border-top:1px solid var(--color-rule-2);padding:11px 0;gap:4px;width:100%}
+.face.back .quote blockquote{font-size:18px}
 .face.back .cite{font-size:14px}
-.flip.on .face.back .quote{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:420ms}
+.flip.on .face.back .quote,.flip.on .face.back .byhand{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:420ms}
 .flip.on .face.back .quote:nth-of-type(2){animation-delay:500ms}.flip.on .face.back .quote:nth-of-type(3){animation-delay:580ms}.flip.on .face.back .quote:nth-of-type(4){animation-delay:660ms}
 .ben-k{font-size:18px;font-weight:500;color:var(--color-muted);margin-bottom:8px}
 .ixs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;row-gap:44px;margin-top:38px}
 .ix{position:relative;display:flex;flex-direction:column;gap:10px;min-height:164px;padding:16px 20px 16px;border-radius:2px var(--radius-stock) var(--radius-stock) var(--radius-stock)}
+.ix:not(:has(.fg)){min-height:0}
 .ix .tab{position:absolute;top:-30px;left:var(--x,0px);height:32px;padding:7px 14px 0;border-radius:6px 6px 0 0;font-size:15px;font-weight:600;color:var(--color-print);background-color:var(--color-cotton);box-shadow:inset 0 1px 0 oklch(var(--lit) / 0.9),0 0 0 0.5px oklch(var(--shade) / 0.22)}
 .ix.lead{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
 .ix.lead .tab{background:var(--color-board);color:var(--color-board-type);box-shadow:none}
@@ -165,7 +172,7 @@ button.face:hover{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
 .ix .fg small{font-size:12.5px;color:var(--color-muted)}
 .frame.active .ix{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:calc(var(--i) * 70ms)}
 @media (prefers-reduced-motion:reduce){.frame.active .ix{animation:none}}
-@media (prefers-reduced-motion:reduce){.flip-in{transition:none}.flip.on .face.back .quote{animation:none}}
+@media (prefers-reduced-motion:reduce){.flip-in{transition:none}.flip.on .face.back .quote,.flip.on .face.back .byhand{animation:none}}
 
 /* ---------- 3 choice ---------- */
 .c-grid{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:56px;margin-top:32px;flex:1;min-height:0}
@@ -296,6 +303,11 @@ button.face:hover{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
 .w-chat{display:grid;grid-template-rows:minmax(0,1fr) auto;min-height:0;min-width:0}
 .w-thread{position:relative;overflow-y:auto;overflow-x:hidden;padding:20px 24px 12px;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;min-height:0}
 .w-empty{margin:auto;display:flex;flex-direction:column;align-items:center;gap:16px;font-size:24px;font-weight:600;color:var(--color-ink-2);letter-spacing:-0.015em;text-align:center}
+.w-ex{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:4px}
+.w-chip{font:inherit;font-size:16px;font-weight:500;letter-spacing:0;color:var(--color-ink-2);background-color:var(--color-cotton);border:1px solid var(--color-rule-2);border-radius:999px;padding:7px 16px;cursor:pointer;transition:color var(--dur-short) var(--ease-out),border-color var(--dur-short) var(--ease-out)}
+.w-chip:hover{color:var(--color-ink);border-color:var(--color-muted)}
+.w-chip.run{color:var(--color-print);border-color:transparent;box-shadow:var(--edge-stock),var(--cast-stock)}
+.w-exnote{min-height:18px;font-size:13.5px;font-weight:400;letter-spacing:0;color:var(--color-muted)}
 .w-empty small{display:block;font-size:15px;font-weight:400;color:var(--color-muted);letter-spacing:0;margin-top:6px}
 .m-user{align-self:flex-end;max-width:88%;padding:10px 16px;border-radius:16px 16px 4px 16px;background:var(--color-paper-3);font-size:16px;line-height:1.4;color:var(--color-ink)}
 .m-agent{display:flex;flex-direction:column;gap:10px;min-width:0}
@@ -487,14 +499,14 @@ button.sig:hover{background:var(--color-paper-2)}
 .livecount{margin-left:auto;font-size:18px;color:var(--color-muted)}
 .livecount b{color:var(--color-ink);font-weight:600}
 .scale{display:grid;grid-template-columns:1030px minmax(0,1fr);gap:32px;margin-top:20px}
-.grid{display:grid;grid-template-columns:200px repeat(5,158px);grid-template-rows:34px repeat(5,94px);gap:8px}
+.grid{display:grid;grid-template-columns:200px repeat(3,268px);grid-template-rows:34px repeat(5,94px);gap:8px}
 .gh{font-size:16px;font-weight:500;color:var(--color-muted);display:flex;align-items:flex-end;padding:0 4px 4px}
 .gh.cra{color:var(--color-ink);font-weight:600}
 .lay{display:flex;flex-direction:column;justify-content:center;gap:4px;padding-right:8px;border-right:4px solid var(--lc)}
 .lay b{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:600;letter-spacing:-0.01em}
 .lay b::before{content:"";flex:none;width:10px;height:10px;border-radius:3px;background:var(--lc)}
 .lay span{font-size:15px;color:var(--color-muted);line-height:1.3}
-.cell{position:relative;text-align:left;border:1.5px dashed color-mix(in oklch,var(--lc) 45%,var(--color-rule-2));border-radius:var(--radius-stock);background:transparent;padding:8px 12px;font-size:15px;line-height:1.3;color:var(--color-muted);transition:background-color var(--dur-long) var(--ease-out),box-shadow var(--dur-long) var(--ease-out),color var(--dur-long) var(--ease-out),border-color var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out)}
+.cell{position:relative;text-align:left;border:1.5px dashed color-mix(in oklch,var(--lc) 45%,var(--color-rule-2));border-radius:var(--radius-stock);background:transparent;padding:10px 16px;font-size:17px;line-height:1.3;color:var(--color-muted);transition:background-color var(--dur-long) var(--ease-out),box-shadow var(--dur-long) var(--ease-out),color var(--dur-long) var(--ease-out),border-color var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out)}
 .cell.on{border:1.5px solid transparent;background-color:color-mix(in oklch,var(--lc) 11%,var(--color-cotton));background-image:linear-gradient(100deg,color-mix(in oklch,var(--lc) 4%,var(--color-cotton)),transparent 55%),var(--tex-cotton);color:var(--color-print);box-shadow:inset 4px 0 0 var(--lc),var(--edge-stock),var(--cast-stock)}
 .cell.sel{border-color:var(--color-ink)}
 .cell .pt{position:absolute;right:8px;bottom:6px;font-size:13px;font-weight:600;color:var(--color-paid)}
@@ -547,7 +559,7 @@ button.sig:hover{background:var(--color-paper-2)}
 .gcell{grid-row:1;position:relative;padding:16px 20px 16px 24px;display:flex;flex-direction:column;gap:3px;transition:opacity var(--dur-short) var(--ease-out)}
 .gcell[data-g="1"]{grid-column:2}.gcell[data-g="2"]{grid-column:3;padding-right:44px}
 .gcell[data-g="2"]::before{content:"";position:absolute;left:-8px;top:16px;bottom:16px;border-left:1px dashed var(--gq-line)}
-.gcell .gw{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gq)}
+.gcell .gw{font-size:14.5px;font-weight:600;color:var(--gq)}
 .gcell b{font-size:19px;color:var(--color-ink)}
 .gcell p{font-size:15.5px;line-height:1.38;color:var(--color-ink-2)}
 .gcell.on b{text-decoration:underline;text-decoration-color:var(--gq);text-decoration-thickness:2px;text-underline-offset:5px}
@@ -561,7 +573,11 @@ button.sig:hover{background:var(--color-paper-2)}
 .p-detail .pd-caret{position:absolute;top:-9px;left:var(--cx,170px);width:18px;height:18px;margin-left:-9px;background:var(--color-cotton);transform:rotate(45deg);box-shadow:-1px -1px 0 0 var(--color-rule-2);transition:left 500ms var(--ease-out)}
 .pd-col+.pd-col{padding-left:32px;border-left:1px solid var(--color-rule)}
 .pd-col:first-of-type{padding-right:32px}
-.p-detail h3{font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-muted);margin-bottom:14px}
+.p-detail h3{font-size:16px;font-weight:500;color:var(--color-muted);margin-bottom:14px}
+.p-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:48px}
+.fit{max-width:560px;padding:4px 0 6px 20px;border-left:3px solid var(--color-h2)}
+.fit b{display:block;font-size:19px;font-weight:600;letter-spacing:-0.01em;color:var(--color-ink)}
+.fit p{margin-top:4px;font-size:16px;line-height:1.45;color:var(--color-ink-2)}
 .pd-who{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .pd-who span{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 14px 0 6px;border-radius:19px;font-size:17px;color:var(--color-ink);background:var(--color-paper);box-shadow:inset 0 0 0 1px var(--color-rule-2)}
 .pd-who span::before{content:"";width:26px;height:26px;border-radius:50%;background:var(--color-paper-3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23463c37' stroke-width='1.6'%3E%3Ccircle cx='10' cy='7.5' r='3'/%3E%3Cpath d='M4.5 16c.8-2.8 3-4.2 5.5-4.2s4.7 1.4 5.5 4.2'/%3E%3C/svg%3E") center/16px no-repeat}
@@ -590,7 +606,7 @@ button.sig:hover{background:var(--color-paper-2)}
 .mcol .tab{position:absolute;top:-30px;left:0;height:32px;display:flex;align-items:center;gap:8px;padding:0 14px;border-radius:6px 6px 0 0;font-size:15px;font-weight:600;color:var(--color-print);background-color:var(--color-cotton);box-shadow:inset 0 1px 0 oklch(var(--lit) / 0.9),0 0 0 0.5px oklch(var(--shade) / 0.22)}
 .mcol .tab i{width:9px;height:9px;border-radius:3px;background:var(--mc)}
 .mcol.gate .tab{background:var(--color-board);color:var(--color-board-type);box-shadow:none}
-.mcol .when{font-family:var(--font-outlier);font-size:15px;letter-spacing:-0.01em;color:var(--color-muted);padding-bottom:12px;border-bottom:1.5px solid var(--mc)}
+.mcol .when{font-size:15px;font-weight:500;color:var(--color-muted);padding-bottom:12px;border-bottom:1.5px solid var(--mc)}
 .mcol .q{font-size:24px;font-weight:600;line-height:1.25;margin-top:12px;margin-bottom:8px;color:var(--color-ink)}
 .mi{display:grid;grid-template-columns:minmax(0,1fr) 124px;column-gap:16px;align-items:center;padding:17px 0;border-top:1px solid var(--color-rule)}
 .mi b{display:block;font-size:20px;font-weight:600;color:var(--color-ink)}
@@ -714,6 +730,15 @@ aside.notes{display:none}
         </div>
         <div class="face back stock" id="oback" aria-hidden="true">
           <p class="back-k">Why: nothing connects the systems</p>
+          <div class="byhand"><span class="bh-k">Typical things CRAs track by hand</span>
+            <ul>
+              <li><b>Sample reconciliation</b>Samples taken, shipped and received, matched to EDC</li>
+              <li><b>Training and delegation</b>Who at each site is trained on which protocol version</li>
+              <li><b>Follow-up actions</b>Open items carried from one visit letter to the next</li>
+              <li><b>Essential documents</b>Expiring CVs, licences and lab certificates</li>
+            </ul>
+            <p class="bh-why">Each lives in a personal spreadsheet: re-keyed after every visit, and lost when a site changes hands.</p>
+          </div>
           <div class="quote"><blockquote>Historically, and for many today, most data assimilation is done manually or through spreadsheets.</blockquote><p class="cite">Patrick Floody, VP at Regeneron, Clinical Leader, January 2026</p></div>
           <div class="quote"><blockquote>I use OneNote for documenting monitoring visits before transcribing into the CTMS. It’s not that I like it — I don’t have any other tool to keep everything in one place.</blockquote><p class="cite">A CRA subject matter expert at a top-20 biopharma, Veeva, September 2025 (vendor research)</p></div>
           <div class="quote"><blockquote>It takes more time to figure out what to monitor than to just conduct 100% SDV.</blockquote><p class="cite">CRA survey responses, summarised by Tufts CSDD in DIA Global Forum, January 2026</p></div>
@@ -724,16 +749,16 @@ aside.notes{display:none}
     <div>
       <p class="ben-k">Who benefits</p>
       <div class="ixs">
-        <article class="ix stock lead" style="--i:0;--x:0px"><span class="tab">CRAs, first</span><p>Less time piecing the picture together, more time with their sites.</p><div class="fg"><b>91%</b><span>worry about burnout and turnover</span><small>Veeva, 2025 (vendor)</small></div></article>
-        <article class="ix stock" style="--i:1;--x:24px"><span class="tab">Study teams</span><p>Site updates that are more frequent and more accurate, from the same data CRAs use.</p></article>
-        <article class="ix stock" style="--i:2;--x:48px"><span class="tab">Clinical operations</span><p>Lower cost of oversight, and less lost when a CRA hands a site over.</p><div class="fg"><b>9</b><span>months for a new CRA to become proficient</span><small>Tufts CSDD, 2022</small></div></article>
-        <article class="ix stock" style="--i:3;--x:72px"><span class="tab">Sites</span><p>Fewer, more focused requests, with the reason attached.</p><div class="fg"><b>~70%</b><span>juggle six or more logins per study</span><small>Advarra, 2023 (vendor)</small></div></article>
-        <article class="ix stock" style="--i:4;--x:96px"><span class="tab">Patients</span><p>Data problems found sooner, so trials stay safe and on track.</p><div class="fg"><b>69%</b><span>of CRAs and data managers fear inefficiency hurts data quality</span><small>Veeva, 2025 (vendor)</small></div></article>
+        <article class="ix stock lead" style="--i:0;--x:0px"><span class="tab">Patients, first</span><p>Safety issues reach a CRA sooner, not at the next visit, so trials stay safe and on track.</p><div class="fg"><b>69%</b><span>of CRAs and data managers fear inefficiency hurts data quality</span><small>Veeva, 2025 (vendor)</small></div></article>
+        <article class="ix stock" style="--i:1;--x:24px"><span class="tab">CRAs, who we build for</span><p>Less time piecing the picture together, more time with their sites.</p><div class="fg"><b>91%</b><span>worry about burnout and turnover</span><small>Veeva, 2025 (vendor)</small></div></article>
+        <article class="ix stock" style="--i:2;--x:48px"><span class="tab">Study teams</span><p>Site updates that are more frequent and more accurate, from the same data CRAs use.</p></article>
+        <article class="ix stock" style="--i:3;--x:72px"><span class="tab">Clinical operations</span><p>Lower cost of oversight, and less lost to high CRA turnover when a site changes hands.</p></article>
+        <article class="ix stock" style="--i:4;--x:96px"><span class="tab">Sites</span><p>Fewer, more focused requests, with the reason attached.</p><div class="fg"><b>~70%</b><span>juggle six or more logins per study</span><small>Advarra, 2023 (vendor)</small></div></article>
         <article class="ix stock" style="--i:5;--x:120px"><span class="tab">Planet</span><p>Fewer, better-targeted visits mean less travel.</p><div class="fg"><b>10%</b><span>of a trial’s carbon footprint is monitoring travel</span><small>LaRoche et al., BMJ Open, 2025</small></div></article>
       </div>
     </div>
   </div>
-  <aside class="notes">Start with the number: for a sponsor the size of a top-10 pharma, Veeva’s benchmark scales to roughly $80 to $115 million a year of CRA time wasted on monitoring inefficiencies, such as side trackers and data reconciliation. The working is behind “How this number is built” if anyone asks. Turn the card for why: nothing connects the systems, so CRAs keep their own notes and copy them across. Then who benefits, each with a number where there is a good one.</aside>
+  <aside class="notes">Start with the number: for a sponsor the size of a top-10 pharma, Veeva’s benchmark scales to roughly $80 to $115 million a year of CRA time wasted on monitoring inefficiencies, such as side trackers and data reconciliation. The working is behind “How this number is built” if anyone asks. Turn the card for why: nothing connects the systems, so CRAs track samples, training, follow-ups and documents in their own spreadsheets and copy them across. Then who benefits, patients first: safety issues reach a CRA sooner. CRAs are who we build for.</aside>
 </section></div>
 
 <!-- 3 KEY CHOICE -->
@@ -819,7 +844,7 @@ aside.notes{display:none}
         <div class="w-main" id="wmain">
           <div class="w-chat">
             <div class="w-thread" id="wthread">
-              <div class="w-empty" data-s="0"><span class="glyph lg" aria-hidden="true"></span><span>What do you need for your sites today?<small>Connected to EDC, CTMS, IRT, eTMF, email and Teams</small></span></div>
+              <div class="w-empty" data-s="0"><span class="glyph lg" aria-hidden="true"></span><span>What do you need for your sites today?<small>Connected to EDC, CTMS, IRT, eTMF, email and Teams</small></span><div class="w-ex" role="group" aria-label="Example prompts"><button class="w-chip run" type="button">Prep me for Thursday’s visit to site 1042.</button><button class="w-chip" type="button">What changed at my sites since my last visit?</button><button class="w-chip" type="button">Draft the follow-up letter for site 1017.</button><span class="w-exnote" id="wexnote"></span></div></div>
               <div class="m-user" data-s="1-">Prep me for Thursday’s visit to site 1042.</div>
               <div class="m-agent" data-s="1-">
                 <div class="ag-h"><span class="glyph" aria-hidden="true"></span>Agent</div>
@@ -974,12 +999,12 @@ aside.notes{display:none}
     <div class="grid" id="grid"></div>
     <div class="detail stock" id="detail" aria-live="polite"></div>
   </div>
-  <aside class="notes">This is why the foundation pays. Columns are roles: horizontal scale, the same connectors serving more people. Rows are layers: vertical scale, from organising data, to rules, to comparing against real documents like the protocol, to drafting, to review and submission. Click Grow up the layers, then Grow across roles. Risk rises as you go up, and so do the controls. Every new cell reuses what’s below it. The pilot is the two cells at the bottom left.</aside>
+  <aside class="notes">This is why the foundation pays. Three roles, to keep it readable: the CRA column is the example from the last slide, the study manager is the nearest neighbour, and the medical monitor takes it to patient safety. Columns are roles: horizontal scale, the same connectors serving more people. Rows are layers: vertical scale, from organising data, to rules, to comparing against real documents like the protocol, to drafting, to review and submission. Click Grow up the layers, then Grow across roles. Risk rises as you go up, and so do the controls. Every new cell reuses what’s below it. The pilot is the two cells at the bottom left.</aside>
 </section></div>
 
 <!-- 6 PATH -->
 <div class="frame"><section class="slide" id="path" data-time="1:00" data-sec="2">
-  <div class="head"><h2>Start with champions, then earn the funding</h2></div>
+  <div class="head p-head"><h2>Start with champions, then earn the funding</h2><div class="fit"><b>Complementary, not another system</b><p>Works with the monitoring tools sponsors already run, and retires the side trackers around them. The pilot starts read-only, on the Organise and Detect layers, with no change to the monitoring plan.</p></div></div>
   <div class="tl" id="tl">
     <div class="p-steps" id="psteps" role="group" aria-label="Steps to a pilot"></div>
     <div class="spine" aria-hidden="true">
@@ -998,7 +1023,7 @@ aside.notes{display:none}
     </div>
   </div>
   <div class="p-detail sheet" id="pdetail" aria-live="polite"><span class="pd-caret" id="pcaret" aria-hidden="true"></span><div class="pd-col"><h3>Who is involved</h3><div class="pd-who" id="pwho"></div></div><div class="pd-col"><h3>What comes out of it</h3><ul class="pd-out" id="pout"></ul></div></div>
-  <aside class="notes">No funding ask on day one. First, executive champions in clinical operations leadership and possibly central monitoring. Through them, find CRA champions, interview them, and put a two-week prototype on synthetic data in front of them. If it holds up, ask for sponsorship and funding, with a decision checkpoint at six months. If we go ahead, pilot on a few early-adopter studies across therapeutic areas, with an adoption plan. Quality and AI governance comes in during the two-week sprint, not while I’m finding champions. I’d talk IT and business quality managers through the design and work with them so the approach is proportionate to the risk of this context of use. Through the build, the evidence scales with that risk, so we’re GxP qualified by the six-month decision and the pilot starts on a qualified system.</aside>
+  <aside class="notes">No funding ask on day one. First, executive champions in clinical operations leadership and possibly central monitoring. Through them, find CRA champions, interview them, and put a two-week prototype on synthetic data in front of them. If it holds up, ask for sponsorship and funding, with a decision checkpoint at six months. If we go ahead, pilot on a few early-adopter studies across therapeutic areas, with an adoption plan. Quality and AI governance comes in during the two-week sprint, not while I’m finding champions. I’d talk IT and business quality managers through the design and work with them so the approach is proportionate to the risk of this context of use. And it’s complementary: it works with the monitoring tools sponsors already run and retires the side trackers around them. The pilot starts read-only, with no change to the monitoring plan, so it’s an easy yes. Through the build, the evidence scales with that risk, so we’re GxP qualified by the six-month decision and the pilot starts on a qualified system.</aside>
 </section></div>
 
 <!-- 7 MEASURES -->
@@ -1179,7 +1204,7 @@ const WS=(function(){
   main.classList.toggle('split',k>=7);
   $('sig1').classList.toggle('sel',k>=7);
   tab(k>=10?'pdp':'sig');
-  $('wtext').textContent=k===0?PROMPT:'';
+  $('wtext').textContent=k===0?PROMPT:'';if(k===0)$('wexnote').textContent='';
   $('wcompose').classList.toggle('typing',k===0);
   if(k<N){agenda=false;drafted=false;}else if(!anim)agenda=true;
   actsUI();
@@ -1240,6 +1265,7 @@ const WS=(function(){
  function enter(fwd){stop();tok++;busy=false;if(fwd){render(0,false);if(!reduce)typeIn();}else render(N,false);}
  function leave(){stop();tok++;busy=false;ptr.classList.remove('show');}
 
+ S.querySelectorAll('.w-chip').forEach(c=>c.addEventListener('click',e=>{e.stopPropagation();if(c.classList.contains('run')){next();return;}tok++;$('wtext').textContent=c.textContent;$('wcompose').classList.remove('typing');$('wexnote').textContent='Only the first example is scripted in this mock-up.';}));
  $('w-next').onclick=()=>{if(n>=N&&!busy){stop();enter(true);return;}next();};
  $('w-back').onclick=prev;
  $('w-play').onclick=play;
@@ -1256,7 +1282,7 @@ const WS=(function(){
 })();
 
 /* 5 scale grid */
-const ROLES=['CRA','Study manager','Data manager','Medical monitor','Site start-up'];
+const ROLES=['CRA','Study manager','Medical monitor'];
 const LAYERS=[
  {n:'Organise',d:'Consolidate and link to source',lc:'var(--color-h1)',risk:1,ctl:'Read-only. Validate data lineage and access by role.',comp:'Connectors, data model, access, audit'},
  {n:'Detect',d:'Rules flag what needs attention',lc:'var(--color-h2)',risk:2,ctl:'Rule logic validated like any GxP system, in proportion to risk.',comp:'Rules engine'},
@@ -1265,11 +1291,11 @@ const LAYERS=[
  {n:'Review and submit',d:'Signed work goes back to source',lc:'var(--color-h5)',risk:5,ctl:'Deterministic write-back only after signature, with a full audit trail.',comp:'Write-back services'}
 ];
 const EX=[
- ['Site picture before a visit, linked to source','Site status across the study','One reconciliation view across EDC, IRT and labs','Subject safety timeline in one place','Essential document status by site'],
- ['IRT stratum against EDC, query age, visit dates','Data-entry lag and enrolment drift by site','EDC, IRT and lab reconciliation rules','Lab and adverse event patterns by rule','Missing or expiring essential documents'],
- ['Each flag beside its protocol or plan clause','Site performance against the plan','Edit checks against the data management plan','Findings against the protocol safety section','Documents against country requirements'],
- ['Report, letter and deviation drafted','Study status update drafted','Query text drafted for review','Medical review notes drafted','Site correspondence drafted'],
- ['Signed letter filed to eTMF; actions to CTMS','Approved escalation logged in CTMS','Approved queries raised in EDC','Signed review recorded','Approved documents filed to eTMF']
+ ['Site 1042’s picture before Thursday’s visit','Every site’s status in one view','One safety timeline per subject: AEs, labs, doses'],
+ ['IRT stratum doesn’t match the age in EDC','Sites with slow data entry or enrolment drift','Lab and adverse event patterns, flagged by rule'],
+ ['That flag beside protocol section 6.3','Site performance against the monitoring plan','Findings against the protocol safety section'],
+ ['Deviation record and follow-up letter drafted','Weekly study status update drafted','Medical review notes drafted'],
+ ['Signed letter filed to eTMF, actions to CTMS','Approved escalation logged in CTMS','Signed medical review recorded']
 ];
 const MODES={pilot:(r,l)=>r===0&&l<=1,up:(r)=>r===0,across:(r,l)=>l<=1,both:()=>true};
 const grid=$('grid');
@@ -1294,7 +1320,7 @@ function selectCell(ri,li){
 function setMode(m){
   press([...document.querySelectorAll('[data-mode]')],document.querySelector(`[data-mode="${m}"]`));
   let n=0;cells.forEach(c=>{const r=+c.dataset.r,l=+c.dataset.l,on=MODES[m](r,l);c.style.transitionDelay=reduce?'0ms':((r+l)*60)+'ms';c.classList.toggle('on',on);if(on)n++;});
-  $('livecount').innerHTML=`<b>${n}</b> of 25 in use, all on one foundation`;
+  $('livecount').innerHTML=`<b>${n}</b> of ${cells.length} in use, all on one foundation`;
 }
 document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{const m=b.dataset.mode;setMode(m);selectCell(m==='across'?1:0,m==='up'||m==='both'?3:1);}));
 setMode('pilot');selectCell(0,1);
@@ -1305,7 +1331,7 @@ const PATH=(function(){
   {w:'First',h:'Find champions',p:'Executive champions in clinical operations, and possibly central monitoring. No funding ask yet.',who:[['Clinical operations leadership'],['Central monitoring leads']],out:[['Two or three executive champions'],['Introductions to CRA champions']]},
   {w:'Two weeks',h:'Prototype with CRAs',p:'Interview CRA champions, then test a very early prototype built in two weeks on synthetic data.',who:[['CRA champions across regions'],['A small product and engineering team'],['ITQM and BQM, reviewing the design',1]],out:[['Validated pain points'],['A prototype CRAs have used and challenged'],['A risk-proportionate approach for this use',1]]},
   {w:'Six months to a decision',h:'Fund and build',p:'Executive sponsorship and funding, with a decision checkpoint at six months.',who:[['Executive sponsor'],['Data platform and IT'],['ITQM and BQM, reviewing evidence',1]],out:[['Connectors and shared context for the first sources'],['Evidence in proportion to the risk',1],['Go or no-go at the six-month review']]},
-  {w:'After the checkpoint',h:'Pilot, then scale',p:'A few early-adopter studies with a strong mix of therapeutic areas, backed by an adoption and support plan.',who:[['Study teams on the pilot studies'],['Change and training'],['CRA champions as peer support']],out:[['Leading and lagging indicators'],['The case to scale across the portfolio'],['Change control and evals on every release',1]]}
+  {w:'After the checkpoint',h:'Pilot, then scale',p:'A few early-adopter studies across therapeutic areas, alongside their current monitoring tools, with an adoption plan.',who:[['Study teams on the pilot studies'],['Change and training'],['CRA champions as peer support']],out:[['Leading and lagging indicators'],['The case to scale across the portfolio'],['Change control and evals on every release',1]]}
  ];
  const ps=$('psteps'),tl=$('tl'),fill=$('pfill'),knots=[...document.querySelectorAll('#path .knot')],gcells=[...document.querySelectorAll('#path .gcell')];
  const COL=340,GAP=16,END=[COL+GAP/2,2*COL+GAP*1.5,3*COL+GAP*2.5,1290];
