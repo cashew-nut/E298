@@ -160,6 +160,40 @@ button.face:hover{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
 .flip.on .face.back .quote,.flip.on .face.back .byhand{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:420ms}
 .flip.on .face.back .quote:nth-of-type(2){animation-delay:500ms}.flip.on .face.back .quote:nth-of-type(3){animation-delay:580ms}.flip.on .face.back .quote:nth-of-type(4){animation-delay:660ms}
 .ben-k{font-size:18px;font-weight:500;color:var(--color-muted);margin-bottom:8px}
+.ben-h{display:flex;align-items:baseline;justify-content:space-between;gap:24px}
+.o-nav{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%}
+#oback2,body.stacked .o-nav #onext{display:none}
+/* slide 2 as three beats: the number, why, who benefits */
+body:not(.stacked) #opportunity .o-grid{grid-template-columns:minmax(0,1fr);gap:0}
+body:not(.stacked) #opportunity .flip,body:not(.stacked) #opportunity .ben{grid-area:1/1;transition:opacity var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out)}
+body:not(.stacked) #opportunity .flip{width:100%}
+body.stacked #opportunity .flip.on .flip-in{transform:none}
+#oturn{font-size:18px}
+body:not(.stacked) #opportunity .o-num{font-size:168px}
+body:not(.stacked) #opportunity .o-cap{font-size:32px;max-width:30ch}
+body:not(.stacked) #opportunity .face{min-height:560px;padding:40px 48px}
+body:not(.stacked) #opportunity .face.back{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);grid-template-rows:auto 1fr auto;column-gap:48px;align-items:start}
+body:not(.stacked) #opportunity .back-k{grid-column:1/-1;font-size:24px;margin-bottom:12px}
+body:not(.stacked) #opportunity .byhand{border-top:0;padding-top:0}
+body:not(.stacked) #opportunity .byhand ul{grid-template-columns:minmax(0,1fr);gap:12px}
+body:not(.stacked) #opportunity .byhand li{font-size:16px}
+body:not(.stacked) #opportunity .byhand li b{font-size:18px}
+body:not(.stacked) #opportunity .bh-why{font-size:16.5px;margin-top:14px}
+body:not(.stacked) #opportunity .bq .quote:first-child{border-top:0;padding-top:0}
+body:not(.stacked) #opportunity .face.back .quote blockquote{font-size:20px}
+body:not(.stacked) #opportunity .o-nav{grid-column:1/-1;align-self:end;padding-top:16px}
+body:not(.stacked) #opportunity #oback2{display:inline-flex}
+body:not(.stacked) #opportunity .ben-k{font-size:34px;font-weight:600;letter-spacing:-0.02em;color:var(--color-ink);margin:0}
+body:not(.stacked) #opportunity .ixs{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:28px;row-gap:56px;margin-top:52px}
+body:not(.stacked) #opportunity .ix{min-height:212px;padding:22px 26px 20px;gap:14px}
+body:not(.stacked) #opportunity .ix .tab{font-size:16px}
+body:not(.stacked) #opportunity .ix p{font-size:19px;line-height:1.4}
+body:not(.stacked) #opportunity .ix .fg b{font-size:42px}
+body:not(.stacked) #opportunity .ix .fg span{font-size:15.5px}
+body:not(.stacked) #opportunity .ix .fg small{font-size:13.5px}
+body:not(.stacked) #opportunity[data-st="2"] .flip{opacity:0;transform:translateY(-16px) scale(.97);pointer-events:none}
+body:not(.stacked) #opportunity:not([data-st="2"]) .ben{opacity:0;transform:translateY(28px);pointer-events:none}
+@media (prefers-reduced-motion:reduce){body:not(.stacked) #opportunity .flip,body:not(.stacked) #opportunity .ben{transition:none;transform:none}}
 .ixs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;row-gap:44px;margin-top:38px}
 .ix{position:relative;display:flex;flex-direction:column;gap:10px;min-height:164px;padding:16px 20px 16px;border-radius:2px var(--radius-stock) var(--radius-stock) var(--radius-stock)}
 .ix:not(:has(.fg)){min-height:0}
@@ -706,7 +740,7 @@ aside.notes{display:none}
 </section></div>
 
 <!-- 2 OPPORTUNITY -->
-<div class="frame"><section class="slide" id="opportunity" data-time="1:15" data-sec="0">
+<div class="frame"><section class="slide" id="opportunity" data-time="1:15" data-sec="0" data-st="0">
   <div class="head"><h2 style="max-width:none">CRAs spend hours piecing the site picture together</h2></div>
   <div class="o-grid">
     <div class="flip" id="oflip">
@@ -739,15 +773,17 @@ aside.notes{display:none}
             </ul>
             <p class="bh-why">Each lives in a personal spreadsheet: re-keyed after every visit, and lost when a site changes hands.</p>
           </div>
+          <div class="bq">
           <div class="quote"><blockquote>Historically, and for many today, most data assimilation is done manually or through spreadsheets.</blockquote><p class="cite">Patrick Floody, VP at Regeneron, Clinical Leader, January 2026</p></div>
           <div class="quote"><blockquote>I use OneNote for documenting monitoring visits before transcribing into the CTMS. It’s not that I like it — I don’t have any other tool to keep everything in one place.</blockquote><p class="cite">A CRA subject matter expert at a top-20 biopharma, Veeva, September 2025 (vendor research)</p></div>
           <div class="quote"><blockquote>It takes more time to figure out what to monitor than to just conduct 100% SDV.</blockquote><p class="cite">CRA survey responses, summarised by Tufts CSDD in DIA Global Forum, January 2026</p></div>
-          <button class="o-more link" id="oturn" style="border:0;background:transparent;padding:0;margin-top:auto"><b>Turn back</b></button>
+          </div>
+          <div class="o-nav"><button class="o-more link" id="oturn"><b>Turn back</b></button><button class="o-more" id="onext">Next: <b>who benefits if we fix this</b></button></div>
         </div>
       </div>
     </div>
-    <div>
-      <p class="ben-k">Who benefits if we fix this</p>
+    <div class="ben" id="oben">
+      <div class="ben-h"><p class="ben-k">Who benefits if we fix this</p><button class="o-more" id="oback2"><b>Back to the why</b></button></div>
       <div class="ixs">
         <article class="ix stock lead" style="--i:0;--x:0px"><span class="tab">Patients, first</span><p>Safety issues reach a CRA sooner, not at the next visit, so trials stay safe and on track.</p><div class="fg"><b>69%</b><span>of CRAs and data managers fear inefficiency hurts data quality</span><small>Veeva, 2025 (vendor)</small></div></article>
         <article class="ix stock" style="--i:1;--x:24px"><span class="tab">CRAs, who we build for</span><p>Less time piecing the picture together, more time with their sites.</p><div class="fg"><b>91%</b><span>worry about burnout and turnover</span><small>Veeva, 2025 (vendor)</small></div></article>
@@ -758,7 +794,7 @@ aside.notes{display:none}
       </div>
     </div>
   </div>
-  <aside class="notes">Start with the number: at a typical top-10 pharma, Veeva’s benchmark comes to roughly $80 to $115 million a year of CRA time wasted on monitoring inefficiencies. The working is behind “How this number is built” if anyone asks. Turn the card for why: nothing connects the systems, so CRAs track samples, training, follow-ups and documents in their own spreadsheets and copy them across. Then who benefits if we fix this, patients first: safety issues reach a CRA sooner. CRAs are who we build for.</aside>
+  <aside class="notes">Start with the number: at a typical top-10 pharma, Veeva’s benchmark comes to roughly $80 to $115 million a year of CRA time wasted on monitoring inefficiencies. The working is behind “How this number is built” if anyone asks. Three beats, one per press of Next. Turn the card for why: nothing connects the systems, so CRAs track samples, training, follow-ups and documents in their own spreadsheets and copy them across. Then Next again and who benefits if we fix this takes the screen, patients first: safety issues reach a CRA sooner. CRAs are who we build for.</aside>
 </section></div>
 
 <!-- 3 KEY CHOICE -->
@@ -1087,10 +1123,13 @@ function press(btns,on){btns.forEach(b=>b.setAttribute('aria-pressed',b===on?'tr
 
 /* 2 opportunity: the tracker number, then turn the card for why */
 const OPP=(function(){
- const fl=$('oflip'),front=$('ofront'),back=$('oback');let open=false;
- function set(v){if(v)front.querySelector('details').open=false;open=v;fl.classList.toggle('on',v);$('oflipbtn').setAttribute('aria-expanded',v?'true':'false');back.setAttribute('aria-hidden',v?'false':'true');}
- front.onclick=e=>{const h=front.querySelector('details');if(e.target.closest('details'))return;if(h.open){h.open=false;return;}set(true);};document.addEventListener('click',e=>{const h=front.querySelector('details');if(h.open&&!front.contains(e.target))h.open=false;});$('oturn').onclick=()=>set(false);
- return{enter(fwd){set(!fwd);},leave(){},next(){if(open)return false;set(true);return true;},prev(){if(!open)return false;set(false);return true;}};
+ const S=$('opportunity'),fl=$('oflip'),front=$('ofront'),back=$('oback'),ben=$('oben');let st=0;
+ function set(v){st=v;const h=front.querySelector('details');if(v)h.open=false;fl.classList.toggle('on',v>=1);S.dataset.st=v;
+  $('oflipbtn').setAttribute('aria-expanded',v>=1?'true':'false');back.setAttribute('aria-hidden',v===1||stacked?'false':'true');
+  ben.inert=!stacked&&v!==2;fl.inert=!stacked&&v===2;}
+ front.onclick=e=>{const h=front.querySelector('details');if(e.target.closest('details'))return;if(h.open){h.open=false;return;}set(1);};document.addEventListener('click',e=>{const h=front.querySelector('details');if(h.open&&!front.contains(e.target))h.open=false;});
+ $('oturn').onclick=()=>set(0);$('onext').onclick=()=>set(2);$('oback2').onclick=()=>set(1);
+ return{enter(fwd){set(fwd?0:2);},leave(){},next(){if(st>=2)return false;set(st+1);return true;},prev(){if(st<=0)return false;set(st-1);return true;}};
 })();
 
 /* 3 scenes */
