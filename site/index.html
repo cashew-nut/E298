@@ -18,7 +18,7 @@
 /* Hallmark · pre-emit critique: P2 H2 E2 S2 R2 V2 · weakest: quote density, kept each slide to one or two quotes with a full citation */
 /* waive 48-font: General Sans is served only by Fontshare, which the artifact CSP blocks; Instrument Sans from Google Fonts stands in */
 /* waive 3: the layer bar on the scaling grid encodes the layer's risk level */
-/* waive 58: a nine-slide deck, not one screen; each slide stays near 80 words */
+/* waive 58: an eight-slide deck, not one screen; each slide stays near 80 words */
 /* waive F4 F15: letterpress cards are the theme's control; slides keep their own column rhythm */
 /* waive 44b: this is a 1600x900 presentation stage scaled to the window, not a scrolling page */
 :root{
@@ -679,8 +679,8 @@ body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
 @media (prefers-reduced-motion: reduce){.mcol,.mi svg .ln{transition:none}}
 
 /* ---------- 8 AI ---------- */
-/* three beats: who did what, then challenge both ways, then the edit I made */
-.u-flow{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr);align-items:stretch;margin-top:58px}
+/* static: who did what, what it challenged, and the edit I made */
+.u-flow{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr) 44px minmax(0,1fr) 44px minmax(0,1fr);align-items:stretch;margin-top:58px}
 .u-step{position:relative;display:flex;flex-direction:column;gap:8px;padding:22px 26px 22px;border-radius:2px var(--radius-stock) var(--radius-stock) var(--radius-stock)}
 .u-step .tab{position:absolute;top:-30px;left:0;height:32px;display:flex;align-items:center;gap:8px;padding:0 14px;border-radius:6px 6px 0 0;font-size:16px;font-weight:600;color:var(--color-print);background-color:var(--color-cotton);box-shadow:inset 0 1px 0 oklch(var(--lit) / 0.9),0 0 0 0.5px oklch(var(--shade) / 0.22)}
 .u-step .tab .glyph{width:18px;height:18px;border-radius:5px}.u-step .tab .glyph::before{width:7px;height:7px}
@@ -690,7 +690,7 @@ body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
 .u-step b{font-size:26px;font-weight:600;letter-spacing:-0.02em;color:var(--color-ink)}
 .u-step p{font-size:19px;line-height:1.4;color:var(--color-ink-2)}
 .u-arrow{align-self:center;justify-self:center;width:36px;height:20px;fill:none;stroke:var(--color-muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.u-low{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:48px;margin-top:52px;transition:opacity var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out)}
+.u-low{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:48px;margin-top:52px}
 .u-panel{display:flex;flex-direction:column;gap:14px;padding:4px 0 0;border-top:2px solid var(--color-ink)}
 .u-panel h3{font-size:24px;padding-top:12px}
 .u-panel>p{font-size:18px;line-height:1.45;color:var(--color-ink-2)}
@@ -701,34 +701,13 @@ body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
 .u-mark .k{display:flex;justify-content:space-between;font-family:var(--font-body);font-size:13.5px;color:var(--color-muted);border-bottom:1px solid var(--color-rule);padding-bottom:7px;margin-bottom:30px}
 .u-line{position:relative;font-size:28px;line-height:1.5}
 .u-del{position:relative;white-space:nowrap}
-.u-del::after{content:"";position:absolute;left:-2px;right:-2px;top:55%;height:2.5px;border-radius:2px;background:var(--color-paid);transform-origin:0 50%;transform:scaleX(0);transition:transform 520ms var(--ease-out)}
-.u-ins{position:absolute;left:0;bottom:calc(100% - 4px);font-family:var(--font-body);font-size:20px;font-weight:600;font-style:italic;color:var(--color-paid);white-space:nowrap;opacity:0;transform:translateY(6px);transition:opacity 420ms var(--ease-out) 380ms,transform 420ms var(--ease-out) 380ms}
-.u-why{margin-top:16px;padding-top:12px;border-top:1px dashed var(--color-rule-2);font-family:var(--font-body);font-size:16.5px;line-height:1.45;color:var(--color-ink-2);opacity:0;transition:opacity 420ms var(--ease-out) 700ms}
+.u-del::after{content:"";position:absolute;left:-2px;right:-2px;top:55%;height:2.5px;border-radius:2px;background:var(--color-paid)}
+.u-ins{position:absolute;left:0;bottom:calc(100% - 4px);font-family:var(--font-body);font-size:20px;font-weight:600;font-style:italic;color:var(--color-paid);white-space:nowrap}
+.u-why{margin-top:16px;padding-top:12px;border-top:1px dashed var(--color-rule-2);font-family:var(--font-body);font-size:16.5px;line-height:1.45;color:var(--color-ink-2)}
 .u-why b{color:var(--color-ink);font-weight:600}
-#ai-use[data-st="2"] .u-del::after{transform:scaleX(1)}
-#ai-use[data-st="2"] .u-ins{opacity:1;transform:none}
-#ai-use[data-st="2"] .u-why{opacity:1}
-#ai-use[data-st="0"] .u-low{opacity:0;transform:translateY(20px);pointer-events:none}
 .u-hint{margin-top:auto;display:flex;justify-content:space-between;gap:24px;align-items:baseline}
 .u-hint .ai-note{font-size:16px;color:var(--color-muted)}
-.u-hint .hint{font-size:16px;color:var(--color-muted)}
-.u-hint button{border:0;background:transparent;padding:0;font-size:16px;font-weight:600;color:var(--color-accent-2);text-decoration:underline;text-underline-offset:4px}
-.frame.active #ai-use .u-step{animation:tin var(--dur-long) var(--ease-out) both}
-.frame.active #ai-use .u-step:nth-child(3){animation-delay:120ms}.frame.active #ai-use .u-step:nth-child(5){animation-delay:240ms}
-body.stacked #ai-use .u-low{opacity:1;transform:none}
-body.stacked #ai-use .u-del::after{transform:scaleX(1)}
-body.stacked #ai-use .u-ins,body.stacked #ai-use .u-why{opacity:1;transform:none}
-body.stacked #ai-use .u-hint button,body.stacked #ai-use .u-hint .hint{display:none}
-@media (prefers-reduced-motion:reduce){#ai-use .u-low,#ai-use .u-del::after,#ai-use .u-ins,#ai-use .u-why{transition:none}.frame.active #ai-use .u-step{animation:none}}
 
-/* ---------- 9 close ---------- */
-.v-rows{margin-top:32px;border-top:2px solid var(--color-ink)}
-.v-row{display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,1fr);gap:24px;border-bottom:1px solid var(--color-rule-2);padding:16px 0;font-size:21px;line-height:1.45}
-.v-row .n{font-family:var(--font-outlier);font-size:20px;color:var(--color-muted)}
-.v-row .how{color:var(--color-ink-2)}
-.closer{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
-.closer p{font-size:46px;font-weight:600;letter-spacing:var(--tracking-display);line-height:1.1;max-width:28ch}
-.closer .stamp{font-size:34px;margin-bottom:8px}
 
 /* ---------- bar ---------- */
 #bar{position:fixed;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;gap:12px;padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));font-size:14px;color:var(--color-muted);z-index:5;background:var(--color-paper)}
@@ -1143,16 +1122,18 @@ aside.notes{display:none}
 </section></div>
 
 <!-- 8 AI -->
-<div class="frame"><section class="slide" id="ai-use" data-time="0:50" data-sec="3" data-st="0">
+<div class="frame"><section class="slide" id="ai-use" data-time="0:50" data-sec="3">
   <div class="head"><h2>How I used AI, and where I pushed back</h2></div>
   <div class="u-flow">
+    <div class="u-step stock me"><span class="tab"><i aria-hidden="true"></i>Me and AI</span><b>Ideation</b><p>Partnered with AI to ideate on a set of proposed ideas.</p></div>
+    <svg class="u-arrow" viewBox="0 0 36 20" aria-hidden="true"><path d="M2 10h30M25 3l7 7-7 7"/></svg>
     <div class="u-step stock"><span class="tab"><span class="glyph" aria-hidden="true"></span>AI</span><b>Research</b><p>Found relevant sources to support the use case.</p></div>
     <svg class="u-arrow" viewBox="0 0 36 20" aria-hidden="true"><path d="M2 10h30M25 3l7 7-7 7"/></svg>
     <div class="u-step stock me"><span class="tab"><i aria-hidden="true"></i>Me, by hand</span><b>The write-up</b><p>I wrote the case myself, in Word.</p></div>
     <svg class="u-arrow" viewBox="0 0 36 20" aria-hidden="true"><path d="M2 10h30M25 3l7 7-7 7"/></svg>
     <div class="u-step stock"><span class="tab"><span class="glyph" aria-hidden="true"></span>AI</span><b>The deck</b><p>Developed from my write-up.</p></div>
   </div>
-  <div class="u-low" id="ulow">
+  <div class="u-low">
     <div class="u-panel">
       <h3>I asked it to challenge me</h3>
       <div class="u-asks">
@@ -1170,23 +1151,8 @@ aside.notes{display:none}
       </div>
     </div>
   </div>
-  <div class="u-hint"><p class="ai-note">Everything here is public or synthetic. No company, patient or study data went into any tool.</p><span class="hint" id="uhint"></span></div>
-  <aside class="notes">I used AI to research and identify relevant sources to support the use case. Then I wrote the case up by hand, in Word, and used AI to develop the deck from that write-up. I asked it to challenge my core ideas and the vendor claims. And I pushed back where its ideas and language were too conservative. For example, it recommended letting ITQM and BQM shape the solution. I corrected that from my own experience of working with them: they’re partners to engage with early, but it’s not their responsibility to shape the entire solution.</aside>
-</section></div>
-
-<!-- 9 CLOSE -->
-<div class="frame"><section class="slide desk" id="close" data-time="0:25">
-  <div class="head"><h2>What I’d validate first</h2></div>
-  <div class="v-rows">
-    <div class="v-row"><span class="n">1</span><span>CRAs, not data management or a CRO, do enough of this work to benefit</span><span class="how">Map who does what on two live studies</span></div>
-    <div class="v-row"><span class="n">2</span><span>The workspace can carry governed, role-based access to GxP data</span><span class="how">Architecture review with IT, quality and AI governance</span></div>
-    <div class="v-row"><span class="n">3</span><span>Source data can be reached fresh enough to matter before a visit</span><span class="how">Technical spike on EDC, CTMS and IRT</span></div>
-  </div>
-  <div class="closer">
-    <p>Lots of little things done well, starting with one site brief for one CRA.</p>
-    <span class="stamp">Ready</span>
-  </div>
-  <aside class="notes">Three assumptions I’d test before spending real money. Then close and take questions.</aside>
+  <div class="u-hint"><p class="ai-note">Everything here is public or synthetic. No company, patient or study data went into any tool.</p></div>
+  <aside class="notes">I started by partnering with AI to ideate on a set of proposed ideas. Then I used it to research and identify relevant sources to support the use case. Then I wrote the case up by hand, in Word, and used AI to develop the deck from that write-up. I asked it to challenge my core ideas and the vendor claims. And I pushed back where its ideas and language were too conservative. For example, it recommended letting ITQM and BQM shape the solution. I corrected that from my own experience of working with them: they’re partners to engage with early, but it’s not their responsibility to shape the entire solution.</aside>
 </section></div>
 
 </div></div>
@@ -1510,14 +1476,6 @@ const MEAS=(function(){
  return{enter(fwd){show(stacked?3:(fwd?1:3));},leave(){},next(){if(n>=3)return false;show(n+1);return true;},prev(){if(n<=1)return false;show(n-1);return true;}};
 })();
 
-/* 8 AI: who did what, then challenge both ways, then my edit */
-const AIU=(function(){
- const S=$('ai-use'),h=$('uhint');let st=0;
- const HINTS=['Next: where it challenged me, and where I pushed back','Next: my edit',''];
- function set(v){st=v;S.dataset.st=stacked?2:v;h.textContent=HINTS[v];$('ulow').inert=!stacked&&v===0;}
- return{enter(fwd){set(fwd?0:2);},leave(){},sync(){set(st);},next(){if(st>=2)return false;set(st+1);return true;},prev(){if(st<=0)return false;set(st-1);return true;}};
-})();
-
 /* title animation */
 const tdesk=$('tdesk');
 function playTitle(){if(reduce||stacked){tdesk.classList.remove('pre');return;}tdesk.classList.add('pre');tdesk.getBoundingClientRect();setTimeout(()=>tdesk.classList.remove('pre'),120);}
@@ -1530,7 +1488,7 @@ SECS.forEach(sec=>{const w=document.createElement('div');w.className='sec';w.sty
   const g=document.createElement('div');g.className='segs';
   sec.segs=sec.s.map(k=>{const b=document.createElement('button');b.className='seg';const h=slides[k].querySelector('h2');const t=`Slide ${k+1}: ${h?h.textContent.trim():sec.n}`;b.setAttribute('aria-label',t);b.title=t;b.onclick=()=>go(k);g.appendChild(b);return b;});
   w.append(l,g);secs.appendChild(w);sec.el=w;});
-const BUILDS={brief:WS,opportunity:OPP,measures:MEAS,'ai-use':AIU};let booted=false;
+const BUILDS={brief:WS,opportunity:OPP,measures:MEAS};let booted=false;
 function step(d){const b=BUILDS[slides[cur].id];if(b&&(d>0?b.next():b.prev()))return;go(cur+d);}
 function go(i,fromHash){
   i=Math.max(0,Math.min(slides.length-1,i));const was=cur;cur=i;
@@ -1571,7 +1529,7 @@ BUILDS.path=PATH;
 const deck=$('deck');
 function fit(){
   const W=innerWidth,H=innerHeight,want=W<820;
-  if(want!==stacked){stacked=want;document.body.classList.toggle('stacked',stacked);if(stacked)tdesk.classList.remove('pre');OPP.sync();AIU.sync();}
+  if(want!==stacked){stacked=want;document.body.classList.toggle('stacked',stacked);if(stacked)tdesk.classList.remove('pre');OPP.sync();}
   if(stacked){const w=deck.clientWidth||W-32,s=w/1600;frames.forEach(f=>{const sl=f.querySelector('.slide');f.style.height=(sl.offsetHeight*s)+'px';sl.style.transform=`scale(${s})`;});deck.style.transform='none';}
   else{frames.forEach(f=>{f.style.height='';f.querySelector('.slide').style.transform='';});const s=Math.min((W-48)/1600,(H-54-24)/900);deck.style.transform=`translate(${(W-1600*s)/2}px,${Math.max(12,(H-54-900*s)/2)}px) scale(${s})`;}
 }
