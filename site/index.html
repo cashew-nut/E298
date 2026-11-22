@@ -892,17 +892,6 @@ aside.notes{display:none}
           <div class="sb-i cur">Prep site 1042 visit</div>
           <div class="sb-i">Site 1017 follow-up letter</div>
           <div class="sb-i">Weekly query digest</div>
-          <p class="sb-k">Connected</p>
-          <div class="sb-c" data-c style="--d:0ms">EDC</div>
-          <div class="sb-c" data-c style="--d:120ms">CTMS</div>
-          <div class="sb-c" data-c style="--d:240ms">IRT</div>
-          <div class="sb-c" data-c style="--d:360ms">eTMF</div>
-          <div class="sb-c">Email</div>
-          <div class="sb-c">Teams</div>
-          <p class="sb-k">Skills</p>
-          <div class="sb-c" data-k="5">Site signal checks</div>
-          <div class="sb-c" data-k="8,10">Document search</div>
-          <div class="sb-c">Visit report drafting</div>
           <div class="sb-foot"><b>Signed in as a CRA</b><br>Sites 1017 and 1042<br>Read-only access</div>
         </div>
         <div class="w-main" id="wmain">
@@ -1056,14 +1045,6 @@ aside.notes{display:none}
       </div>
     </div>
     <div class="w-rail">
-      <p class="label">Where each step happens</p>
-      <div class="ms" id="ms">
-        <div class="ms-l ws" data-l="ws"><b>Workspace</b><small>Where the CRA already works</small></div>
-        <div class="ms-l slab" data-l="tools"><b>Tools layer</b><small>Signal checks, document search</small></div>
-        <div class="ms-l slab" data-l="sem"><b>Semantic layer</b><small>Shared definitions, indexed documents</small></div>
-        <div class="ms-l data" data-l="data"><b>Data layer</b><small>Matched and conformed</small></div>
-        <div class="ms-l src" data-l="src"><b>Source systems</b><small>EDC, CTMS, IRT, eTMF</small></div>
-      </div>
       <div class="cap" id="cap" aria-live="polite"><span class="cap-k" id="cap-k"></span><h3 id="cap-h"></h3><p id="cap-p"></p></div>
       <div class="w-ctl"><button class="btn btn--card" id="w-back">Back</button><button class="btn btn--ink" id="w-next">Next</button><button class="btn btn--card" id="w-play" aria-pressed="false">Play</button></div>
       <div class="w-steps" id="w-steps" role="group" aria-label="Jump to step"></div>
@@ -1076,7 +1057,7 @@ aside.notes{display:none}
 
 <!-- 4 KEY CHOICE -->
 <div class="frame"><section class="slide" id="choice" data-time="1:15" data-sec="1">
-  <div class="head"><h2 style="max-width:30ch">Connect CRAs to the data they need, in the apps they already use</h2></div>
+  <div class="head"><h2 style="max-width:30ch">Giving agents the context they need to reason effectively over the data</h2></div>
   <div class="c-grid">
     <div>
       <div class="groove" role="group" aria-label="Compare approaches">
@@ -1401,7 +1382,7 @@ const WS=(function(){
   showForm(k>=11,anim);
   const st=STEPS[k];
   msEls.forEach(e=>e.classList.toggle('on',st.l.includes(e.dataset.l)));
-  $('ms').classList.toggle('any',st.l.length>0);
+  if($('ms'))$('ms').classList.toggle('any',st.l.length>0);
   $('cap-k').textContent=k?`Step ${k} of ${N} · ${st.k}`:`Mock-up · ${N} steps`;
   $('cap-h').textContent=st.h;$('cap-p').textContent=st.p;
   const cap=$('cap');cap.classList.remove('enter');if(anim&&!reduce){void cap.offsetWidth;cap.classList.add('enter');}
