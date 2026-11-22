@@ -40,7 +40,7 @@
   --cast-sheet:14px 14px 28px -12px oklch(var(--shade) / 0.32);
   --press-groove:inset 1px 1.5px 2px oklch(var(--shade) / 0.16), inset -1px -1px 0 oklch(var(--lit) / 0.9), 0 0 0 0.5px oklch(var(--shade) / 0.2);
   --tracking-display:-0.03em; --display-weight:600;
-  --ease-out:cubic-bezier(0.16,1,0.3,1); --dur-short:220ms; --dur-long:420ms;
+  --ease-out:cubic-bezier(0.16,1,0.3,1); --ease-in:cubic-bezier(0.55,0,1,0.45); --dur-short:220ms; --dur-long:420ms;
   --tex-cotton:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.32 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --tex-desk:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.018 0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.33 0 0 0 0 0.28 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -543,6 +543,56 @@ button.sig:hover{background:var(--color-paper-2)}
 .w-cursor.click .ring{animation:wring 460ms var(--ease-out)}
 @keyframes wring{from{opacity:.95;transform:scale(.3)}to{opacity:0;transform:scale(1.6)}}
 @media (prefers-reduced-motion:reduce){#brief *,#brief *::before,#brief *::after{animation:none!important;transition:none!important}}
+/* ---------- 3 opening pane: not another app ---------- */
+/* the CRA's scattered apps, files and systems spiral into the one workspace already in use, then the mock-up opens */
+.vx{display:none}
+.js #brief .vx{display:block;position:absolute;inset:0;z-index:6;opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--dur-long) var(--ease-out),visibility 0s linear var(--dur-long)}
+.js #brief.intro .vx{opacity:1;visibility:visible;pointer-events:auto;transition:opacity var(--dur-long) var(--ease-out)}
+.js #brief>.head,.js #brief>.w-grid,.js #brief>.w-fine{transition:opacity 520ms var(--ease-out) 140ms,transform 620ms var(--ease-out) 140ms}
+.js #brief.intro>.head,.js #brief.intro>.w-grid,.js #brief.intro>.w-fine{opacity:0;transform:translateY(18px) scale(.985);visibility:hidden;transition:none}
+.js #brief.intro .w-notif.on{animation:none}
+body.stacked #brief .vx{display:none!important}
+.vx-copy{position:absolute;left:96px;top:0;bottom:0;width:600px;display:flex;flex-direction:column;justify-content:center;gap:28px;z-index:3}
+.vx-copy h2{font-size:120px;line-height:.94;max-width:none}
+.vx-copy .lead{max-width:21ch}
+.vx-foot{display:flex;align-items:center;gap:20px;margin-top:20px}
+.vx-foot .label{font-size:16px}
+.vx-arms{position:absolute;left:560px;top:-100px;width:1100px;height:1100px;z-index:0;opacity:0;pointer-events:none;fill:none;stroke:var(--color-rule-2);stroke-width:1.4;stroke-linecap:round}
+.vx-arms .c{stroke:var(--color-rule);stroke-dasharray:2 9}
+.vx-stage{position:absolute;inset:0;z-index:1;pointer-events:none}
+.vx-it{position:absolute;left:0;top:0;opacity:0;font-size:14px;line-height:1.3;color:var(--color-muted)}
+.vx-it b{display:block;font-size:16px;font-weight:600;color:var(--color-print);letter-spacing:-0.01em}
+.vx-card{width:214px;padding:14px 16px 16px}
+.vx-card .tab{position:absolute;top:-26px;left:14px;height:28px;padding:6px 12px 0;border-radius:6px 6px 0 0;font-size:13px;font-weight:600;color:var(--color-ink-2);background-color:var(--color-cotton);box-shadow:inset 0 1px 0 oklch(var(--lit) / 0.9),0 0 0 0.5px oklch(var(--shade) / 0.22)}
+.vx-card .ln{height:7px;border-radius:2px;background:var(--color-paper-3);margin-top:10px}
+.vx-card .ln.s{width:58%}
+.vx-env{width:224px;height:128px;padding:62px 18px 12px;overflow:hidden}
+.vx-env::before{content:"";position:absolute;left:0;top:0;right:0;height:54px;background:var(--color-paper-2);clip-path:polygon(0 0,100% 0,50% 100%)}
+.vx-env::after{content:"";position:absolute;right:14px;top:12px;width:26px;height:30px;border-radius:2px;box-shadow:inset 0 0 0 1.5px var(--color-rule-2)}
+.vx-doc{width:156px;height:204px;padding:16px 16px 14px;overflow:hidden}
+.vx-doc b{font-size:14px;line-height:1.25}
+.vx-doc .ln{height:6px;border-radius:2px;background:var(--color-paper-3);margin-top:9px}
+.vx-doc .ln.s{width:64%}
+.vx-doc .ln:first-of-type{margin-top:16px}
+.vx-doc::after{content:"";position:absolute;right:0;top:0;width:26px;height:26px;background:linear-gradient(225deg,var(--color-desk) 50%,var(--color-paper-3) 50%);box-shadow:-1px 1px 2px oklch(var(--shade) / 0.16)}
+.vx-core{position:absolute;left:880px;top:305px;width:460px;height:290px;z-index:2;perspective:1500px;opacity:0}
+.vx-zoom{width:100%;height:100%;transition:transform 520ms var(--ease-in),opacity 360ms var(--ease-in)}
+.vx-rot{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.vx-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:28px 32px;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;box-shadow:var(--edge-stock),var(--cast-sheet)}
+.vx-face.b{transform:rotateY(180deg)}
+.vx-face .vx-logo svg{width:64px;height:64px;display:block}
+.vx-face b{font-size:38px;font-weight:600;letter-spacing:-0.025em;line-height:1.08;color:var(--color-print)}
+.vx-face.end{gap:14px}
+.vx-face.end b{font-size:31px;max-width:15ch}
+.vx-face.end span{font-size:17px;line-height:1.4;color:var(--color-muted);max-width:30ch}
+.vx-logos{display:flex;gap:16px;align-items:center;margin-bottom:4px}
+.vx-logos svg{width:30px;height:30px;display:block}
+.vx-logos .glyph{width:30px;height:30px;border-radius:8px}
+.vx-logos .glyph::before{width:11px;height:11px}
+.js #brief:not(.intro) .vx-zoom{transform:scale(1.5);opacity:0}
+@media (prefers-reduced-motion:reduce){.vx-arms{display:none}}
+body.stacked #brief.intro>.head,body.stacked #brief.intro>.w-grid,body.stacked #brief.intro>.w-fine{opacity:1;visibility:visible;transform:none}
+
 
 /* ---------- 5 scale ---------- */
 .s-top{display:flex;align-items:center;gap:16px;margin-top:24px}
@@ -881,7 +931,7 @@ aside.notes{display:none}
 </section></div>
 
 <!-- 3 WORKSPACE -->
-<div class="frame"><section class="slide" id="brief" data-time="1:10" data-sec="1">
+<div class="frame"><section class="slide" id="brief" data-time="1:20" data-sec="1">
   <div class="head"><h2 style="max-width:none;font-size:46px;white-space:nowrap">Connect CRAs to the data they need, in the apps they already use</h2></div>
   <div class="w-grid">
     <div class="w-win" role="group" aria-label="Mock-up of an agentic workspace, illustrative mock data">
@@ -1054,7 +1104,20 @@ aside.notes{display:none}
   </div>
   <p class="w-fine">Study CX-301, site 1042, its subjects and every document shown are illustrative mock data. Use the arrow keys to step through.</p>
   <div class="w-cursor" id="wcur" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M3 2v19l5-4.6 3.4 7.4 3-1.3-3.3-7.3H18z" fill="oklch(21% 0.012 38)" stroke="oklch(98.8% 0.0045 80)" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="ring"></span></div>
-  <aside class="notes">So what if the workspace a CRA already uses did that piecing together for them? Here’s what that looks like before a visit. It’s a mock-up, and everything in it is illustrative: the study, the site, the subjects and the documents. Press the right arrow to step through it. The workspace they already use opens on a notice: it has seen the upcoming visit in CTMS and offers to prepare it. The CRA says yes. The agent reads the source systems, matches the subject across them, applies shared definitions, and runs deterministic signal checks. The next slide shows what makes that possible. What comes back is a short brief, riskiest first. The top item is a possible protocol deviation: IRT has subject 007 in the 65 and over stratum, but EDC gives an age of 63 at consent. The agent checks the protocol, shows the page it relied on and links to the source document. Then it pulls the deviation plan section: important if confirmed, five working days to record it, don’t re-randomise. Draft deviation record opens the CTMS form, already filled in from the signal, the protocol and the plan, for the CRA to review and create. Rules raise the signal, AI finds the evidence, and the CRA confirms at the visit and signs anything that’s filed.</aside>
+  <div class="vx" id="vx" aria-hidden="true">
+    <svg class="vx-arms" id="vx-arms" viewBox="-550 -550 1100 1100" aria-hidden="true"></svg>
+    <div class="vx-stage" id="vx-stage" aria-hidden="true"></div>
+    <div class="vx-core" id="vx-core"><div class="vx-zoom"><div class="vx-rot" id="vx-rot">
+      <div class="vx-face stock a" id="vx-fa"></div>
+      <div class="vx-face stock b" id="vx-fb"></div>
+    </div></div></div>
+    <div class="vx-copy">
+      <h2>Not another app</h2>
+      <p class="lead">Everything a CRA juggles, pulled into the workspace they already use.</p>
+      <div class="vx-foot"><button class="btn btn--card" id="vx-replay" type="button">Replay</button><span class="label">Press the right arrow to open it</span></div>
+    </div>
+  </div>
+  <aside class="notes">Not another app. Everything a CRA juggles today, from email, SharePoint and Teams to the study systems, comes into the workspace the company already runs, such as Copilot, Cowork or Google Workspace. Press right to open it. So what if the workspace a CRA already uses did that piecing together for them? Here’s what that looks like before a visit. It’s a mock-up, and everything in it is illustrative: the study, the site, the subjects and the documents. Press the right arrow to step through it. The workspace they already use opens on a notice: it has seen the upcoming visit in CTMS and offers to prepare it. The CRA says yes. The agent reads the source systems, matches the subject across them, applies shared definitions, and runs deterministic signal checks. The next slide shows what makes that possible. What comes back is a short brief, riskiest first. The top item is a possible protocol deviation: IRT has subject 007 in the 65 and over stratum, but EDC gives an age of 63 at consent. The agent checks the protocol, shows the page it relied on and links to the source document. Then it pulls the deviation plan section: important if confirmed, five working days to record it, don’t re-randomise. Draft deviation record opens the CTMS form, already filled in from the signal, the protocol and the plan, for the CRA to review and create. Rules raise the signal, AI finds the evidence, and the CRA confirms at the visit and signs anything that’s filed.</aside>
 </section></div>
 
 <!-- 4 KEY CHOICE -->
@@ -1287,6 +1350,89 @@ lBtns.forEach(b=>b.addEventListener('click',()=>{
   $('lnote').innerHTML=`<h3>${t}</h3><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
 }));
 
+/* 3 opening pane: the apps, files and systems a CRA juggles spiral into one workspace, which turns through the ones a company may run */
+const VX=(function(){
+ const P=$('vx'),stage=$('vx-stage'),core=$('vx-core'),rot=$('vx-rot'),arms=$('vx-arms'),fa=$('vx-fa'),fb=$('vx-fb');
+ const CX=1110,CY=450;
+ const ITEMS=[
+  ['env','Email','Re: Thursday’s visit'],['card','SharePoint','Study CX-301 site files'],['doc','Protocol v3.0.pdf'],['card','Teams','Chat with the study manager'],
+  ['card','Calendar','Site 1042 visit, Thursday'],['card','Excel','Site tracker FINAL v7.xlsx'],['doc','Monitoring plan v1.2.pdf'],['card','EDC','Open queries'],
+  ['env','Email','Query reply from site 1017'],['card','CTMS','Visit schedule'],['card','OneNote','Notes from the last visit'],['doc','Deviation plan v2.0.pdf'],
+  ['card','IRT','Randomisations'],['card','eTMF','Essential documents'],['card','Shared drive','Visit 4 scans'],['doc','Visit report template.docx'],
+  ['card','Training portal','Protocol v3 training due'],['card','Risk dashboard','Site risk scores']
+ ];
+ /* a fixed seed, so the scatter is the same at every rehearsal */
+ let sd=7;const rnd=()=>{sd=(sd*16807)%2147483647;return(sd-1)/2147483646;};
+ const its=ITEMS.map((d,i)=>{
+  const e=document.createElement('div');e.className='vx-it stock vx-'+d[0];
+  if(d[0]==='card')e.innerHTML=`<span class="tab">${d[1]}</span><b>${d[2]}</b><div class="ln"></div><div class="ln s"></div>`;
+  else if(d[0]==='env')e.innerHTML=`<b>${d[1]}</b>${d[2]}`;
+  else e.innerHTML=`<b>${d[1]}</b><div class="ln"></div><div class="ln"></div><div class="ln s"></div><div class="ln"></div><div class="ln s"></div>`;
+  stage.appendChild(e);
+  /* spread round the centre, leaving the left sector to the headline */
+  let a=-2.55+(i+rnd()*0.7)*(5.1/ITEMS.length);
+  const ring=i%3,r=(ring===0?370:ring===1?300:430)+rnd()*40;
+  return{e,a0:a,r0:r,rz:(rnd()-0.5)*26,s0:0.86+rnd()*0.2,d:0,ord:0};
+ });
+ /* outer cards fall in last */
+ [...its].sort((p,q)=>p.r0-q.r0).forEach((o,k)=>{o.ord=k;});
+ its.forEach(o=>{o.d=1250+o.ord*120+((o.ord*37)%5)*18;});
+ const D=2300,SPIN=1.45*Math.PI,ABS=Math.max(...its.map(o=>o.d))+D;
+ /* the spiral arms */
+ const NS='http://www.w3.org/2000/svg';
+ for(let k=0;k<4;k++){let d='';for(let j=0;j<=90;j++){const t=j/90,r=40+t*500,th=k*Math.PI/2+t*2.6*Math.PI;d+=(j?'L':'M')+(r*Math.cos(th)).toFixed(1)+' '+(r*Math.sin(th)*0.86).toFixed(1);}
+  const p=document.createElementNS(NS,'path');p.setAttribute('d',d);arms.appendChild(p);}
+ [180,320,460].forEach(r=>{const c=document.createElementNS(NS,'ellipse');c.setAttribute('class','c');c.setAttribute('rx',r);c.setAttribute('ry',r*0.86);arms.appendChild(c);});
+ /* the workspace faces, logos taken from the layer stack on the next slide */
+ const lg=[...document.querySelectorAll('#choice .layer.ws .logo')];
+ const svg=i=>lg[i]?lg[i].querySelector('svg').outerHTML:'';
+ const FACES=[
+  `<span class="vx-logo">${svg(0)}</span><b>Claude Cowork</b>`,
+  `<span class="vx-logo">${svg(1)}</span><b>Microsoft 365 Copilot</b>`,
+  `<span class="vx-logo">${svg(2)}</span><b>Google Workspace</b>`,
+  `<span class="vx-logos">${svg(0)}${svg(1)}${svg(2)}</span><b>The workspace they already use</b><span>Email, files, chats, calendar and the study systems, connected</span>`
+ ];
+ const HOLD=1700,TURN=1300,T_END=ABS+HOLD+3*(TURN+HOLD);
+ let raf=0,t0=0,running=false,face=-1;
+ const cl=(v,a,b)=>Math.max(a,Math.min(b,v)),sm=t=>t*t*(3-2*t),io=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+ function setFaces(k){if(k===face)return;face=k;const vis=k%2?fb:fa,hid=k%2?fa:fb;vis.className='vx-face stock '+(k%2?'b':'a')+(k===3?' end':'');vis.innerHTML=FACES[k];
+  const nx=Math.min(k+1,3);hid.className='vx-face stock '+(k%2?'a':'b')+(nx===3?' end':'');hid.innerHTML=FACES[nx];}
+ function draw(t){
+  const om=t*0.00006;
+  its.forEach(o=>{
+   const fin=cl((t-o.i0)/500,0,1),p=cl((t-o.d)/D,0,1),e=p*p*(1.35-0.35*p);
+   const r=o.r0*(1-e),th=o.a0+om+e*SPIN;
+   const x=CX+r*Math.cos(th),y=CY+r*Math.sin(th)*0.86;
+   const s=(o.s0+(1-fin)*0.06)*(1-0.86*e),rz=o.rz+e*220;
+   const op=fin*(p<0.7?1:1-(p-0.7)/0.3);
+   o.e.style.opacity=op.toFixed(3);
+   o.e.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(-50%,-50%) rotate(${rz.toFixed(1)}deg) scale(${s.toFixed(3)})`;
+  });
+  arms.style.opacity=(0.75*sm(cl((t-500)/900,0,1))*(1-sm(cl((t-ABS+700)/1100,0,1)))).toFixed(3);
+  arms.style.transform=`rotate(${(-t*0.018).toFixed(2)}deg)`;
+  /* the workspace grows as the pieces arrive */
+  const g=sm(cl((t-1500)/(ABS-1500),0,1));
+  core.style.opacity=cl((t-1500)/600,0,1).toFixed(3);
+  core.style.transform=`scale(${(0.32+0.68*g).toFixed(3)})`;
+  /* then turns slowly through the workspaces a company may already run */
+  let k=0,ang=0;const u=t-ABS;
+  if(u>0){const c=HOLD+TURN;const q=Math.min(3,Math.floor(u/c)),w=u-q*c;k=q;ang=q*180;if(q<3&&w>HOLD){ang+=180*io((w-HOLD)/TURN);if(w-HOLD>TURN*0.5)k=q+1;}}
+  const sway=Math.sin(Math.max(0,t-ABS+HOLD*0.5)/1100)*9*(1-sm(cl((t-T_END+1500)/1500,0,1)))*cl((t-ABS+1500)/1500,0,1);
+  setFaces(k);
+  rot.style.transform=`rotateY(${(ang+sway).toFixed(2)}deg)`;
+ }
+ function tick(now){if(!running)return;const t=now-t0;if(t>=T_END){settle();return;}draw(t);raf=requestAnimationFrame(tick);}
+ function settle(){running=false;cancelAnimationFrame(raf);its.forEach(o=>{o.e.style.opacity='0';});arms.style.opacity='0';core.style.opacity='1';core.style.transform='none';setFaces(3);rot.style.transform='rotateY(540deg)';}
+ function play(){
+  its.forEach(o=>{o.i0=60+o.ord*28;});
+  cancelAnimationFrame(raf);face=-1;
+  if(reduce){settle();return;}
+  running=true;draw(0);t0=performance.now();raf=requestAnimationFrame(tick);
+ }
+ $('vx-replay').onclick=e=>{e.currentTarget.blur();play();};
+ return{play,settle,stop(){if(running)settle();},get busy(){return running;}};
+})();
+
 /* 4 workspace mock-up: a scripted walk from the sources up to one signal */
 const WS=(function(){
  const S=$('brief'),thread=$('wthread'),main=$('wmain'),ptr=$('wcur'),vw=$('viewer'),vpage=$('vpage'),pSig=$('pbody-sig'),pPdp=$('pbody-pdp');
@@ -1429,10 +1575,12 @@ const WS=(function(){
   playT=1;tick();
  }
  function jump(i){stop();tok++;busy=false;render(i,false);}
- function next(){if(busy){finish();return true;}if(n<N){forward();return true;}return false;}
- function prev(){stop();if(busy){tok++;busy=false;render(n,false);return true;}if(n>0){render(n-1,false);return true;}return false;}
- function enter(fwd){stop();tok++;busy=false;render(fwd?0:N,false);}
- function leave(){stop();tok++;busy=false;ptr.classList.remove('show');}
+ let intro=false;
+ function setIntro(on){intro=on;S.classList.toggle('intro',on);$('vx').setAttribute('aria-hidden',on?'false':'true');$('vx').inert=!on;S.querySelector('.w-grid').inert=on;}
+ function next(){if(intro){if(VX.busy){VX.settle();return true;}setIntro(false);return true;}if(busy){finish();return true;}if(n<N){forward();return true;}return false;}
+ function prev(){stop();if(intro){VX.stop();return false;}if(busy){tok++;busy=false;render(n,false);return true;}if(n>0){render(n-1,false);return true;}if(!stacked){setIntro(true);VX.settle();return true;}return false;}
+ function enter(fwd){stop();tok++;busy=false;render(fwd?0:N,false);if(fwd&&!stacked){setIntro(true);VX.play();}else{setIntro(false);VX.settle();}}
+ function leave(){stop();tok++;busy=false;ptr.classList.remove('show');VX.stop();}
 
  S.querySelectorAll('.w-chip').forEach(c=>c.addEventListener('click',e=>{e.stopPropagation();tok++;$('wtext').textContent=c.textContent;$('wcompose').classList.remove('typing');$('wexnote').textContent='Only the visit notice is scripted in this mock-up.';}));
  $('wyes').onclick=()=>{if(n===0)next();};
