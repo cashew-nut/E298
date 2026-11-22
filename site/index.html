@@ -283,7 +283,7 @@ body.stacked #opportunity .o-nav,body.stacked #oback2{display:none}
 @media (prefers-reduced-motion:reduce){.app-tile,.layer,.bb,.acl,.acl-tag,.tlist div,.l-note li{animation:none!important}}
 
 /* ---------- 4 workspace mock-up ---------- */
-.w-grid{display:grid;grid-template-columns:1032px 344px;gap:32px;margin-top:24px}
+.w-grid{display:grid;grid-template-columns:minmax(0,1fr);margin-top:12px}
 #brief [data-s]:not(.on),#brief [hidden]{display:none!important}
 #brief .enter{animation:wrise 460ms var(--ease-out) both}
 @keyframes wrise{from{opacity:0;transform:translateY(10px)}}
@@ -293,7 +293,7 @@ body.stacked #opportunity .o-nav,body.stacked #oback2{display:none}
 .w-dots{display:flex;gap:7px}.w-dots i{width:11px;height:11px;border-radius:50%;background:var(--color-rule-2)}
 .w-title{flex:1;text-align:center;font-size:15px;font-weight:600;color:var(--color-ink-2)}
 .mock{display:inline-flex;align-items:center;font-size:13px;font-weight:600;line-height:1.3;color:var(--color-accent-2);border:1.5px solid currentColor;border-radius:999px;padding:2px 10px;white-space:nowrap;background:var(--color-cotton)}
-.w-body{position:relative;display:grid;grid-template-columns:196px 836px;min-height:0}
+.w-body{position:relative;display:grid;grid-template-columns:196px 1212px;min-height:0}
 .w-side{display:flex;flex-direction:column;gap:2px;padding:16px 12px 14px;background:var(--color-paper);border-right:1px solid var(--color-rule);font-size:14px;color:var(--color-ink-2);min-height:0}
 .sb-brand{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--color-ink);padding:0 6px 10px}
 .glyph{width:20px;height:20px;border-radius:6px;background:var(--color-board);display:inline-grid;place-items:center;flex:none}
@@ -312,8 +312,8 @@ body.stacked #opportunity .o-nav,body.stacked #oback2{display:none}
 .sb-foot{margin-top:auto;font-size:13px;color:var(--color-muted);line-height:1.45;padding:10px 8px 0;border-top:1px solid var(--color-rule)}
 .sb-foot b{color:var(--color-ink-2);font-weight:600}
 
-.w-main{display:grid;grid-template-columns:836px 0px;min-height:0;transition:grid-template-columns 560ms var(--ease-out)}
-.w-main.split{grid-template-columns:376px 460px}
+.w-main{display:grid;grid-template-columns:1212px 0px;min-height:0;transition:grid-template-columns 560ms var(--ease-out)}
+.w-main.split{grid-template-columns:560px 652px}
 .w-chat{display:grid;grid-template-rows:minmax(0,1fr) auto;min-height:0;min-width:0}
 .w-thread{position:relative;overflow-y:auto;overflow-x:hidden;padding:20px 24px 12px;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;min-height:0}
 .w-empty{margin:auto;display:flex;flex-direction:column;align-items:center;gap:14px;font-size:19px;font-weight:600;color:var(--color-ink-2);letter-spacing:-0.015em;text-align:center}
@@ -415,7 +415,7 @@ button.sig:hover{background:var(--color-paper-2)}
 .w-send svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
 .w-pane{min-width:0;overflow:hidden;border-left:1px solid var(--color-rule);background:var(--color-paper)}
-.w-pane-in{width:460px;height:632px;display:grid;grid-template-rows:auto minmax(0,1fr)}
+.w-pane-in{width:652px;height:632px;display:grid;grid-template-rows:auto minmax(0,1fr)}
 .p-tabs{display:flex;gap:4px;padding:8px 14px 0;border-bottom:1px solid var(--color-rule);background:var(--color-cotton)}
 .p-tab{border:0;background:transparent;padding:8px 10px 9px;font-size:14px;font-weight:600;color:var(--color-muted);border-bottom:2px solid transparent;margin-bottom:-1px}
 .p-tab[aria-selected="true"]{color:var(--color-ink);border-bottom-color:var(--color-accent-2)}
@@ -435,7 +435,7 @@ button.sig:hover{background:var(--color-paper-2)}
 .evid-h b{font-size:15px;font-weight:600}
 .ok{font-size:12px;font-weight:600;color:var(--color-cotton);background:var(--color-ink-2);padding:2px 10px;border-radius:999px;white-space:nowrap}
 .shot{position:relative;height:184px;overflow:hidden;border-radius:4px;background:oklch(99.5% 0.002 80);box-shadow:0 0 0 1px var(--color-rule-2)}
-.shot .doc-page{position:absolute;left:0;top:0;transform:scale(.7);transform-origin:0 0;box-shadow:none;transition:none}
+.shot .doc-page{position:absolute;left:50%;top:0;transform:translateX(-50%) scale(.7);transform-origin:50% 0;box-shadow:none;transition:none}
 .shot-tag{position:absolute;right:8px;bottom:8px;z-index:2;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--color-board);color:var(--color-board-type)}
 .evid-src{font-size:13px;color:var(--color-muted)}
 .link{align-self:flex-start;border:0;background:transparent;padding:2px 0;font-size:14px;font-weight:600;color:var(--color-accent-2);text-decoration:underline;text-underline-offset:3px;transition:transform var(--dur-short) var(--ease-out)}
@@ -534,6 +534,8 @@ button.sig:hover{background:var(--color-paper-2)}
 .w-steps button.on::before{background:var(--color-ink-2)}
 .w-steps button.cur::before{background:var(--color-accent-2)}
 .w-fine{font-size:13px;line-height:1.45;color:var(--color-muted);margin-top:auto}
+#brief>.w-fine{margin-top:6px}
+#brief{padding-bottom:52px}
 .w-cursor{position:absolute;left:820px;top:880px;z-index:30;width:26px;height:26px;pointer-events:none;opacity:0;transition:left 700ms cubic-bezier(.45,0,.2,1),top 700ms cubic-bezier(.45,0,.2,1),opacity 220ms ease}
 .w-cursor.show{opacity:1}
 .w-cursor svg{position:absolute;left:-3px;top:-2px;width:26px;height:26px;filter:drop-shadow(1px 2px 2px oklch(32% 0.03 50 / .35))}
@@ -1044,15 +1046,15 @@ aside.notes{display:none}
         </div>
       </div>
     </div>
-    <div class="w-rail">
+    <div class="w-rail" hidden>
       <div class="cap" id="cap" aria-live="polite"><span class="cap-k" id="cap-k"></span><h3 id="cap-h"></h3><p id="cap-p"></p></div>
       <div class="w-ctl"><button class="btn btn--card" id="w-back">Back</button><button class="btn btn--ink" id="w-next">Next</button><button class="btn btn--card" id="w-play" aria-pressed="false">Play</button></div>
       <div class="w-steps" id="w-steps" role="group" aria-label="Jump to step"></div>
-      <p class="w-fine">Study CX-301, site 1042, its subjects and every document shown are illustrative mock data.</p>
     </div>
   </div>
+  <p class="w-fine">Study CX-301, site 1042, its subjects and every document shown are illustrative mock data. Use the arrow keys to step through.</p>
   <div class="w-cursor" id="wcur" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M3 2v19l5-4.6 3.4 7.4 3-1.3-3.3-7.3H18z" fill="oklch(21% 0.012 38)" stroke="oklch(98.8% 0.0045 80)" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="ring"></span></div>
-  <aside class="notes">So what if the workspace a CRA already uses did that piecing together for them? Here’s what that looks like before a visit. It’s a mock-up, and everything in it is illustrative: the study, the site, the subjects and the documents. Press Next or the right arrow to step through it, or Play. The workspace they already use opens on a notice: it has seen the upcoming visit in CTMS and offers to prepare it. The CRA says yes. The agent reads the source systems, matches the subject across them, applies shared definitions, and runs deterministic signal checks. The next slide shows what makes that possible. What comes back is a short brief, riskiest first. The top item is a possible protocol deviation: IRT has subject 007 in the 65 and over stratum, but EDC gives an age of 63 at consent. The agent checks the protocol, shows the page it relied on and links to the source document. Then it pulls the deviation plan section: important if confirmed, five working days to record it, don’t re-randomise. Draft deviation record opens the CTMS form, already filled in from the signal, the protocol and the plan, for the CRA to review and create. Rules raise the signal, AI finds the evidence, and the CRA confirms at the visit and signs anything that’s filed.</aside>
+  <aside class="notes">So what if the workspace a CRA already uses did that piecing together for them? Here’s what that looks like before a visit. It’s a mock-up, and everything in it is illustrative: the study, the site, the subjects and the documents. Press the right arrow to step through it. The workspace they already use opens on a notice: it has seen the upcoming visit in CTMS and offers to prepare it. The CRA says yes. The agent reads the source systems, matches the subject across them, applies shared definitions, and runs deterministic signal checks. The next slide shows what makes that possible. What comes back is a short brief, riskiest first. The top item is a possible protocol deviation: IRT has subject 007 in the 65 and over stratum, but EDC gives an age of 63 at consent. The agent checks the protocol, shows the page it relied on and links to the source document. Then it pulls the deviation plan section: important if confirmed, five working days to record it, don’t re-randomise. Draft deviation record opens the CTMS form, already filled in from the signal, the protocol and the plan, for the CRA to review and create. Rules raise the signal, AI finds the evidence, and the CRA confirms at the visit and signs anything that’s filed.</aside>
 </section></div>
 
 <!-- 4 KEY CHOICE -->
