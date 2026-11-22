@@ -773,7 +773,7 @@ aside.notes{display:none}
       <div class="o-card stock">
         <div class="o-fig">
           <span class="o-num">$80–115M</span>
-          <span class="o-cap">of CRA time wasted each year on monitoring inefficiencies at a typical top-10 pharma</span>
+          <span class="o-cap">of CRA time wasted each year on monitoring inefficiencies at the largest pharmaceutical organisations</span>
           <span class="cite">Scaled from Veeva’s benchmark of 30+ biopharma companies over 10 years (vendor research)</span>
           <details class="o-how">
             <summary>How this number is built</summary>
@@ -818,7 +818,7 @@ aside.notes{display:none}
       </div>
     </div>
   </div>
-  <aside class="notes">Start with the number: at a typical top-10 pharma, Veeva’s benchmark comes to roughly $80 to $115 million a year of CRA time wasted on monitoring inefficiencies. The working is behind “How this number is built” if anyone asks. Why: nothing connects the systems, so CRAs track samples, training, follow-ups and documents in their own spreadsheets and copy them across. Two voices back that up: a Regeneron VP on spreadsheets, and CRAs telling Tufts it takes longer to work out what to monitor than to check everything. Next, and who benefits if we fix this takes the screen, patients first: safety issues reach a CRA sooner. CRAs are who we build for. For clinical operations, it’s the headline number. For study teams, my assumption is a weekly site update instead of one every visit, about seven weeks apart, so roughly seven times as often.</aside>
+  <aside class="notes">Start with the number: at the largest pharmaceutical organisations, Veeva’s benchmark comes to roughly $80 to $115 million a year of CRA time wasted on monitoring inefficiencies. The working is behind “How this number is built” if anyone asks. Why: nothing connects the systems, so CRAs track samples, training, follow-ups and documents in their own spreadsheets and copy them across. Two voices back that up: a Regeneron VP on spreadsheets, and CRAs telling Tufts it takes longer to work out what to monitor than to check everything. Next, and who benefits if we fix this takes the screen, patients first: safety issues reach a CRA sooner. CRAs are who we build for. For clinical operations, it’s the headline number. For study teams, my assumption is a weekly site update instead of one every visit, about seven weeks apart, so roughly seven times as often.</aside>
 </section></div>
 
 <!-- 3 KEY CHOICE -->
@@ -1110,7 +1110,7 @@ aside.notes{display:none}
     </div>
   </div>
   <div class="p-detail sheet" id="pdetail" aria-live="polite"><span class="pd-caret" id="pcaret" aria-hidden="true"></span><div class="pd-col"><h3>Who is involved</h3><div class="pd-who" id="pwho"></div></div><div class="pd-col"><h3>What comes out of it</h3><ul class="pd-out" id="pout"></ul></div></div>
-  <aside class="notes">No funding ask on day one. First, executive champions in clinical operations leadership and possibly central monitoring. Through them, find CRA champions, interview them, and put a two-week prototype on synthetic data in front of them. If it holds up, ask for sponsorship and funding, with a decision checkpoint at six months. If we go ahead, pilot on a few early-adopter studies across therapeutic areas, with an adoption plan. Quality and AI governance comes in during the two-week sprint, not while I’m finding champions. I’d talk IT and business quality managers through the design and work with them so the approach is proportionate to the risk of this context of use. And it’s complementary: it works with the monitoring tools sponsors already run and retires the side trackers around them. The pilot starts read-only, with no change to the monitoring plan, so it’s an easy yes. Through the build, the evidence scales with that risk, so we’re GxP qualified by the six-month decision and the pilot starts on a qualified system.</aside>
+  <aside class="notes">No funding ask on day one. First, executive champions across clinical operations leadership, including heads of both site and centralised monitoring. Through them, find CRA champions, interview them, and put a two-week prototype on synthetic data in front of them. If it holds up, ask for sponsorship and funding, with a decision checkpoint at six months. If we go ahead, pilot on a few early-adopter studies across therapeutic areas, with an adoption plan. Quality and AI governance comes in during the two-week sprint, not while I’m finding champions. I’d talk IT and business quality managers through the design and work with them so the approach is proportionate to the risk of this context of use. And it’s complementary: it works with the monitoring tools sponsors already run and retires the side trackers around them. The pilot starts read-only, with no change to the monitoring plan, so it’s an easy yes. Through the build, the evidence scales with that risk, so we’re GxP qualified by the six-month decision and the pilot starts on a qualified system.</aside>
 </section></div>
 
 <!-- 7 MEASURES -->
@@ -1429,7 +1429,7 @@ setMode('pilot');selectCell(0,1);
 /* 6 path: a timeline, with the quality track running underneath from day one */
 const PATH=(function(){
  const STEPS=[
-  {w:'First',h:'Find champions',p:'Executive champions in clinical operations, and possibly central monitoring. No funding ask yet.',who:[['Clinical operations leadership'],['Central monitoring leads']],out:[['Two or three executive champions'],['Introductions to CRA champions']]},
+  {w:'First',h:'Find champions',p:'Executive champions across clinical operations leadership, including heads of both site and centralised monitoring.',who:[['Clinical operations leadership'],['Central monitoring leads']],out:[['Two or three executive champions'],['Introductions to CRA champions']]},
   {w:'Two weeks',h:'Prototype with CRAs',p:'Interview CRA champions, then test a very early prototype built in two weeks on synthetic data.',who:[['CRA champions across regions'],['A small product and engineering team'],['ITQM and BQM, reviewing the design',1]],out:[['Validated pain points'],['A prototype CRAs have used and challenged'],['A risk-proportionate approach for this use',1]]},
   {w:'Six months to a decision',h:'Fund and build',p:'Executive sponsorship and funding, with a decision checkpoint at six months.',who:[['Executive sponsor'],['Data platform and IT'],['ITQM and BQM, reviewing evidence',1]],out:[['Connectors and shared context for the first sources'],['Evidence in proportion to the risk',1],['Go or no-go at the six-month review']]},
   {w:'After the checkpoint',h:'Pilot, then scale',p:'A few early-adopter studies across therapeutic areas, alongside their current monitoring tools, with an adoption plan.',who:[['Study teams on the pilot studies'],['Change and training'],['CRA champions as peer support']],out:[['Leading and lagging indicators'],['The case to scale across the portfolio'],['Change control and evals on every release',1]]}
