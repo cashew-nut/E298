@@ -18,7 +18,7 @@
 /* Hallmark · pre-emit critique: P2 H2 E2 S2 R2 V2 · weakest: quote density, kept each slide to one or two quotes with a full citation */
 /* waive 48-font: General Sans is served only by Fontshare, which the artifact CSP blocks; Instrument Sans from Google Fonts stands in */
 /* waive 3: the layer bar on the scaling grid encodes the layer's risk level */
-/* waive 58: an eight-slide deck, not one screen; each slide stays near 80 words */
+/* waive 58: an eight-slide deck plus an appendix, not one screen; each slide stays near 80 words */
 /* waive F4 F15: letterpress cards are the theme's control; slides keep their own column rhythm */
 /* waive 44b: this is a 1600x900 presentation stage scaled to the window, not a scrolling page */
 :root{
@@ -709,6 +709,63 @@ body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
 .u-hint .ai-note{font-size:16px;color:var(--color-muted)}
 
 
+/* ---------- 9 appendix: financial model ---------- */
+#model{--fc-cost:#a9472b;--fc-visit:#c98500;--fc-hire:#0f9a78;--fc-qual:#6250d6}
+.f-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:32px}
+.f-head .label{margin-bottom:8px}
+#model .f-head h2{font-size:46px;max-width:none}
+.f-head>div{flex:1;min-width:0}
+.f-grid{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:40px;margin-top:26px;flex:1;min-height:0}
+.f-left{display:flex;flex-direction:column;gap:14px;min-width:0}
+.f-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.f-kpi{padding:12px 16px 12px;display:flex;flex-direction:column;gap:2px}
+.f-kpi small{font-size:14px;color:var(--color-muted)}
+.f-kpi b{font-family:var(--font-outlier);font-variant-numeric:tabular-nums;font-size:30px;font-weight:500;letter-spacing:-0.03em;color:var(--color-ink)}
+.f-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:4px}
+.f-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14.5px;color:var(--color-ink-2)}
+.f-legend span{display:inline-flex;align-items:center;gap:7px}
+.f-legend i{width:12px;height:12px;border-radius:3px;background:var(--c)}
+.f-legend i.ln{width:20px;height:0;border-radius:0;border-top:2.5px solid var(--color-ink);position:relative}
+.f-legend i.ln::after{content:"";position:absolute;left:5px;top:-6.5px;width:10px;height:10px;border-radius:50%;background:var(--color-ink);box-shadow:0 0 0 2px var(--color-paper)}
+.f-bar .groove button{font-size:14.5px;padding:5px 14px}
+.f-chart{position:relative;flex:1;min-height:0}
+.f-chart svg{display:block;width:100%;height:100%;overflow:visible}
+.f-chart .grid line{stroke:var(--color-rule);stroke-width:1}
+.f-chart .zero{stroke:var(--color-ink-2);stroke-width:1.5}
+.f-chart .yt{font-size:13px;fill:var(--color-muted);font-family:var(--font-outlier)}
+.f-chart .xt{font-size:15px;fill:var(--color-ink);font-weight:600}
+.f-chart .xs{font-size:13px;fill:var(--color-muted)}
+.f-chart .seg{stroke:var(--color-paper);stroke-width:2}
+.f-chart .vl{font-size:13px;fill:var(--color-ink-2);font-family:var(--font-outlier)}
+.f-chart .net{fill:none;stroke:var(--color-ink);stroke-width:2.5;stroke-linejoin:round}
+.f-chart .dot{fill:var(--color-ink);stroke:var(--color-paper);stroke-width:2}
+.f-chart .nl{font-size:14px;font-weight:600;fill:var(--color-ink);font-family:var(--font-outlier)}
+.f-chart .hit{fill:transparent;cursor:default}
+.f-chart .hit:hover,.f-chart .hit.on{fill:oklch(var(--shade) / 0.05)}
+.f-tip{position:absolute;z-index:3;pointer-events:none;min-width:230px;padding:10px 14px;font-size:13.5px;line-height:1.5;color:var(--color-ink-2);background-color:var(--color-cotton);border-radius:var(--radius-stock);box-shadow:var(--edge-stock),var(--cast-stock-lift)}
+.f-tip b{display:block;font-size:14.5px;color:var(--color-ink);margin-bottom:4px}
+.f-tip div{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:8px;align-items:center}
+.f-tip i{width:10px;height:10px;border-radius:3px;background:var(--c)}
+.f-tip span:last-child{font-family:var(--font-outlier);color:var(--color-ink)}
+.f-tip .tot{border-top:1px solid var(--color-rule);margin-top:4px;padding-top:4px;font-weight:600}
+.f-table{width:100%;border-collapse:collapse;font-size:15px}
+.f-table th,.f-table td{padding:8px 10px;border-bottom:1px solid var(--color-rule);text-align:right;font-variant-numeric:tabular-nums}
+.f-table th:first-child,.f-table td:first-child{text-align:left}
+.f-table th{font-size:13.5px;font-weight:600;color:var(--color-muted)}
+.f-table tr.sum td{font-weight:600;color:var(--color-ink);border-top:1.5px solid var(--color-ink-2)}
+.f-side{display:flex;flex-direction:column;gap:10px;padding:16px 22px 14px;min-height:0;align-self:start}
+.f-side h3{font-size:19px}
+.f-base{font-size:13.5px;line-height:1.5;color:var(--color-ink-2);padding-bottom:10px;border-bottom:1px solid var(--color-rule)}
+.f-drv{display:flex;flex-direction:column;gap:3px;padding-bottom:9px;border-bottom:1px solid var(--color-rule)}
+.f-drv .t{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:600;color:var(--color-ink)}
+.f-drv .t i{width:11px;height:11px;border-radius:3px;background:var(--c);flex:none}
+.f-drv .t output{margin-left:auto;font-family:var(--font-outlier);font-size:15px;font-weight:500}
+.f-drv p{font-size:13.5px;line-height:1.42;color:var(--color-ink-2)}
+.f-drv code{font-family:var(--font-outlier);font-size:12px;color:var(--color-muted)}
+.f-drv input[type=range]{width:100%;margin:2px 0;accent-color:var(--color-ink-2);height:18px}
+.f-note{font-size:12.5px;line-height:1.45;color:var(--color-muted)}
+.f-note b{color:var(--color-ink-2);font-weight:600}
+
 /* ---------- bar ---------- */
 #bar{position:fixed;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;gap:12px;padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));font-size:14px;color:var(--color-muted);z-index:5;background:var(--color-paper)}
 #bar .nb{border:0;border-radius:var(--radius-stock);min-width:36px;height:34px;padding:0 12px;background-color:var(--color-cotton);color:var(--color-ink-2);box-shadow:var(--edge-stock),var(--cast-stock);font-size:14px;transition:transform var(--dur-short) var(--ease-out)}
@@ -1146,13 +1203,45 @@ aside.notes{display:none}
       <p>Some of its ideas and language were too conservative. One example:</p>
       <div class="u-mark sheet">
         <div class="k"><span>Its suggestion</span><span>My edit</span></div>
-        <p class="u-line">Let ITQM and BQM <span class="u-del">shape the solution<span class="u-ins">engage them early, as partners</span></span>.</p>
+        <p class="u-line"><span class="u-ins">Engage ITQM and BQM early, as partners in the solution.</span>Let ITQM and BQM <span class="u-del">shape the solution</span>.</p>
         <p class="u-why"><b>From my own experience of working with them:</b> partners to engage with early, but it’s not their responsibility to shape the entire solution.</p>
       </div>
     </div>
   </div>
   <div class="u-hint"><p class="ai-note">Everything here is public or synthetic. No company, patient or study data went into any tool.</p></div>
-  <aside class="notes">I started by partnering with AI to ideate on a set of proposed ideas. Then I used it to research and identify relevant sources to support the use case. Then I wrote the case up by hand, in Word, and used AI to develop the deck from that write-up. I asked it to challenge my core ideas and the vendor claims. And I pushed back where its ideas and language were too conservative. For example, it recommended letting ITQM and BQM shape the solution. I corrected that from my own experience of working with them: they’re partners to engage with early, but it’s not their responsibility to shape the entire solution.</aside>
+  <aside class="notes">I started by partnering with AI to ideate on a set of proposed ideas. Then I used it to research and identify relevant sources to support the use case. Then I wrote the case up by hand, in Word, and used AI to develop the deck from that write-up. I asked it to challenge my core ideas and the vendor claims. And I pushed back where its ideas and language were too conservative. For example, it recommended letting ITQM and BQM shape the solution. I corrected that to “Engage ITQM and BQM early, as partners in the solution”, from my own experience of working with them: they’re partners to engage with early, but it’s not their responsibility to shape the entire solution.</aside>
+</section></div>
+
+
+<!-- 9 APPENDIX: MODEL -->
+<div class="frame"><section class="slide" id="model" data-time="0:30" data-sec="4">
+  <div class="head f-head"><div><p class="label">Appendix</p><h2>How costs and savings could add up over three years</h2></div><span class="mock">Illustrative: every number is an assumption</span></div>
+  <div class="f-grid">
+    <div class="f-left">
+      <div class="f-kpis">
+        <div class="f-kpi stock"><small>Cost, 3 years</small><b id="fk-cost"></b></div>
+        <div class="f-kpi stock"><small>Savings, 3 years</small><b id="fk-sav"></b></div>
+        <div class="f-kpi stock"><small>Net position</small><b id="fk-net"></b></div>
+        <div class="f-kpi stock"><small>Break-even</small><b id="fk-be"></b></div>
+      </div>
+      <div class="f-bar">
+        <div class="f-legend" aria-label="Legend"><span><i style="--c:var(--fc-cost)"></i>Cost</span><span><i style="--c:var(--fc-visit)"></i>Fewer visits</span><span><i style="--c:var(--fc-hire)"></i>Hiring avoided</span><span><i style="--c:var(--fc-qual)"></i>Fewer quality issues</span><span><i class="ln"></i>Cumulative net position</span></div>
+        <div class="groove" role="group" aria-label="View"><button aria-pressed="true" data-fview="chart">Chart</button><button aria-pressed="false" data-fview="table">Table</button></div>
+      </div>
+      <div class="f-chart" id="fchart"><svg id="fsvg" viewBox="0 0 900 400" role="img" aria-label="Annual cost and savings by driver for years 1 to 3, with the cumulative net position"></svg><div class="f-tip" id="ftip" hidden></div></div>
+      <table class="f-table" id="ftable" hidden></table>
+    </div>
+    <div class="f-side stock">
+      <h3>Assumptions, for a large sponsor</h3>
+      <p class="f-base">1,000 CRAs at $150k a year, fully loaded. 96,000 monitoring visits a year (the midpoint on slide 2). 2,000 quality issues a year. The portfolio grows 3% a year. Adoption reaches 10%, 50% and 90% of CRAs in years 1, 2 and 3.</p>
+      <div class="f-drv"><label class="t" for="fs-visit"><i style="--c:var(--fc-visit)"></i>Fewer non-mandated visits<output id="fo-visit"></output></label><input type="range" id="fs-visit" min="0" max="50" step="5" value="20"><p>Share of non-mandated visits avoided. 30% of visits aren’t required by the protocol, and each one avoided saves $1,000 of travel and expenses.</p><code>visits × 30% × avoided × $1,000 × adoption</code></div>
+      <div class="f-drv"><label class="t" for="fs-hire"><i style="--c:var(--fc-hire)"></i>Flat CRA headcount<output id="fo-hire"></output></label><input type="range" id="fs-hire" min="0" max="20" step="1" value="10"><p>CRA time given back. It absorbs portfolio growth instead of new hires.</p><code>min(time back × CRAs × adoption, growth) × $150k</code></div>
+      <div class="f-drv"><label class="t" for="fs-qual"><i style="--c:var(--fc-qual)"></i>Fewer quality issues<output id="fo-qual"></output></label><input type="range" id="fs-qual" min="0" max="40" step="5" value="15"><p>Issues avoided, at a blended $20k each for investigation, CAPA and rework.</p><code>issues × avoided × $20k × adoption</code></div>
+      <div class="f-drv"><label class="t" for="fs-cost"><i style="--c:var(--fc-cost)"></i>Cost<output id="fo-cost"></output></label><input type="range" id="fs-cost" min="50" max="200" step="10" value="100"><p>Scales the base case of $7.5M, $6.5M and $5.5M: build, run, validation, and change and training.</p></div>
+      <p class="f-note"><b>Counted once:</b> CRA time saved shows up only as hiring avoided, so visit savings are travel and expenses. <b>Not counted:</b> faster study timelines and lower CRA turnover.</p>
+    </div>
+  </div>
+  <aside class="notes">Appendix, if asked about the business case. It’s a simple model, and every number is an assumption. Costs: build, run, validation, and change and training, about $19.5 million over three years. Three savings drivers, scaled by adoption of 10, 50 and 90 percent of CRAs: fewer non-mandated monitoring visits, at $1,000 of travel and expenses each; flat CRA headcount, because the time CRAs get back absorbs 3 percent portfolio growth instead of new hires at $150,000 each; and fewer quality issues, at a blended $20,000 each. CRA time is counted once. Faster study timelines and lower turnover are upside I haven’t counted. In the base case it breaks even in year two and is about $20 million ahead by year three. The sliders show how sensitive that is.</aside>
 </section></div>
 
 </div></div>
@@ -1476,12 +1565,84 @@ const MEAS=(function(){
  return{enter(fwd){show(stacked?3:(fwd?1:3));},leave(){},next(){if(n>=3)return false;show(n+1);return true;},prev(){if(n<=1)return false;show(n-1);return true;}};
 })();
 
+/* 9 appendix: a simple, illustrative cost and savings model */
+(function(){
+ const A={visits:96000,nonMand:0.30,perVisit:1000,cras:1000,craCost:150000,growth:0.03,issues:2000,perIssue:20000,adopt:[0.1,0.5,0.9],
+  cost:[['Build',[5,3,2]],['Run',[1,2,2.5]],['Validation',[1,0.5,0.5]],['Change and training',[0.5,1,0.5]]]};
+ const SER=[['visit','Fewer visits','var(--fc-visit)'],['hire','Hiring avoided','var(--fc-hire)'],['qual','Fewer quality issues','var(--fc-qual)']];
+ const svg=$('fsvg'),tip=$('ftip'),NS='http://www.w3.org/2000/svg';
+ const v=id=>+$('fs-'+id).value;
+ const M=x=>(x<0?'−':'')+'$'+Math.abs(x).toFixed(1)+'M';
+ const n1=x=>(x<0?'−':'')+Math.abs(x).toFixed(1);
+ const Ms=x=>(x<0?'−':'+')+'$'+Math.abs(x).toFixed(1)+'M';
+ function model(){
+  const cut=v('visit')/100,back=v('hire')/100,q=v('qual')/100,sc=v('cost')/100;let cum=0;
+  return A.adopt.map((a,y)=>{
+   const visit=A.visits*A.nonMand*cut*A.perVisit*a/1e6;
+   const need=A.cras*(Math.pow(1+A.growth,y+1)-1),freed=back*A.cras*a;
+   const hire=Math.min(freed,need)*A.craCost/1e6;
+   const qual=A.issues*q*A.perIssue*a/1e6;
+   const cost=A.cost.reduce((s,c)=>s+c[1][y],0)*sc;
+   const sav=visit+hire+qual;cum+=sav-cost;
+   return {y,a,visit,hire,qual,sav,cost,net:sav-cost,cum,heads:Math.round(A.cras+need-Math.min(freed,need)),without:Math.round(A.cras+need)};
+  });
+ }
+ function el(t,at,txt){const e=document.createElementNS(NS,t);for(const k in at)e.setAttribute(k,at[k]);if(txt!=null)e.textContent=txt;return e;}
+ function draw(){
+  const D=model();svg.textContent='';
+  const W=900,H=400,L=56,R=16,T=24,B=58;
+  const hi=Math.max(...D.map(d=>Math.max(d.sav,d.cost,d.cum))),lo=Math.min(0,...D.map(d=>d.cum));
+  const step=hi-lo>40?10:5,top=Math.ceil((hi*1.08)/step)*step,bot=Math.floor(lo/step)*step;
+  const yS=x=>T+(top-x)/(top-bot)*(H-T-B);
+  const g=el('g',{class:'grid'});for(let t=bot;t<=top;t+=step){g.appendChild(el('line',{x1:L,x2:W-R,y1:yS(t),y2:yS(t)}));svg.appendChild(el('text',{class:'yt',x:L-10,y:yS(t)+4,'text-anchor':'end'},(t<0?'−':'')+'$'+Math.abs(t)+'M'));}
+  svg.prepend(g);
+  const gw=(W-L-R)/3,bw=64,gap=10;
+  const xc=i=>L+gw*i+gw/2;
+  D.forEach((d,i)=>{
+   const cx=xc(i),x1=cx-bw-gap/2,x2=cx+gap/2;
+   svg.appendChild(el('rect',{class:'seg',x:x1,y:yS(d.cost),width:bw,height:Math.max(0,yS(0)-yS(d.cost)),rx:4,fill:'var(--fc-cost)'}));
+   svg.appendChild(el('text',{class:'vl',x:x1+bw/2,y:yS(d.cost)-7,'text-anchor':'middle'},M(d.cost)));
+   let base=0;SER.forEach(([k,,c],j)=>{const h=d[k];if(h<=0)return;const top=j===SER.length-1||SER.slice(j+1).every(s=>d[s[0]]<=0);
+    svg.appendChild(el('rect',{class:'seg',x:x2,y:yS(base+h),width:bw,height:Math.max(0,yS(base)-yS(base+h)),rx:top?4:0,fill:c}));base+=h;});
+   svg.appendChild(el('text',{class:'vl',x:x2+bw/2,y:yS(d.sav)-7,'text-anchor':'middle'},M(d.sav)));
+   svg.appendChild(el('text',{class:'xt',x:cx,y:H-B+26,'text-anchor':'middle'},'Year '+(i+1)));
+   svg.appendChild(el('text',{class:'xs',x:cx,y:H-B+46,'text-anchor':'middle'},Math.round(d.a*100)+'% of CRAs using it'));
+  });
+  svg.appendChild(el('line',{class:'zero',x1:L,x2:W-R,y1:yS(0),y2:yS(0)}));
+  const px=i=>xc(i)+gw*0.4;
+  svg.appendChild(el('path',{class:'net',d:D.map((d,i)=>(i?'L':'M')+px(i)+' '+yS(d.cum)).join(' ')}));
+  D.forEach((d,i)=>{svg.appendChild(el('circle',{class:'dot',cx:px(i),cy:yS(d.cum),r:6}));
+   const last=i===D.length-1;svg.appendChild(el('text',{class:'nl',x:last?px(i):px(i)+12,y:last?yS(d.cum)-14:yS(d.cum)+(d.cum<0?22:5),'text-anchor':last?'middle':'start'},Ms(d.cum)));});
+  D.forEach((d,i)=>{const r=el('rect',{class:'hit',x:L+gw*i+4,y:T,width:gw-8,height:H-T-B+4,rx:6});
+   r.addEventListener('mouseenter',()=>showTip(d,i,r));r.addEventListener('mouseleave',()=>{tip.hidden=true;r.classList.remove('on');});svg.appendChild(r);});
+  // KPIs and table
+  const tc=D.reduce((s,d)=>s+d.cost,0),ts=D.reduce((s,d)=>s+d.sav,0),last=D[2].cum;
+  $('fk-cost').textContent=M(tc);$('fk-sav').textContent=M(ts);$('fk-net').textContent=Ms(last);
+  let be='Not in 3 years';for(let i=0;i<3;i++){if(D[i].cum>=0){be='Year '+(i+1);break;}}
+  $('fk-be').textContent=be;
+  const rows=[['Cost',d=>d.cost],['Fewer visits',d=>d.visit],['Hiring avoided',d=>d.hire],['Fewer quality issues',d=>d.qual],['Savings',d=>d.sav],['Net, that year',d=>d.net],['Cumulative net position',d=>d.cum]];
+  $('ftable').innerHTML='<tr><th>$M</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Total</th></tr>'+rows.map(([n,f],k)=>`<tr${k===4||k===6?' class="sum"':''}><td>${n}</td>${D.map(d=>`<td>${n1(f(d))}</td>`).join('')}<td>${k===6?'':n1(D.reduce((s,d)=>s+f(d),0))}</td></tr>`).join('')+`<tr><td>CRAs needed without it</td>${D.map(d=>`<td>${d.without.toLocaleString()}</td>`).join('')}<td></td></tr><tr><td>CRAs needed with it</td>${D.map(d=>`<td>${d.heads.toLocaleString()}</td>`).join('')}<td></td></tr>`;
+  $('fo-visit').textContent=v('visit')+'%';$('fo-hire').textContent=v('hire')+'%';$('fo-qual').textContent=v('qual')+'%';$('fo-cost').textContent='×'+(v('cost')/100).toFixed(1);
+ }
+ function showTip(d,i,r){
+  r.classList.add('on');
+  tip.innerHTML=`<b>Year ${i+1}, ${Math.round(d.a*100)}% of CRAs</b><div><i style="--c:var(--fc-cost)"></i><span>Cost</span><span>${M(d.cost)}</span></div>`+SER.map(([k,n,c])=>`<div><i style="--c:${c}"></i><span>${n}</span><span>${M(d[k])}</span></div>`).join('')+`<div class="tot"><span></span><span>Net, that year</span><span>${Ms(d.net)}</span></div><div><span></span><span>Cumulative net</span><span>${Ms(d.cum)}</span></div><div><span></span><span>CRAs needed</span><span>${d.heads.toLocaleString()} vs ${d.without.toLocaleString()}</span></div>`;
+  tip.hidden=false;
+  const box=$('fchart'),z=box.getBoundingClientRect().width/box.offsetWidth||1,sr=svg.getBoundingClientRect(),rr=r.getBoundingClientRect();
+  let x=(rr.right-sr.left)/z+8;if(x+tip.offsetWidth>box.offsetWidth)x=(rr.left-sr.left)/z-tip.offsetWidth-8;
+  tip.style.left=Math.max(0,x)+'px';tip.style.top='8px';
+ }
+ ['visit','hire','qual','cost'].forEach(k=>$('fs-'+k).addEventListener('input',draw));
+ document.querySelectorAll('[data-fview]').forEach(b=>b.addEventListener('click',()=>{press([...document.querySelectorAll('[data-fview]')],b);const t=b.dataset.fview==='table';$('fchart').hidden=t;$('ftable').hidden=!t;}));
+ draw();
+})();
+
 /* title animation */
 const tdesk=$('tdesk');
 function playTitle(){if(reduce||stacked){tdesk.classList.remove('pre');return;}tdesk.classList.add('pre');tdesk.getBoundingClientRect();setTimeout(()=>tdesk.classList.remove('pre'),120);}
 
 /* nav */
-const SECS=[{n:'The opportunity',s:[1]},{n:'My recommendation',s:[2,3,4]},{n:'Making it real',s:[5,6]},{n:'My use of AI',s:[7]}];
+const SECS=[{n:'The opportunity',s:[1]},{n:'My recommendation',s:[2,3,4]},{n:'Making it real',s:[5,6]},{n:'My use of AI',s:[7]},{n:'Appendix',s:[8]}];
 const secs=$('secs');
 SECS.forEach(sec=>{const w=document.createElement('div');w.className='sec';w.style.setProperty('--w',sec.s.length);
   const l=document.createElement('button');l.className='sec-l';l.textContent=sec.n;l.onclick=()=>go(sec.s[0]);
@@ -1505,6 +1666,7 @@ function go(i,fromHash){
 }
 $('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
 document.addEventListener('keydown',e=>{
+  if(e.target.closest&&e.target.closest('input,textarea,select'))return;
   if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();step(1);}
   else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();step(-1);}
   else if(e.key==='Home')go(0);else if(e.key==='End')go(slides.length-1);
