@@ -679,13 +679,47 @@ body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
 @media (prefers-reduced-motion: reduce){.mcol,.mi svg .ln{transition:none}}
 
 /* ---------- 8 AI ---------- */
-.ai{display:grid;grid-template-columns:170px repeat(3,minmax(0,1fr));margin-top:36px;border-top:2px solid var(--color-ink)}
-.ai>div{padding:20px 24px 20px 0;border-bottom:1px solid var(--color-rule-2);font-size:20px;line-height:1.45;color:var(--color-ink-2)}
-.ai>div:not(:nth-child(4n+1)){padding-left:24px;border-left:1px solid var(--color-rule)}
-.ai .h{font-size:17px;font-weight:500;color:var(--color-muted);padding-block:12px}
-.ai .s{font-size:22px;font-weight:600;color:var(--color-ink)}
-.ai .me{color:var(--color-ink);font-weight:500}
-.ai-note{margin-top:24px;font-size:18px;color:var(--color-muted)}
+/* three beats: who did what, then challenge both ways, then the edit I made */
+.u-flow{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr);align-items:stretch;margin-top:58px}
+.u-step{position:relative;display:flex;flex-direction:column;gap:8px;padding:22px 26px 22px;border-radius:2px var(--radius-stock) var(--radius-stock) var(--radius-stock)}
+.u-step .tab{position:absolute;top:-30px;left:0;height:32px;display:flex;align-items:center;gap:8px;padding:0 14px;border-radius:6px 6px 0 0;font-size:16px;font-weight:600;color:var(--color-print);background-color:var(--color-cotton);box-shadow:inset 0 1px 0 oklch(var(--lit) / 0.9),0 0 0 0.5px oklch(var(--shade) / 0.22)}
+.u-step .tab .glyph{width:18px;height:18px;border-radius:5px}.u-step .tab .glyph::before{width:7px;height:7px}
+.u-step.me .tab{background:var(--color-board);color:var(--color-board-type);box-shadow:none}
+.u-step.me .tab i{font-style:normal;width:18px;height:18px;border-radius:50%;background:var(--color-board-type) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23463c37' stroke-width='1.8'%3E%3Ccircle cx='10' cy='7.5' r='3'/%3E%3Cpath d='M4.5 16c.8-2.8 3-4.2 5.5-4.2s4.7 1.4 5.5 4.2'/%3E%3C/svg%3E") center/14px no-repeat}
+.u-step.me{box-shadow:var(--edge-stock),var(--cast-stock-lift)}
+.u-step b{font-size:26px;font-weight:600;letter-spacing:-0.02em;color:var(--color-ink)}
+.u-step p{font-size:19px;line-height:1.4;color:var(--color-ink-2)}
+.u-arrow{align-self:center;justify-self:center;width:36px;height:20px;fill:none;stroke:var(--color-muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.u-low{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:48px;margin-top:52px;transition:opacity var(--dur-long) var(--ease-out),transform var(--dur-long) var(--ease-out)}
+.u-panel{display:flex;flex-direction:column;gap:14px;padding:4px 0 0;border-top:2px solid var(--color-ink)}
+.u-panel h3{font-size:24px;padding-top:12px}
+.u-panel>p{font-size:18px;line-height:1.45;color:var(--color-ink-2)}
+.u-asks{display:flex;flex-direction:column;gap:10px}
+.u-ask{display:flex;align-items:center;gap:14px;padding:18px 20px;font-size:21px;font-weight:500;color:var(--color-ink)}
+.u-ask svg{flex:none;width:26px;height:26px;fill:none;stroke:var(--color-ink-2);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.u-mark{position:relative;padding:20px 26px 18px;font-family:Georgia,"Times New Roman",serif;color:oklch(20% 0.01 40)}
+.u-mark .k{display:flex;justify-content:space-between;font-family:var(--font-body);font-size:13.5px;color:var(--color-muted);border-bottom:1px solid var(--color-rule);padding-bottom:7px;margin-bottom:30px}
+.u-line{position:relative;font-size:28px;line-height:1.5}
+.u-del{position:relative;white-space:nowrap}
+.u-del::after{content:"";position:absolute;left:-2px;right:-2px;top:55%;height:2.5px;border-radius:2px;background:var(--color-paid);transform-origin:0 50%;transform:scaleX(0);transition:transform 520ms var(--ease-out)}
+.u-ins{position:absolute;left:0;bottom:calc(100% - 4px);font-family:var(--font-body);font-size:20px;font-weight:600;font-style:italic;color:var(--color-paid);white-space:nowrap;opacity:0;transform:translateY(6px);transition:opacity 420ms var(--ease-out) 380ms,transform 420ms var(--ease-out) 380ms}
+.u-why{margin-top:16px;padding-top:12px;border-top:1px dashed var(--color-rule-2);font-family:var(--font-body);font-size:16.5px;line-height:1.45;color:var(--color-ink-2);opacity:0;transition:opacity 420ms var(--ease-out) 700ms}
+.u-why b{color:var(--color-ink);font-weight:600}
+#ai-use[data-st="2"] .u-del::after{transform:scaleX(1)}
+#ai-use[data-st="2"] .u-ins{opacity:1;transform:none}
+#ai-use[data-st="2"] .u-why{opacity:1}
+#ai-use[data-st="0"] .u-low{opacity:0;transform:translateY(20px);pointer-events:none}
+.u-hint{margin-top:auto;display:flex;justify-content:space-between;gap:24px;align-items:baseline}
+.u-hint .ai-note{font-size:16px;color:var(--color-muted)}
+.u-hint .hint{font-size:16px;color:var(--color-muted)}
+.u-hint button{border:0;background:transparent;padding:0;font-size:16px;font-weight:600;color:var(--color-accent-2);text-decoration:underline;text-underline-offset:4px}
+.frame.active #ai-use .u-step{animation:tin var(--dur-long) var(--ease-out) both}
+.frame.active #ai-use .u-step:nth-child(3){animation-delay:120ms}.frame.active #ai-use .u-step:nth-child(5){animation-delay:240ms}
+body.stacked #ai-use .u-low{opacity:1;transform:none}
+body.stacked #ai-use .u-del::after{transform:scaleX(1)}
+body.stacked #ai-use .u-ins,body.stacked #ai-use .u-why{opacity:1;transform:none}
+body.stacked #ai-use .u-hint button,body.stacked #ai-use .u-hint .hint{display:none}
+@media (prefers-reduced-motion:reduce){#ai-use .u-low,#ai-use .u-del::after,#ai-use .u-ins,#ai-use .u-why{transition:none}.frame.active #ai-use .u-step{animation:none}}
 
 /* ---------- 9 close ---------- */
 .v-rows{margin-top:32px;border-top:2px solid var(--color-ink)}
@@ -1109,16 +1143,35 @@ aside.notes{display:none}
 </section></div>
 
 <!-- 8 AI -->
-<div class="frame"><section class="slide" id="ai-use" data-time="0:50" data-sec="3">
-  <div class="head"><h2>How I used AI, and what I checked</h2></div>
-  <div class="ai">
-    <div class="h">Step</div><div class="h">What I asked it to do</div><div class="h">What I checked</div><div class="h">What I decided</div>
-    <div class="s">Research</div><div>Find what CRAs say about their work, with sources</div><div>Each quote against its source page; who funded each study</div><div class="me">Leaned on Tufts CSDD and ACRP, labelled vendor research, and dropped a figure that came from simulations</div>
-    <div class="s">Options</div><div>Suggest where to focus</div><div>Where the headcount and the repeated work sit</div><div class="me">It suggested study managers. I chose CRAs</div>
-    <div class="s">Challenge</div><div>Argue against my platform-first approach</div><div>Whether it still solves one specific problem</div><div class="me">Led with one role and one problem, with the foundation as the how</div>
+<div class="frame"><section class="slide" id="ai-use" data-time="0:50" data-sec="3" data-st="0">
+  <div class="head"><h2>How I used AI, and where I pushed back</h2></div>
+  <div class="u-flow">
+    <div class="u-step stock"><span class="tab"><span class="glyph" aria-hidden="true"></span>AI</span><b>Research</b><p>Found relevant sources to support the use case.</p></div>
+    <svg class="u-arrow" viewBox="0 0 36 20" aria-hidden="true"><path d="M2 10h30M25 3l7 7-7 7"/></svg>
+    <div class="u-step stock me"><span class="tab"><i aria-hidden="true"></i>Me, by hand</span><b>The write-up</b><p>I wrote the case myself, in Word.</p></div>
+    <svg class="u-arrow" viewBox="0 0 36 20" aria-hidden="true"><path d="M2 10h30M25 3l7 7-7 7"/></svg>
+    <div class="u-step stock"><span class="tab"><span class="glyph" aria-hidden="true"></span>AI</span><b>The deck</b><p>Developed from my write-up.</p></div>
   </div>
-  <p class="ai-note">Everything here is public or synthetic. No company, patient or study data went into any tool.</p>
-  <aside class="notes">One example to tell properly: the research. AI found sources quickly, but many came from vendors, and one widely quoted figure came from simulations rather than real visits, so I dropped it. Then the options: its first suggestion was study managers; I moved to CRAs because that’s where the scale is.</aside>
+  <div class="u-low" id="ulow">
+    <div class="u-panel">
+      <h3>I asked it to challenge me</h3>
+      <div class="u-asks">
+        <div class="u-ask stock"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.4 2.3c-.6.3-.9.8-.9 1.4v.6M12 17h.01"/></svg>My core ideas</div>
+        <div class="u-ask stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 7.9-7.5 9.5-4.4-1.6-7.5-5.1-7.5-9.5V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>Vendor claims</div>
+      </div>
+    </div>
+    <div class="u-panel">
+      <h3>I pushed back on it</h3>
+      <p>Some of its ideas and language were too conservative. One example:</p>
+      <div class="u-mark sheet">
+        <div class="k"><span>Its suggestion</span><span>My edit</span></div>
+        <p class="u-line">Let ITQM and BQM <span class="u-del">shape the solution<span class="u-ins">engage them early, as partners</span></span>.</p>
+        <p class="u-why"><b>From my own experience of working with them:</b> partners to engage with early, but it’s not their responsibility to shape the entire solution.</p>
+      </div>
+    </div>
+  </div>
+  <div class="u-hint"><p class="ai-note">Everything here is public or synthetic. No company, patient or study data went into any tool.</p><span class="hint" id="uhint"></span></div>
+  <aside class="notes">I used AI to research and identify relevant sources to support the use case. Then I wrote the case up by hand, in Word, and used AI to develop the deck from that write-up. I asked it to challenge my core ideas and the vendor claims. And I pushed back where its ideas and language were too conservative. For example, it recommended letting ITQM and BQM shape the solution. I corrected that from my own experience of working with them: they’re partners to engage with early, but it’s not their responsibility to shape the entire solution.</aside>
 </section></div>
 
 <!-- 9 CLOSE -->
@@ -1457,6 +1510,14 @@ const MEAS=(function(){
  return{enter(fwd){show(stacked?3:(fwd?1:3));},leave(){},next(){if(n>=3)return false;show(n+1);return true;},prev(){if(n<=1)return false;show(n-1);return true;}};
 })();
 
+/* 8 AI: who did what, then challenge both ways, then my edit */
+const AIU=(function(){
+ const S=$('ai-use'),h=$('uhint');let st=0;
+ const HINTS=['Next: where it challenged me, and where I pushed back','Next: my edit',''];
+ function set(v){st=v;S.dataset.st=stacked?2:v;h.textContent=HINTS[v];$('ulow').inert=!stacked&&v===0;}
+ return{enter(fwd){set(fwd?0:2);},leave(){},sync(){set(st);},next(){if(st>=2)return false;set(st+1);return true;},prev(){if(st<=0)return false;set(st-1);return true;}};
+})();
+
 /* title animation */
 const tdesk=$('tdesk');
 function playTitle(){if(reduce||stacked){tdesk.classList.remove('pre');return;}tdesk.classList.add('pre');tdesk.getBoundingClientRect();setTimeout(()=>tdesk.classList.remove('pre'),120);}
@@ -1469,7 +1530,7 @@ SECS.forEach(sec=>{const w=document.createElement('div');w.className='sec';w.sty
   const g=document.createElement('div');g.className='segs';
   sec.segs=sec.s.map(k=>{const b=document.createElement('button');b.className='seg';const h=slides[k].querySelector('h2');const t=`Slide ${k+1}: ${h?h.textContent.trim():sec.n}`;b.setAttribute('aria-label',t);b.title=t;b.onclick=()=>go(k);g.appendChild(b);return b;});
   w.append(l,g);secs.appendChild(w);sec.el=w;});
-const BUILDS={brief:WS,opportunity:OPP,measures:MEAS};let booted=false;
+const BUILDS={brief:WS,opportunity:OPP,measures:MEAS,'ai-use':AIU};let booted=false;
 function step(d){const b=BUILDS[slides[cur].id];if(b&&(d>0?b.next():b.prev()))return;go(cur+d);}
 function go(i,fromHash){
   i=Math.max(0,Math.min(slides.length-1,i));const was=cur;cur=i;
@@ -1510,7 +1571,7 @@ BUILDS.path=PATH;
 const deck=$('deck');
 function fit(){
   const W=innerWidth,H=innerHeight,want=W<820;
-  if(want!==stacked){stacked=want;document.body.classList.toggle('stacked',stacked);if(stacked)tdesk.classList.remove('pre');OPP.sync();}
+  if(want!==stacked){stacked=want;document.body.classList.toggle('stacked',stacked);if(stacked)tdesk.classList.remove('pre');OPP.sync();AIU.sync();}
   if(stacked){const w=deck.clientWidth||W-32,s=w/1600;frames.forEach(f=>{const sl=f.querySelector('.slide');f.style.height=(sl.offsetHeight*s)+'px';sl.style.transform=`scale(${s})`;});deck.style.transform='none';}
   else{frames.forEach(f=>{f.style.height='';f.querySelector('.slide').style.transform='';});const s=Math.min((W-48)/1600,(H-54-24)/900);deck.style.transform=`translate(${(W-1600*s)/2}px,${Math.max(12,(H-54-900*s)/2)}px) scale(${s})`;}
 }
