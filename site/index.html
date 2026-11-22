@@ -672,7 +672,7 @@ button.sig:hover{background:var(--color-paper-2)}
 .mcol.off .mi svg .ln{stroke-dashoffset:120}
 .mcol.off .when{border-bottom-color:var(--color-rule-2)}
 .m-foot{margin-top:28px;display:flex;justify-content:space-between;gap:32px;align-items:baseline}
-.m-foot .hint{font-size:16px;color:var(--color-muted)}
+.m-foot .hint{margin-left:auto;font-size:16px;color:var(--color-muted)}
 body.stacked .mcol.off{background-color:var(--color-cotton);outline:0;opacity:1}
 body.stacked .mcol.off .mi{visibility:visible}
 body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
@@ -1138,8 +1138,8 @@ aside.notes{display:none}
 <div class="frame"><section class="slide" id="measures" data-time="0:55" data-sec="2">
   <div class="head"><h2>How we’d know it’s valuable and safe</h2></div>
   <div class="mx" id="mx"></div>
-  <div class="m-foot"><p class="cite">Shapes show the direction we’d look for, not data. Several indicators adapted from Chi-Hui Tang, Applied Clinical Trials, August 2026 (vendor author).</p><p class="hint" id="mhint">Next reveals the next set</p></div>
-  <aside class="notes">Three sets of measures, read at different times. Leading indicators, read weekly from the first pilot study, tell us early whether CRAs trust it: are they prepared, do they act on what it shows, do they keep using it. Lagging indicators, read at the month 6 checkpoint, justify scaling: issues resolved faster, fewer asks of sites, fewer unplanned visits, lower cost. Safety is a gate, not a trend: evals pass before every release, no more missed signals than today, every claim cites a source, and nothing leaves the workspace without a person signing it. These are suggestions to agree with the team, not targets I’m claiming.</aside>
+  <div class="m-foot"><p class="hint" id="mhint">Next reveals the next set</p></div>
+  <aside class="notes">Three sets of measures, read at different times. Leading indicators, reviewed weekly, tell us early whether CRAs trust it: are they prepared, do they act on what it shows, do they keep using it. Lagging indicators, reviewed monthly, justify scaling: issues resolved faster, fewer asks of sites, fewer unplanned visits, lower cost. Safety is a gate, not a trend, reviewed prior to each release: evals pass, no more missed signals than today, every claim cites a source, and nothing leaves the workspace without a person signing it. These are suggestions to agree with the team, not targets I’m claiming.</aside>
 </section></div>
 
 <!-- 8 AI -->
@@ -1494,9 +1494,9 @@ const PATH=(function(){
 
 /* 7 indicators */
 const MSETS=[
- {k:'Leading',when:'Read weekly, from the first pilot study',q:'Do CRAs trust it and use it?',mc:'var(--color-h2)',rows:[['Visit preparedness','CRAs rate how ready they felt for each visit','rise','Above baseline'],['Signal-to-action rate','Share of flags CRAs act on, not dismiss','high','High and stable'],['Time to see an issue','From data landing to a CRA seeing it','fall','Hours, not weeks'],['Active use','CRAs using it each week, unprompted','rise','Grows monthly']]},
- {k:'Lagging',when:'Read at the month 6 checkpoint',q:'Is it worth scaling?',mc:'var(--color-h3)',rows:[['Issue resolution time','From detection to closure at the site','fall','Falls'],['Site burden','Requests per site, and site feedback','fall','Fewer asks'],['Unplanned visits','Triggered by late data or open queries','fall','Fall'],['Cost and retention','Oversight cost per site, CRA turnover','rise','Improve in a year']]},
- {k:'Safe',when:'Checked before every release',q:'Is it still safe to run?',mc:'var(--color-h4)',gate:true,rows:[['Evals pass','A fixed set of known issues, run on each change','gate','All pass'],['Missed signals','Against the usual process, in shadow running','flat','No increase'],['Every claim cites a source','Checked automatically','gate','Always'],['People sign what leaves','Nothing filed or sent unsigned','gate','Always']]}
+ {k:'Leading',when:'Reviewed weekly',q:'Do CRAs trust it and use it?',mc:'var(--color-h2)',rows:[['Visit preparedness','CRAs rate how ready they felt for each visit','rise','Above baseline'],['Signal-to-action rate','Share of flags CRAs act on, not dismiss','high','High and stable'],['Time to see an issue','From data landing to a CRA seeing it','fall','Hours, not weeks'],['Active use','CRAs using it each week, unprompted','rise','Grows monthly']]},
+ {k:'Lagging',when:'Reviewed monthly',q:'Is it worth scaling?',mc:'var(--color-h3)',rows:[['Issue resolution time','From detection to closure at the site','fall','Falls'],['Site burden','Requests per site, and site feedback','fall','Fewer asks'],['Unplanned visits','Triggered by late data or open queries','fall','Fall'],['Cost and retention','Oversight cost per site, CRA turnover','rise','Improve in a year']]},
+ {k:'Safe',when:'Reviewed prior to each release',q:'Is it still safe to run?',mc:'var(--color-h4)',gate:true,rows:[['Evals pass','A fixed set of known issues, run on each change','gate','All pass'],['Missed signals','Against the usual process, in shadow running','flat','No increase'],['Every claim cites a source','Checked automatically','gate','Always'],['People sign what leaves','Nothing filed or sent unsigned','gate','Always']]}
 ];
 const SHAPE={rise:'M2 26 C 20 24, 36 16, 70 4',fall:'M2 4 C 22 6, 38 18, 70 26',high:'M2 9 C 14 6, 28 10, 42 7 S 60 8, 70 7',flat:'M2 15 C 18 13, 34 17, 50 15 S 64 14, 70 15'};
 function vis(s){if(s==='gate')return `<svg viewBox="0 0 72 30" aria-hidden="true">${[0,1,2,3,4].map(i=>`<rect class="sq" x="${2+i*14}" y="9" width="11" height="11" rx="2.5"/>`).join('')}</svg>`;
