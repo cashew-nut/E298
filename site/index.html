@@ -1251,7 +1251,7 @@ aside.notes{display:none}
         <div class="f-kpi stock"><small>Break-even</small><b id="fk-be"></b></div>
       </div>
       <div class="f-bar">
-        <div class="f-legend" aria-label="Legend"><span><i style="--c:var(--fc-cost)"></i>Cost</span><span><i style="--c:var(--fc-visit)"></i>Fewer visits</span><span><i style="--c:var(--fc-hire)"></i>Hiring avoided</span><span><i style="--c:var(--fc-qual)"></i>Fewer quality issues</span><span><i class="ln"></i>Cumulative net position</span></div>
+        <div class="f-legend" aria-label="Legend"><span><i style="--c:var(--fc-cost)"></i>Cost</span><span><i style="--c:var(--fc-visit)"></i>Visits avoided</span><span><i style="--c:var(--fc-hire)"></i>Hiring avoided</span><span><i style="--c:var(--fc-qual)"></i>Fewer quality issues</span><span><i class="ln"></i>Cumulative net position</span></div>
         <div class="groove" role="group" aria-label="View"><button aria-pressed="true" data-fview="chart">Chart</button><button aria-pressed="false" data-fview="table">Table</button></div>
       </div>
       <div class="f-chart" id="fchart"><svg id="fsvg" viewBox="0 0 900 400" role="img" aria-label="Annual cost and savings by driver for years 1 to 3, with the cumulative net position"></svg><div class="f-tip" id="ftip" hidden></div></div>
@@ -1260,14 +1260,14 @@ aside.notes{display:none}
     <div class="f-side stock">
       <h3>Assumptions, for a large sponsor</h3>
       <p class="f-base">1,000 CRAs at $150k a year, fully loaded. 96,000 monitoring visits a year (the midpoint on slide 2). 2,000 quality issues a year. The portfolio grows 3% a year. Adoption reaches 10%, 50% and 90% of CRAs in years 1, 2 and 3.</p>
-      <div class="f-drv"><label class="t" for="fs-visit"><i style="--c:var(--fc-visit)"></i>Fewer non-mandated visits<output id="fo-visit"></output></label><input type="range" id="fs-visit" min="0" max="50" step="5" value="20"><p>Share of non-mandated visits avoided. 30% of visits aren’t required by the protocol, and each one avoided saves $1,000 of travel and expenses.</p><code>visits × 30% × avoided × $1,000 × adoption</code></div>
-      <div class="f-drv"><label class="t" for="fs-hire"><i style="--c:var(--fc-hire)"></i>Flat CRA headcount<output id="fo-hire"></output></label><input type="range" id="fs-hire" min="0" max="20" step="1" value="10"><p>CRA time given back. It absorbs portfolio growth instead of new hires.</p><code>min(time back × CRAs × adoption, growth) × $150k</code></div>
+      <div class="f-drv"><label class="t" for="fs-visit"><i style="--c:var(--fc-visit)"></i>Visits avoided<output id="fo-visit"></output></label><input type="range" id="fs-visit" min="0" max="15" step="1" value="6"><p>Share of all monitoring visits avoided, mostly ones the protocol doesn’t require. Each saves $1,000 of travel and expenses.</p><code>visits × avoided × $1,000 × adoption</code></div>
+      <div class="f-drv"><label class="t" for="fs-hire"><i style="--c:var(--fc-hire)"></i>CRA time saved<output id="fo-hire"></output></label><input type="range" id="fs-hire" min="0" max="20" step="1" value="10"><p>Share of each CRA’s time saved. It covers the 3% a year portfolio growth, so fewer new CRAs are hired. Never counted as job cuts.</p><code>min(time saved × CRAs × adoption, new CRAs needed) × $150k</code></div>
       <div class="f-drv"><label class="t" for="fs-qual"><i style="--c:var(--fc-qual)"></i>Fewer quality issues<output id="fo-qual"></output></label><input type="range" id="fs-qual" min="0" max="40" step="5" value="15"><p>Issues avoided, at a blended $20k each for investigation, CAPA and rework.</p><code>issues × avoided × $20k × adoption</code></div>
       <div class="f-drv"><label class="t" for="fs-cost"><i style="--c:var(--fc-cost)"></i>Cost<output id="fo-cost"></output></label><input type="range" id="fs-cost" min="50" max="200" step="10" value="100"><p>Scales the base case of $7.5M, $6.5M and $5.5M: build, run, validation, and change and training.</p></div>
       <p class="f-note"><b>Counted once:</b> CRA time saved shows up only as hiring avoided, so visit savings are travel and expenses. <b>Not counted:</b> faster study timelines and lower CRA turnover.</p>
     </div>
   </div>
-  <aside class="notes">Appendix, if asked about the business case. It’s a simple model, and every number is an assumption. Costs: build, run, validation, and change and training, about $19.5 million over three years. Three savings drivers, scaled by adoption of 10, 50 and 90 percent of CRAs: fewer non-mandated monitoring visits, at $1,000 of travel and expenses each; flat CRA headcount, because the time CRAs get back absorbs 3 percent portfolio growth instead of new hires at $150,000 each; and fewer quality issues, at a blended $20,000 each. CRA time is counted once. Faster study timelines and lower turnover are upside I haven’t counted. In the base case it breaks even in year two and is about $20 million ahead by year three. The sliders show how sensitive that is.</aside>
+  <aside class="notes">Appendix, if asked about the business case. It’s a simple model, and every number is an assumption. Costs: build, run, validation, and change and training, about $19.5 million over three years. Three savings drivers, scaled by adoption of 10, 50 and 90 percent of CRAs: visits avoided, about 6 percent of all visits, mostly ones the protocol doesn’t require, at $1,000 of travel and expenses each; CRA time saved, 10 percent, which covers 3 percent portfolio growth instead of new hires at $150,000 each, and is never counted as job cuts; and fewer quality issues, at a blended $20,000 each. CRA time is counted once. Faster study timelines and lower turnover are upside I haven’t counted. In the base case it breaks even in year two and is about $20 million ahead by year three. The sliders show how sensitive that is.</aside>
 </section></div>
 
 
@@ -1691,9 +1691,9 @@ const MEAS=(function(){
 
 /* 9 appendix: a simple, illustrative cost and savings model */
 (function(){
- const A={visits:96000,nonMand:0.30,perVisit:1000,cras:1000,craCost:150000,growth:0.03,issues:2000,perIssue:20000,adopt:[0.1,0.5,0.9],
+ const A={visits:96000,perVisit:1000,cras:1000,craCost:150000,growth:0.03,issues:2000,perIssue:20000,adopt:[0.1,0.5,0.9],
   cost:[['Build',[5,3,2]],['Run',[1,2,2.5]],['Validation',[1,0.5,0.5]],['Change and training',[0.5,1,0.5]]]};
- const SER=[['visit','Fewer visits','var(--fc-visit)'],['hire','Hiring avoided','var(--fc-hire)'],['qual','Fewer quality issues','var(--fc-qual)']];
+ const SER=[['visit','Visits avoided','var(--fc-visit)'],['hire','Hiring avoided','var(--fc-hire)'],['qual','Fewer quality issues','var(--fc-qual)']];
  const svg=$('fsvg'),tip=$('ftip'),NS='http://www.w3.org/2000/svg';
  const v=id=>+$('fs-'+id).value;
  const M=x=>(x<0?'−':'')+'$'+Math.abs(x).toFixed(1)+'M';
@@ -1702,7 +1702,7 @@ const MEAS=(function(){
  function model(){
   const cut=v('visit')/100,back=v('hire')/100,q=v('qual')/100,sc=v('cost')/100;let cum=0;
   return A.adopt.map((a,y)=>{
-   const visit=A.visits*A.nonMand*cut*A.perVisit*a/1e6;
+   const visit=A.visits*cut*A.perVisit*a/1e6;
    const need=A.cras*(Math.pow(1+A.growth,y+1)-1),freed=back*A.cras*a;
    const hire=Math.min(freed,need)*A.craCost/1e6;
    const qual=A.issues*q*A.perIssue*a/1e6;
@@ -1744,7 +1744,7 @@ const MEAS=(function(){
   $('fk-cost').textContent=M(tc);$('fk-sav').textContent=M(ts);$('fk-net').textContent=Ms(last);
   let be='Not in 3 years';for(let i=0;i<3;i++){if(D[i].cum>=0){be='Year '+(i+1);break;}}
   $('fk-be').textContent=be;
-  const rows=[['Cost',d=>d.cost],['Fewer visits',d=>d.visit],['Hiring avoided',d=>d.hire],['Fewer quality issues',d=>d.qual],['Savings',d=>d.sav],['Net, that year',d=>d.net],['Cumulative net position',d=>d.cum]];
+  const rows=[['Cost',d=>d.cost],['Visits avoided',d=>d.visit],['Hiring avoided',d=>d.hire],['Fewer quality issues',d=>d.qual],['Savings',d=>d.sav],['Net, that year',d=>d.net],['Cumulative net position',d=>d.cum]];
   $('ftable').innerHTML='<tr><th>$M</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Total</th></tr>'+rows.map(([n,f],k)=>`<tr${k===4||k===6?' class="sum"':''}><td>${n}</td>${D.map(d=>`<td>${n1(f(d))}</td>`).join('')}<td>${k===6?'':n1(D.reduce((s,d)=>s+f(d),0))}</td></tr>`).join('')+`<tr><td>CRAs needed without it</td>${D.map(d=>`<td>${d.without.toLocaleString()}</td>`).join('')}<td></td></tr><tr><td>CRAs needed with it</td>${D.map(d=>`<td>${d.heads.toLocaleString()}</td>`).join('')}<td></td></tr>`;
   $('fo-visit').textContent=v('visit')+'%';$('fo-hire').textContent=v('hire')+'%';$('fo-qual').textContent=v('qual')+'%';$('fo-cost').textContent='×'+(v('cost')/100).toFixed(1);
  }
