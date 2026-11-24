@@ -18,7 +18,7 @@
 /* Hallmark · pre-emit critique: P2 H2 E2 S2 R2 V2 · weakest: quote density, kept each slide to one or two quotes with a full citation */
 /* waive 48-font: General Sans is served only by Fontshare, which the artifact CSP blocks; Instrument Sans from Google Fonts stands in */
 /* waive 3: the layer bar on the scaling grid encodes the layer's risk level */
-/* waive 58: a seven-slide deck plus a two-slide appendix, not one screen; each slide stays near 80 words */
+/* waive 58: an eight-slide deck plus a two-slide appendix, not one screen; each slide stays near 80 words */
 /* waive F4 F15: letterpress cards are the theme's control; slides keep their own column rhythm */
 /* waive 44b: this is a 1600x900 presentation stage scaled to the window, not a scrolling page */
 :root{
@@ -759,6 +759,34 @@ body.stacked .mcol.off .mi svg .ln{stroke-dashoffset:0}
 .u-why b{color:var(--color-ink);font-weight:600}
 .u-hint{margin-top:auto;display:flex;justify-content:space-between;gap:24px;align-items:baseline}
 .u-hint .ai-note{font-size:16px;color:var(--color-muted)}
+/* ---------- 7 THANKS ---------- */
+/* bridge: close the case, recap the four parts, and hand over to how I used AI */
+#thanks .ty-grid{display:grid;grid-template-columns:minmax(0,1fr) 600px;gap:64px;flex:1;align-items:center}
+#thanks .ty-left{display:flex;flex-direction:column;gap:32px}
+#thanks .ty-h{font-size:128px;line-height:.96;max-width:none}
+#thanks .ty-parts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+#thanks .ty-done{display:grid;grid-template-columns:40px minmax(0,1fr) 32px;align-items:center;gap:16px;padding:18px 24px;font-size:23px;font-weight:500;color:var(--color-ink-2)}
+#thanks .ty-n{font-size:16px;color:var(--color-muted)}
+#thanks .ty-tick{width:28px;height:28px;fill:none;stroke:var(--color-ink-2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#thanks .ty-tick path{stroke-dasharray:24;stroke-dashoffset:0}
+#thanks .ty-li-next{position:relative;margin-top:34px}
+#thanks .ty-tab{position:absolute;top:-30px;left:0;height:32px;display:flex;align-items:center;gap:8px;padding:0 14px;border-radius:6px 6px 0 0;font-size:16px;font-weight:600;background:var(--color-board);color:var(--color-board-type)}
+#thanks .ty-next{width:100%;border:0;display:grid;grid-template-columns:40px minmax(0,1fr) 56px;align-items:center;gap:16px;padding:28px 24px;border-radius:2px var(--radius-stock) var(--radius-stock) var(--radius-stock);text-align:left;box-shadow:var(--edge-stock),var(--cast-stock-lift);transition:transform var(--dur-short) var(--ease-out),box-shadow var(--dur-short) var(--ease-out)}
+#thanks .ty-next:hover{transform:translateY(-2px);box-shadow:var(--edge-stock),var(--cast-sheet)}
+#thanks .ty-next:active{transform:translateY(1px)}
+#thanks .ty-next .ty-n{color:var(--color-ink-2)}
+#thanks .ty-next b{font-size:34px;font-weight:600;letter-spacing:-0.02em;color:var(--color-ink)}
+#thanks .ty-go{justify-self:end;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--color-board)}
+#thanks .ty-go svg{width:24px;height:24px;fill:none;stroke:var(--color-board-type);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.frame.active #thanks .ty-left>*{animation:tin var(--dur-long) var(--ease-out) both}
+.frame.active #thanks .ty-left>.lead{animation-delay:120ms}
+.frame.active #thanks .ty-done{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:calc(260ms + var(--i) * 110ms)}
+.frame.active #thanks .ty-tick path{animation:ty-draw 360ms var(--ease-out) both;animation-delay:calc(480ms + var(--i) * 110ms)}
+.frame.active #thanks .ty-li-next{animation:tin var(--dur-long) var(--ease-out) both;animation-delay:760ms}
+.frame.active #thanks .ty-go svg{animation:ty-nudge 1.6s var(--ease-out) 1.3s 2}
+@keyframes ty-draw{from{stroke-dashoffset:24}to{stroke-dashoffset:0}}
+@keyframes ty-nudge{0%,100%{transform:none}30%{transform:translateX(5px)}60%{transform:none}}
+@media (prefers-reduced-motion:reduce){#thanks *{animation:none!important;transition:none!important}}
 
 
 /* ---------- 9 appendix: financial model ---------- */
@@ -1205,7 +1233,26 @@ aside.notes{display:none}
   <aside class="notes">Three sets of measures, read at different times. Leading indicators, reviewed weekly, tell us early whether CRAs trust it: are they prepared, do they act on what it shows, do they keep using it. Lagging indicators, reviewed monthly, justify scaling: issues resolved faster, fewer asks of sites, fewer unplanned visits, lower cost. Safety is a gate, not a trend, reviewed prior to each release: evals pass, no more missed signals than today, every claim cites a source, and nothing leaves the workspace without a person signing it. These are suggestions to agree with the team, not targets I’m claiming.</aside>
 </section></div>
 
-<!-- 7 AI -->
+<!-- 7 THANKS -->
+<div class="frame"><section class="slide desk" id="thanks" data-time="0:10" data-sec="3">
+  <div class="ty-grid">
+    <div class="ty-left">
+      <h2 class="ty-h">Thank you.</h2>
+      <p class="lead">Before your questions, a minute on how I put this together.</p>
+    </div>
+    <div>
+      <ol class="ty-parts" aria-label="The four parts">
+        <li class="ty-done stock" style="--i:0"><span class="ty-n fig">01</span><span>The opportunity</span><svg class="ty-tick" viewBox="0 0 28 28" aria-hidden="true"><path d="M7 14.5l4.5 4.5L21 9.5"/></svg></li>
+        <li class="ty-done stock" style="--i:1"><span class="ty-n fig">02</span><span>My recommendation</span><svg class="ty-tick" viewBox="0 0 28 28" aria-hidden="true"><path d="M7 14.5l4.5 4.5L21 9.5"/></svg></li>
+        <li class="ty-done stock" style="--i:2"><span class="ty-n fig">03</span><span>Making it real</span><svg class="ty-tick" viewBox="0 0 28 28" aria-hidden="true"><path d="M7 14.5l4.5 4.5L21 9.5"/></svg></li>
+        <li class="ty-li-next"><span class="ty-tab">Next</span><button class="ty-next stock" id="ty-next" aria-label="Next: How I used AI"><span class="ty-n fig">04</span><b>How I used AI</b><span class="ty-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></button></li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes">Thank you. That’s the case: the opportunity, my recommendation, and how we’d make it real. Before your questions, a minute on how I put this together, and where AI helped.</aside>
+</section></div>
+
+<!-- 8 AI -->
 <div class="frame"><section class="slide" id="ai-use" data-time="0:50" data-sec="3">
   <div class="head"><h2>How I used AI</h2></div>
   <div class="u-flow">
@@ -1240,7 +1287,7 @@ aside.notes{display:none}
 </section></div>
 
 
-<!-- 8 APPENDIX: MODEL -->
+<!-- 9 APPENDIX: MODEL -->
 <div class="frame"><section class="slide" id="model" data-time="0:30" data-sec="4">
   <div class="head f-head"><div><p class="label">Appendix</p><h2>How costs and savings could add up over three years</h2></div><span class="mock">Illustrative: every number is an assumption</span></div>
   <div class="f-grid">
@@ -1272,7 +1319,7 @@ aside.notes{display:none}
 </section></div>
 
 
-<!-- 9 APPENDIX: SCALE -->
+<!-- 10 APPENDIX: SCALE -->
 <div class="frame"><section class="slide" id="scale" data-time="1:20" data-sec="4">
   <div class="head"><p class="label">Appendix</p><h2 style="max-width:none">Grow across roles and up the layers on one foundation</h2></div>
   <div class="s-top">
@@ -1767,7 +1814,7 @@ const tdesk=$('tdesk');
 function playTitle(){if(reduce||stacked){tdesk.classList.remove('pre');return;}tdesk.classList.add('pre');tdesk.getBoundingClientRect();setTimeout(()=>tdesk.classList.remove('pre'),120);}
 
 /* nav */
-const SECS=[{n:'The opportunity',s:[1]},{n:'My recommendation',s:[2,3]},{n:'Making it real',s:[4,5]},{n:'My use of AI',s:[6]},{n:'Appendix',s:[7,8]}];
+const SECS=[{n:'The opportunity',s:[1]},{n:'My recommendation',s:[2,3]},{n:'Making it real',s:[4,5]},{n:'My use of AI',s:[6,7]},{n:'Appendix',s:[8,9]}];
 const secs=$('secs');
 SECS.forEach(sec=>{const w=document.createElement('div');w.className='sec';w.style.setProperty('--w',sec.s.length);
   const l=document.createElement('button');l.className='sec-l';l.textContent=sec.n;l.onclick=()=>go(sec.s[0]);
@@ -1811,6 +1858,7 @@ $('timer').onclick=()=>startTimer(true);
 $('fs').onclick=()=>{try{(document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()).catch(()=>{});}catch(e){}};
 
 BUILDS.path=PATH;
+$('ty-next').onclick=()=>{const k=slides.findIndex(s=>s.id==='ai-use');if(stacked)frames[k].scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});else go(k);};
 
 /* fit */
 const deck=$('deck');
